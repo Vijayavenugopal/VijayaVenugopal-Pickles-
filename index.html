@@ -7,80 +7,60 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Nunito:wght@400;700;800&family=Tiro+Telugu&display=swap" rel="stylesheet"/>
 
 <style>
-:root {
-  --primary: #5c0916; --accent: #ff8c00; --gold: #d4a017;
-  --cream: #fffbf2; --white: #ffffff;
+/* 1. REMOVE RIGHT SIDE PAGE BUG */
+* { box-sizing: border-box; }
+html, body { 
+  margin: 0; padding: 0; width: 100%; overflow-x: hidden; 
+  background: #fdfaf5; font-family: 'Nunito', sans-serif; color: #2a1008;
 }
 
-/* CRITICAL FIX: Removes the extra "page" on the right side */
-html, body { 
-  overflow-x: hidden; 
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  background: var(--cream);
-  font-family: 'Nunito', sans-serif;
-  color: #2a1008;
+:root {
+  --burgundy: #7a1020; --saffron: #e8650a; --gold: #d4a010;
+  --cream: #fffbf2; --white: #ffffff;
 }
 
 /* Navigation */
 nav { 
-  background: var(--primary); color: white; padding: 1rem 5%; 
+  background: var(--burgundy); color: white; padding: 1rem 5%; 
   display: flex; justify-content: space-between; align-items: center; 
   border-bottom: 4px solid var(--gold); position: sticky; top: 0; z-index: 1000;
 }
-.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); font-weight: 700; }
+.brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); font-weight: 700; }
 
-/* Hero */
-.hero { 
-  height: 40vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-  url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=1200'); 
-  background-size: cover; background-position: center; 
-  display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+/* Story (Top) */
+.story-box {
+  background: var(--white); padding: 50px 5%; text-align: center;
+  border-bottom: 2px dashed var(--gold); width: 100%;
 }
+.story-box h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--burgundy); margin-bottom: 15px; }
+.drda-badge { display: inline-block; padding: 8px 20px; border: 2px solid var(--gold); border-radius: 50px; color: var(--burgundy); font-weight: 800; margin-top: 15px; }
 
-/* Our Story - Strictly Andhra Pradesh */
-.story-section {
-  background: var(--white); margin: -30px 5% 30px; padding: 40px 20px;
-  border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  text-align: center; position: relative; z-index: 10;
-}
-.story-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--primary); margin: 0 0 15px; }
-.drda-tag { display: inline-block; padding: 8px 20px; border: 2px solid var(--gold); border-radius: 50px; font-weight: 800; color: var(--primary); margin-top: 15px; }
+/* Product Grid */
+.section-title { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--saffron); margin: 40px 0 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 0 5% 50px; width: 100%; }
 
-/* Grid System */
-.cat-title { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--accent); margin: 40px 0 20px; }
-.product-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-  gap: 25px; padding: 0 5% 50px; 
-}
-
-/* Product Cards */
-.card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: 0.3s; }
-.card:hover { transform: translateY(-10px); }
-.card-img { height: 220px; width: 100%; background: #eee; }
+/* Product Card */
+.card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: 0.3s; }
+.card:hover { transform: translateY(-8px); }
+.card-img { height: 230px; background: #eee; overflow: hidden; }
 .card-img img { width: 100%; height: 100%; object-fit: cover; }
 
 .card-body { padding: 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
-.telugu { font-family: 'Tiro Telugu', serif; color: var(--accent); font-size: 1.2rem; margin: 5px 0; }
-.weight { color: #888; font-weight: 800; font-size: 0.8rem; }
-.price { font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 15px 0; }
+.telugu { font-family: 'Tiro Telugu', serif; color: var(--saffron); font-size: 1.2rem; margin: 5px 0; }
+.price { font-size: 1.7rem; font-weight: 800; color: var(--burgundy); margin: 10px 0; }
 
-.add-btn { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; cursor: pointer; width: 100%; margin-top: auto; }
-.add-btn:hover { background: var(--accent); }
+/* Buttons */
+.btn-group { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+.add-btn { background: #eee; color: #333; border: none; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+.wa-btn { background: #25D366; color: white; border: none; padding: 12px; border-radius: 10px; font-weight: 800; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-/* Cart Sidebar */
-.sidebar { position: fixed; right: -100%; top: 0; width: 350px; height: 100%; background: white; z-index: 2000; box-shadow: -10px 0 50px rgba(0,0,0,0.2); padding: 30px; transition: 0.4s; display: flex; flex-direction: column; }
+/* Sidebar */
+.sidebar { position: fixed; right: -400px; top: 0; width: 350px; height: 100%; background: white; z-index: 2000; box-shadow: -10px 0 50px rgba(0,0,0,0.1); padding: 25px; transition: 0.4s; display: flex; flex-direction: column; }
 .sidebar.open { right: 0; }
-.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1999; display: none; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1999; display: none; }
 .overlay.open { display: block; }
 
-.whatsapp-btn { background: #25D366; color: white; border: none; padding: 18px; border-radius: 12px; width: 100%; font-weight: 800; font-size: 1.1rem; cursor: pointer; margin-top: 20px; }
-
-footer { background: var(--primary); color: white; text-align: center; padding: 40px; border-top: 5px solid var(--gold); }
-
-@media (max-width: 500px) { .sidebar { width: 100%; } }
+footer { background: var(--burgundy); color: white; text-align: center; padding: 40px 5%; border-top: 5px solid var(--gold); }
 </style>
 </head>
 <body>
@@ -88,33 +68,29 @@ footer { background: var(--primary); color: white; text-align: center; padding: 
 <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
 
 <nav>
-  <div class="logo">VIJAYA VENUGOPAL</div>
+  <div class="brand">VIJAYA VENUGOPAL</div>
   <div style="cursor:pointer; font-weight:800;" onclick="toggleCart(true)">🛒 Cart (<span id="cartCount">0</span>)</div>
 </nav>
 
-<section class="hero">
-  <h1 style="margin:0;">Andhra Tradition</h1>
+<section class="story-box">
+  <h1>Our Tradition / మన సాంప్రదాయం</h1>
+  <p>Authentic, homemade flavors from the heart of <strong>Andhra Pradesh</strong>. Every jar is packed with heritage and hand-picked ingredients.</p>
+  <div class="drda-badge">🤝 Supported by DRDA Anantapur</div>
 </section>
 
-<section class="story-section">
-  <h2>Our Story / మా ప్రయాణం</h2>
-  <p>Authentic, homemade flavors crafted with love in <strong>Andhra Pradesh</strong>. We use hand-picked raw ingredients and sun-drying methods to ensure that every jar reminds you of home.</p>
-  <div class="drda-tag">🤝 With the help of DRDA Anantapur</div>
-</section>
+<div class="section-title">Traditional Pickles / పచ్చళ్ళు</div>
+<div class="grid" id="pickleGrid"></div>
 
-<div class="cat-title">Traditional Pickles / పచ్చళ్ళు</div>
-<div class="product-grid" id="pickleGrid"></div>
-
-<div class="cat-title">Spice Powders / పొడులు</div>
-<div class="product-grid" id="podiGrid"></div>
+<div class="section-title">Spice Powders / పొడులు</div>
+<div class="grid" id="podiGrid"></div>
 
 <div class="sidebar" id="sidebar">
-  <h2>Your Order</h2>
+  <h2>Your Cart</h2>
   <div id="cartItems" style="flex-grow:1; overflow-y:auto;"></div>
-  <div style="font-size:1.4rem; font-weight:800; display:flex; justify-content:space-between; border-top:2px solid #eee; pt:20px;">
+  <div style="font-size:1.5rem; font-weight:800; display:flex; justify-content:space-between; margin:20px 0;">
     <span>Total:</span> <span id="cartTotal">₹0</span>
   </div>
-  <button class="whatsapp-btn" onclick="checkout()">Send Order to WhatsApp</button>
+  <button class="wa-btn" style="padding:18px" onclick="cartCheckout()">Checkout All on WhatsApp</button>
 </div>
 
 <footer>
@@ -125,12 +101,11 @@ footer { background: var(--primary); color: white; text-align: center; padding: 
 <script>
 let cart = {};
 
-// THE IMAGES ARE UPDATED HERE TO BE VERY SPECIFIC
 const products = {
   pickles: [
-    {id:1, en:"Raw Green Mango Avakaya", te:"పచ్చి మామిడి ఆవకాయ", w:"220g", p:150, img:"https://images.unsplash.com/photo-1591073113125-e46713c829ed?auto=format&fit=crop&q=80&w=600"},
+    {id:1, en:"Raw Green Mango Avakaya", te:"పచ్చి మామిడి ఆవకాయ", w:"220g", p:150, img:"https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=600"},
     {id:2, en:"Fresh Gongura Pachadi", te:"గోంగూర పచ్చడి", w:"220g", p:150, img:"https://5.imimg.com/data5/SELLER/Default/2023/9/345532559/XW/WK/VJ/197365664/fresh-gongura-leaves-500x500.jpg"},
-    {id:3, en:"Tomato Pickle", te:"టమాటా పచ్చడి", w:"220g", p:150, emoji:"🍅"},
+    {id:3, en:"Spicy Tomato Pickle", te:"టమాటా పచ్చడి", w:"220g", p:150, emoji:"🍅"},
     {id:4, en:"Garlic Pickle", te:"వెల్లుల్లి పచ్చడి", w:"220g", p:150, emoji:"🧄"}
   ],
   podis: [
@@ -147,11 +122,14 @@ function render() {
           ${p.img ? `<img src="${p.img}" alt="${p.en}">` : `<div style="font-size:5rem; display:flex; justify-content:center; align-items:center; height:100%">${p.emoji}</div>`}
         </div>
         <div class="card-body">
-          <span class="weight">${p.w}</span>
+          <span style="font-weight:700; color:#888;">${p.w}</span>
           <h3 style="margin:5px 0;">${p.en}</h3>
           <p class="telugu">${p.te}</p>
           <div class="price">₹${p.p}</div>
-          <button class="add-btn" onclick="addToCart(${p.id}, '${p.en}', ${p.p})">Add to Cart</button>
+          <div class="btn-group">
+            <button class="add-btn" onclick="addToCart(${p.id}, '${p.en}', ${p.p})">Add to Cart</button>
+            <button class="wa-btn" onclick="quickBuy('${p.en}')">Order on WhatsApp</button>
+          </div>
         </div>
       </div>`).join('');
   };
@@ -182,9 +160,13 @@ function toggleCart(show) {
   document.getElementById('overlay').classList.toggle('open', show);
 }
 
-function checkout() {
+function quickBuy(name) {
+  window.open(`https://wa.me/919339877718?text=Hello! I want to order: ${name}`);
+}
+
+function cartCheckout() {
   let text = Object.values(cart).map(i => `${i.name} x ${i.qty}`).join('%0A');
-  window.open(`https://wa.me/919339877718?text=Order From Website:%0A${text}`);
+  window.open(`https://wa.me/919339877718?text=New Order:%0A${text}`);
 }
 
 render();
