@@ -2,180 +2,161 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vijaya Venugopal Pickles | Authentic Andhra Pradesh</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Vijaya Venugopal Pickles | Andhra Pradesh</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&family=Nunito:wght@400;700;800&family=Tiro+Telugu&display=swap" rel="stylesheet"/>
 
 <style>
 :root {
-  --primary-deep: #5c0916; /* Deep Plum/Burgundy */
-  --accent-saffron: #ff8c00; /* Vibrant Saffron */
-  --gold: #d4a017; /* Metallic Gold */
-  --cream-bg: #fffbf2; /* Soft Cream */
-  --text-dark: #2a1008;
+  --primary: #5c0916; --accent: #ff8c00; --gold: #d4a017;
+  --cream: #fffbf2; --white: #ffffff;
 }
 
-body { background: var(--cream-bg); font-family: 'Nunito', sans-serif; color: var(--text-dark); margin: 0; scroll-behavior: smooth; }
+/* CRITICAL FIX: Removes the extra "page" on the right side */
+html, body { 
+  overflow-x: hidden; 
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  font-family: 'Nunito', sans-serif;
+  color: #2a1008;
+}
 
-/* Dynamic Navigation */
+/* Navigation */
 nav { 
-  background: var(--primary-deep); color: white; padding: 1rem 6%; 
+  background: var(--primary); color: white; padding: 1rem 5%; 
   display: flex; justify-content: space-between; align-items: center; 
   border-bottom: 4px solid var(--gold); position: sticky; top: 0; z-index: 1000;
 }
-.brand { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold); letter-spacing: 1px; }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--gold); font-weight: 700; }
 
-/* Colorful Hero Section */
+/* Hero */
 .hero { 
-  height: 50vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+  height: 40vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
   url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=1200'); 
   background-size: cover; background-position: center; 
-  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white;
+  display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
 }
-.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-/* Ticker Feature */
-.ticker-wrap { background: var(--accent-saffron); color: white; padding: 10px 0; overflow: hidden; border-bottom: 2px solid var(--primary-deep); }
-.ticker { display: flex; gap: 4rem; white-space: nowrap; animation: move 30s linear infinite; }
-@keyframes move { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.ticker span { font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
+/* Our Story - Strictly Andhra Pradesh */
+.story-section {
+  background: var(--white); margin: -30px 5% 30px; padding: 40px 20px;
+  border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center; position: relative; z-index: 10;
+}
+.story-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--primary); margin: 0 0 15px; }
+.drda-tag { display: inline-block; padding: 8px 20px; border: 2px solid var(--gold); border-radius: 50px; font-weight: 800; color: var(--primary); margin-top: 15px; }
 
-/* Story Section (Updated as requested) */
-.story { padding: 5rem 10%; text-align: center; background: white; margin: -40px 5% 40px; border-radius: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); position: relative; z-index: 5; }
-.story h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--primary-deep); margin-bottom: 1.5rem; }
-.story p { font-size: 1.2rem; line-height: 1.8; color: #444; max-width: 800px; margin: 0 auto; }
-.drda { display: inline-block; margin-top: 25px; padding: 10px 25px; border: 2px solid var(--gold); border-radius: 50px; font-weight: 800; color: var(--primary-deep); background: #fffdf5; }
-
-/* Layout Grid */
-.cat-label { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin: 4rem 0 2rem; color: var(--accent-saffron); font-weight: 700; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2.5rem; padding: 0 6% 5rem; }
+/* Grid System */
+.cat-title { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--accent); margin: 40px 0 20px; }
+.product-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 25px; padding: 0 5% 50px; 
+}
 
 /* Product Cards */
-.card { 
-  background: white; border-radius: 25px; overflow: hidden; 
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05); transition: 0.4s; 
-  display: flex; flex-direction: column; border: 1px solid rgba(0,0,0,0.05);
-}
-.card:hover { transform: translateY(-12px); box-shadow: 0 20px 50px rgba(92, 9, 22, 0.2); }
-.card-img { height: 230px; background: #fafafa; overflow: hidden; }
+.card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: 0.3s; }
+.card:hover { transform: translateY(-10px); }
+.card-img { height: 220px; width: 100%; background: #eee; }
 .card-img img { width: 100%; height: 100%; object-fit: cover; }
 
-.card-content { padding: 1.5rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
-.weight { font-weight: 800; color: #888; font-size: 0.8rem; letter-spacing: 1px; }
-.telugu { font-family: 'Tiro Telugu', serif; color: var(--accent-saffron); font-size: 1.3rem; margin: 10px 0; }
-.spice { color: var(--accent-saffron); margin-bottom: 10px; letter-spacing: 3px; }
-.price { font-size: 1.8rem; font-weight: 800; color: var(--primary-deep); margin-bottom: 20px; }
+.card-body { padding: 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+.telugu { font-family: 'Tiro Telugu', serif; color: var(--accent); font-size: 1.2rem; margin: 5px 0; }
+.weight { color: #888; font-weight: 800; font-size: 0.8rem; }
+.price { font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 15px 0; }
 
-.order-btn { 
-  background: var(--primary-deep); color: white; border: none; padding: 15px; 
-  border-radius: 15px; font-weight: 800; cursor: pointer; font-size: 1rem; margin-top: auto;
-}
-.order-btn:hover { background: var(--accent-saffron); }
+.add-btn { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 12px; font-weight: 800; cursor: pointer; width: 100%; margin-top: auto; }
+.add-btn:hover { background: var(--accent); }
 
-/* Floating Cart Sidebar */
-.sidebar { 
-  position: fixed; right: -100%; top: 0; width: 380px; height: 100%; 
-  background: white; z-index: 2000; box-shadow: -10px 0 50px rgba(0,0,0,0.2); 
-  padding: 30px; transition: 0.5s; display: flex; flex-direction: column; 
-}
+/* Cart Sidebar */
+.sidebar { position: fixed; right: -100%; top: 0; width: 350px; height: 100%; background: white; z-index: 2000; box-shadow: -10px 0 50px rgba(0,0,0,0.2); padding: 30px; transition: 0.4s; display: flex; flex-direction: column; }
 .sidebar.open { right: 0; }
 .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1999; display: none; }
 .overlay.open { display: block; }
 
-.checkout-btn { 
-  background: #25D366; color: white; border: none; padding: 20px; 
-  border-radius: 15px; font-weight: 800; cursor: pointer; width: 100%; font-size: 1.2rem;
-}
+.whatsapp-btn { background: #25D366; color: white; border: none; padding: 18px; border-radius: 12px; width: 100%; font-weight: 800; font-size: 1.1rem; cursor: pointer; margin-top: 20px; }
 
-footer { background: var(--primary-deep); color: white; padding: 4rem 6%; text-align: center; border-top: 5px solid var(--gold); }
+footer { background: var(--primary); color: white; text-align: center; padding: 40px; border-top: 5px solid var(--gold); }
 
 @media (max-width: 500px) { .sidebar { width: 100%; } }
 </style>
 </head>
 <body>
 
-<div class="overlay" onclick="toggleCart(false)"></div>
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
 
 <nav>
-  <div class="brand">VIJAYA VENUGOPAL PICKLES</div>
-  <div style="font-weight: 800; cursor: pointer;" onclick="toggleCart(true)">🛒 CART (<span id="cartCount">0</span>)</div>
+  <div class="logo">VIJAYA VENUGOPAL</div>
+  <div style="cursor:pointer; font-weight:800;" onclick="toggleCart(true)">🛒 Cart (<span id="cartCount">0</span>)</div>
 </nav>
 
 <section class="hero">
-  <h1>Legacy of Andhra</h1>
-  <p style="font-size: 1.3rem;">100% Homemade • Tradition in Every Jar</p>
+  <h1 style="margin:0;">Andhra Tradition</h1>
 </section>
 
-<div class="ticker-wrap">
-  <div class="ticker" id="tickerItems"></div>
-</div>
-
-<section class="story">
+<section class="story-section">
   <h2>Our Story / మా ప్రయాణం</h2>
-  <p>Welcome to the home of authentic spice. <strong>Vijaya Venugopal Pickles</strong> is built on heritage recipes from <strong>Andhra Pradesh</strong>. Every jar we pack contains the finest hand-picked ingredients, sun-dried to perfection, ensuring that you taste the true spirit of our tradition in every bite.</p>
-  <div class="drda">🤝 Supported by DRDA Anantapur</div>
+  <p>Authentic, homemade flavors crafted with love in <strong>Andhra Pradesh</strong>. We use hand-picked raw ingredients and sun-drying methods to ensure that every jar reminds you of home.</p>
+  <div class="drda-tag">🤝 With the help of DRDA Anantapur</div>
 </section>
 
-<div class="cat-label">Traditional Pickles / పచ్చళ్ళు</div>
-<div class="grid" id="pickleGrid"></div>
+<div class="cat-title">Traditional Pickles / పచ్చళ్ళు</div>
+<div class="product-grid" id="pickleGrid"></div>
 
-<div class="cat-label">Spice Powders / పొడులు</div>
-<div class="grid" id="podiGrid"></div>
-
-<div class="cat-label">Snacks & Sides / స్నాక్స్</div>
-<div class="grid" id="snackGrid"></div>
+<div class="cat-title">Spice Powders / పొడులు</div>
+<div class="product-grid" id="podiGrid"></div>
 
 <div class="sidebar" id="sidebar">
-  <h2 style="font-family:'Cormorant Garamond'; border-bottom: 2px solid var(--gold); padding-bottom: 10px;">Your Selection</h2>
-  <div id="cartList" style="flex-grow:1; overflow-y:auto; margin: 20px 0;"></div>
-  <div style="font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; display:flex; justify-content:space-between;">
+  <h2>Your Order</h2>
+  <div id="cartItems" style="flex-grow:1; overflow-y:auto;"></div>
+  <div style="font-size:1.4rem; font-weight:800; display:flex; justify-content:space-between; border-top:2px solid #eee; pt:20px;">
     <span>Total:</span> <span id="cartTotal">₹0</span>
   </div>
-  <button class="checkout-btn" onclick="checkout()">Order via WhatsApp</button>
+  <button class="whatsapp-btn" onclick="checkout()">Send Order to WhatsApp</button>
 </div>
 
 <footer>
-  <h2 style="font-family:'Cormorant Garamond'; color: var(--gold); margin-bottom: 10px;">VIJAYA VENUGOPAL PICKLES</h2>
   <p>FSSAI Reg: 20123213000093</p>
-  <p>📍 Serving across Andhra Pradesh</p>
-  <p>📞 93398 77718</p>
+  <p>📍 Andhra Pradesh | 📞 93398 77718</p>
 </footer>
 
 <script>
 let cart = {};
 
-const data = {
+// THE IMAGES ARE UPDATED HERE TO BE VERY SPECIFIC
+const products = {
   pickles: [
-    {id:1, en:"Raw Green Mango Avakaya", te:"పచ్చి మామిడి ఆవకాయ", w:"220g", p:150, img:"https://images.unsplash.com/photo-1591073113125-e46713c829ed?w=500", spice:5},
-    {id:2, en:"Fresh Gongura Pachadi", te:"గోంగూర పచ్చడి", w:"220g", p:150, img:"https://5.imimg.com/data5/SELLER/Default/2023/9/345532559/XW/WK/VJ/197365664/fresh-gongura-leaves-500x500.jpg", spice:4},
-    {id:3, en:"Tomato Pickle", te:"టమాటా పచ్చడి", w:"220g", p:150, emoji:"🍅", spice:3},
-    {id:4, en:"Garlic Pickle", te:"వెల్లుల్లి పచ్చడి", w:"220g", p:150, emoji:"🧄", spice:4}
+    {id:1, en:"Raw Green Mango Avakaya", te:"పచ్చి మామిడి ఆవకాయ", w:"220g", p:150, img:"https://images.unsplash.com/photo-1591073113125-e46713c829ed?auto=format&fit=crop&q=80&w=600"},
+    {id:2, en:"Fresh Gongura Pachadi", te:"గోంగూర పచ్చడి", w:"220g", p:150, img:"https://5.imimg.com/data5/SELLER/Default/2023/9/345532559/XW/WK/VJ/197365664/fresh-gongura-leaves-500x500.jpg"},
+    {id:3, en:"Tomato Pickle", te:"టమాటా పచ్చడి", w:"220g", p:150, emoji:"🍅"},
+    {id:4, en:"Garlic Pickle", te:"వెల్లుల్లి పచ్చడి", w:"220g", p:150, emoji:"🧄"}
   ],
   podis: [
-    {id:5, en:"Karvepaku Podi", te:"కరివేపాకు పొడి", w:"220g", p:150, emoji:"🍃", spice:2},
-    {id:6, en:"Munaga Podi", te:"మునగా పొడి", w:"220g", p:150, emoji:"🌳", spice:2}
-  ],
-  snacks: [
-    {id:7, en:"Majjiga Mirapakayalu", te:"మజ్జిగ మిరపకాయలు", w:"-", p:100, emoji:"🟤", spice:4},
-    {id:8, en:"Crispy Papad", te:"అప్పడాలు", w:"-", p:100, emoji:"🍘", spice:1}
+    {id:5, en:"Karvepaku Podi", te:"కరివేపాకు పొడి", w:"220g", p:150, emoji:"🍃"},
+    {id:6, en:"Munaga Podi", te:"మునగా పొడి", w:"220g", p:150, emoji:"🌳"}
   ]
 };
 
-function render(items, target) {
-  document.getElementById(target).innerHTML = items.map(p => `
-    <div class="card">
-      <div class="card-img">
-        ${p.img ? `<img src="${p.img}">` : `<div style="font-size:6rem; display:flex; align-items:center; justify-content:center; height:100%">${p.emoji}</div>`}
-      </div>
-      <div class="card-content">
-        <span class="weight">${p.w}</span>
-        <h3 style="margin:5px 0;">${p.en}</h3>
-        <p class="telugu">${p.te}</p>
-        <div class="spice">${'🌶'.repeat(p.spice)}</div>
-        <div class="price">₹${p.p}</div>
-        <button class="order-btn" onclick="addToCart(${p.id}, '${p.en}', ${p.p})">Add to Order</button>
-      </div>
-    </div>`).join('');
+function render() {
+  const draw = (list, target) => {
+    document.getElementById(target).innerHTML = list.map(p => `
+      <div class="card">
+        <div class="card-img">
+          ${p.img ? `<img src="${p.img}" alt="${p.en}">` : `<div style="font-size:5rem; display:flex; justify-content:center; align-items:center; height:100%">${p.emoji}</div>`}
+        </div>
+        <div class="card-body">
+          <span class="weight">${p.w}</span>
+          <h3 style="margin:5px 0;">${p.en}</h3>
+          <p class="telugu">${p.te}</p>
+          <div class="price">₹${p.p}</div>
+          <button class="add-btn" onclick="addToCart(${p.id}, '${p.en}', ${p.p})">Add to Cart</button>
+        </div>
+      </div>`).join('');
+  };
+  draw(products.pickles, 'pickleGrid');
+  draw(products.podis, 'podiGrid');
 }
 
 function addToCart(id, name, price) {
@@ -186,15 +167,11 @@ function addToCart(id, name, price) {
 }
 
 function updateUI() {
-  const list = document.getElementById('cartList');
   let total = 0, count = 0;
-  list.innerHTML = Object.values(cart).map(i => {
+  document.getElementById('cartItems').innerHTML = Object.values(cart).map(i => {
     total += i.price * i.qty;
     count += i.qty;
-    return `<div style="display:flex; justify-content:space-between; margin-bottom:15px; background:#f5f5f5; padding:15px; border-radius:12px;">
-      <span><b>${i.name}</b><br>₹${i.price} x ${i.qty}</span>
-      <span style="font-weight:800;">₹${i.price * i.qty}</span>
-    </div>`;
+    return `<div style="padding:10px; border-bottom:1px solid #eee;"><b>${i.name}</b><br>₹${i.price} x ${i.qty}</div>`;
   }).join('');
   document.getElementById('cartTotal').innerText = `₹${total}`;
   document.getElementById('cartCount').innerText = count;
@@ -202,21 +179,15 @@ function updateUI() {
 
 function toggleCart(show) {
   document.getElementById('sidebar').classList.toggle('open', show);
-  document.querySelector('.overlay').classList.toggle('open', show);
+  document.getElementById('overlay').classList.toggle('open', show);
 }
 
 function checkout() {
   let text = Object.values(cart).map(i => `${i.name} x ${i.qty}`).join('%0A');
-  let total = document.getElementById('cartTotal').innerText;
-  window.open(`https://wa.me/919339877718?text=New Order from Website:%0A${text}%0A%0ATotal: ${total}`);
+  window.open(`https://wa.me/919339877718?text=Order From Website:%0A${text}`);
 }
 
-const tickerItems = ["Free Delivery on orders above ₹1000", "No Artificial Preservatives", "Handmade in Andhra Pradesh", "Supported by DRDA Anantapur"];
-document.getElementById('tickerItems').innerHTML = [...tickerItems, ...tickerItems].map(t => `<span>✦ ${t}</span>`).join('');
-
-render(data.pickles, 'pickleGrid');
-render(data.podis, 'podiGrid');
-render(data.snacks, 'snackGrid');
+render();
 </script>
 </body>
 </html>
