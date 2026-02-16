@@ -3,146 +3,282 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>VijayaVenugopal Pickles</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Telugu&family=Noto+Sans+Tamil&family=Noto+Sans+Malayalam&family=Noto+Sans+Kannada&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet"/>
+<title>VijayaVenugopal Pickles | DRDA Powered</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Telugu&family=Noto+Sans+Tamil&family=Noto+Sans+Kannada&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet"/>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:16px;}
 :root{
-  --bg:#0e0b08; --surface:#161210; --card:#1e1812;
-  --border:#2a2018; --border2:rgba(212,160,16,0.15);
-  --gold:#d4a010; --gold2:#f0c030; --amber:#e8650a;
-  --red:#c0392b; --green:#2d7a1a;
-  --text:#f5ede0; --muted:#8a7060; --sub:#b8a090;
+  --bg:#ffffff; --surface:#f8fafc; --card:#ffffff;
+  --border:#e2e8f0; --gold:#f59e0b; --amber:#ea580c;
+  --text:#0f172a; --muted:#64748b; --sub:#475569;
   --font-head:'DM Serif Display',serif;
   --font-body:'DM Sans',sans-serif;
-  --r:12px; --r2:20px;
+  --r:16px;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
 }
+*{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;line-height:1.6;}
 
-/* ── SCROLLBAR REMOVED (Reverting to default) ── */
+/* Language Navigation */
+.lang-nav{background:#f1f5f9;padding:12px 5%;display:flex;gap:8px;justify-content:center;border-bottom:1px solid var(--border);flex-wrap:wrap;position:sticky;top:0;z-index:1001;}
+.lang-btn{border:1px solid var(--border);background:#fff;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:0.85rem;transition:0.3s;font-weight:600;}
+.lang-btn.active{background:var(--amber);color:#fff;border-color:var(--amber);box-shadow:0 4px 10px rgba(234,88,12,0.2);}
 
-/* ── ANIMATIONS REMOVED ── */
+.nav{position:sticky;top:50px;width:100%;height:75px;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:1000;display:flex;align-items:center;padding:0 5%;justify-content:space-between;}
+.brand{font-family:var(--font-head);font-size:1.8rem;color:var(--amber);text-decoration:none;}
+.cart-btn{background:var(--amber);color:#fff;border:none;border-radius:10px;padding:10px 18px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;}
 
-/* ── LANG BAR ── */
-.lang-bar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(14,11,8,0.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
-.lang-inner{max-width:1100px;margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:56px;gap:1rem;}
-.brand-logo{font-family:var(--font-head);font-size:1.1rem;color:var(--gold2);white-space:nowrap;flex-shrink:0;}
-.brand-logo span{font-style:italic;color:var(--amber);}
-.lang-switcher{display:flex;gap:4px;flex-wrap:wrap;}
-.lang-btn{background:none;border:1px solid transparent;border-radius:6px;padding:4px 10px;font-size:0.72rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all 0.18s;font-family:inherit;letter-spacing:0.02em;white-space:nowrap;}
-.lang-btn:hover{color:var(--text);border-color:var(--border2);}
-.lang-btn.active{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700;}
-.nav-actions{display:flex;gap:8px;flex-shrink:0;}
-.btn-sm{border:none;border-radius:8px;padding:7px 14px;font-size:0.73rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.18s;white-space:nowrap;}
-.btn-wa-sm{background:#25d366;color:#fff;}
-.btn-wa-sm:hover{background:#1db954;}
-.btn-cart-sm{background:var(--amber);color:#fff;display:flex;align-items:center;gap:5px;}
-.btn-cart-sm:hover{background:#c04808;}
-.cart-badge{background:#000;color:var(--gold2);border-radius:50%;width:17px;height:17px;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;}
+/* Hero */
+.hero{padding:60px 5% 40px;text-align:center;background:var(--surface);}
+.hero-badge{display:inline-block;background:rgba(234,88,12,0.1);color:var(--amber);padding:6px 16px;border-radius:40px;font-size:0.75rem;font-weight:800;margin-bottom:1rem;letter-spacing:1px;}
+.hero h1{font-family:var(--font-head);font-size:clamp(2rem,6vw,3.5rem);margin-bottom:1rem;line-height:1.2;}
+.hero p{color:var(--sub);max-width:600px;margin:0 auto;font-size:1.1rem;}
 
-/* ── HERO ── */
-.hero{min-height:100vh;padding-top:56px;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1100px;margin:0 auto;padding-left:5%;padding-right:5%;gap:3rem;}
-.hero-left{opacity: 1;} /* Animation removed */
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,16,0.1);border:1px solid rgba(212,160,16,0.25);border-radius:40px;padding:5px 14px;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
-.hero h1{font-family:var(--font-head);font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.06;margin-bottom:0.8rem;color:var(--text);}
-.hero h1 em{font-style:italic;color:var(--gold2);}
-.hero-sub{font-size:0.95rem;color:var(--sub);line-height:1.75;max-width:400px;margin-bottom:0.5rem;}
-.hero-sub b{color:var(--text);font-weight:500;}
-.fssai-line{display:inline-flex;align-items:center;gap:7px;background:rgba(45,122,26,0.12);border:1px solid rgba(45,122,26,0.3);border-radius:6px;padding:5px 12px;font-size:0.65rem;font-weight:600;color:#6dcc4a;margin:1rem 0 1.5rem;letter-spacing:0.06em;}
-.hero-cta{display:flex;gap:10px;flex-wrap:wrap;}
-.btn-primary{background:var(--amber);color:#fff;border:none;border-radius:10px;padding:13px 28px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.18s;letter-spacing:0.02em;}
-.btn-primary:hover{background:#c04808;transform:translateY(-2px);}
-.btn-wa-main{background:#25d366;color:#fff;border:none;border-radius:10px;padding:13px 22px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.18s;}
-.btn-wa-main:hover{background:#1db954;transform:translateY(-2px);}
-.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);}
-.stat-n{font-family:var(--font-head);font-size:1.8rem;color:var(--gold2);line-height:1;}
-.stat-l{font-size:0.65rem;font-weight:500;color:var(--muted);margin-top:2px;letter-spacing:0.08em;text-transform:uppercase;}
-.hero-right{display:flex;align-items:center;justify-content:center;opacity: 1;} /* Animation removed */
-.hero-img-wrap{position:relative;width:100%;max-width:460px;}
-.hero-img-wrap svg{width:100%;height:auto;filter:drop-shadow(0 30px 60px rgba(232,101,10,0.2));}
-.hero-glow{position:absolute;width:280px;height:280px;background:radial-gradient(circle,rgba(232,101,10,0.18),transparent 70%);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;} /* Glow animation removed */
+/* Catalog */
+.section{padding:20px 5% 60px;max-width:1200px;margin:0 auto;}
+.cat-label{font-size:0.9rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:15px;margin:3.5rem 0 1.5rem;}
+.cat-label::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* ── TICKER ── */
-.ticker-wrap{background:var(--amber);overflow:hidden;padding:10px 0;}
-.ticker-track{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;} /* Animation removed */
-.ticker-item{font-size:0.75rem;font-weight:600;color:#fff;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:0.6rem;}
-.ticker-dot{opacity:0.5;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;}
+.prod-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;transition:0.3s;position:relative;display:flex;flex-direction:column;}
+.prod-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--amber);}
+.prod-emoji{font-size:3.5rem;display:block;margin-bottom:1rem;}
+.prod-name{font-family:var(--font-head);font-size:1.4rem;margin-bottom:4px;}
+.prod-desc{font-size:0.9rem;color:var(--sub);margin-bottom:1.5rem;flex:1;}
+.prod-foot{display:flex;justify-content:space-between;align-items:center;}
+.prod-price{font-family:var(--font-head);font-size:1.6rem;color:var(--amber);}
+.add-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;padding:8px 16px;font-weight:700;cursor:pointer;transition:0.2s;}
+.add-btn:hover{background:var(--amber);color:#fff;border-color:var(--amber);}
 
-/* ── SECTION ── */
-.section{max-width:1100px;margin:0 auto;padding:5rem 5%;}
-.s-label{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem;}
-.s-title{font-family:var(--font-head);font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.1;color:var(--text);}
-.s-title em{font-style:italic;color:var(--gold2);}
-.s-line{width:36px;height:2px;background:linear-gradient(90deg,var(--amber),var(--gold));border-radius:2px;margin-top:0.75rem;}
+/* Cart Panel */
+.cart-panel{position:fixed;right:-420px;top:0;bottom:0;width:400px;max-width:90%;background:#fff;z-index:2000;box-shadow:-10px 0 30px rgba(0,0,0,0.1);transition:0.4s;display:flex;flex-direction:column;padding:2rem;}
+.cart-panel.open{right:0;}
+.cart-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:1rem;}
+.cart-items{flex:1;overflow-y:auto;margin:1.5rem 0;}
+.cart-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px dashed var(--border);font-size:0.95rem;}
+.wa-checkout{background:#25d366;color:#fff;border:none;width:100%;padding:16px;border-radius:12px;font-weight:700;font-size:1.1rem;cursor:pointer;box-shadow:0 8px 20px rgba(37,211,102,0.3);transition:0.3s;}
 
-/* ── PRODUCT GRID ── */
-.cat-sep{display:flex;align-items:center;gap:12px;margin:2.8rem 0 1.4rem;}
-.cat-sep-line{flex:1;height:1px;background:var(--border);}
-.cat-sep-lbl{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
-.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);}
-.prod-card{background:var(--surface);padding:1.4rem;transition:background 0.2s;cursor:pointer;position:relative;}
-.prod-card:hover{background:var(--card);}
-.prod-emoji{font-size:3rem;display:block;margin-bottom:0.9rem;transition:transform 0.2s;line-height:1;} /* Animation removed */
-.prod-badge{position:absolute;top:1rem;right:1rem;font-size:0.55rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--amber);color:#fff;padding:3px 8px;border-radius:4px;}
-.prod-badge.alt{background:var(--green);}
-.prod-badge.gold{background:var(--gold);color:#000;}
-.prod-name{font-family:var(--font-head);font-size:1.05rem;color:var(--text);margin-bottom:2px;}
-.prod-tel-name{font-size:0.72rem;color:var(--muted);margin-bottom:0.65rem;}
+/* Contact Footer */
+.footer{background:var(--surface);padding:60px 5%;border-top:1px solid var(--border);text-align:center;}
+.contact-grid{display:flex;justify-content:center;gap:30px;margin-top:20px;flex-wrap:wrap;}
+.contact-link{text-decoration:none;color:var(--text);font-weight:600;display:flex;align-items:center;gap:10px;padding:10px 20px;border:1px solid var(--border);border-radius:10px;background:#fff;}
 
-/* SPICINESS (HEAT) REMOVED */
-
-.prod-desc{font-size:0.78rem;color:var(--sub);line-height:1.65;margin-bottom:1rem;}
-.prod-foot{display:flex;align-items:center;justify-content:space-between;}
-.prod-price{font-family:var(--font-head);font-size:1.4rem;color:var(--gold2);}
-.prod-unit{font-size:0.65rem;color:var(--muted);margin-top:1px;}
-.add-btn{background:transparent;border:1px solid var(--border2);border-radius:7px;padding:7px 14px;font-size:0.75rem;font-weight:600;color:var(--gold);cursor:pointer;font-family:inherit;transition:all 0.18s;}
-.add-btn:hover{background:var(--gold);color:#000;border-color:var(--gold);}
-.add-btn.done{background:var(--green);color:#fff;border-color:var(--green);}
-.wa-mini{width:100%;margin-top:0.7rem;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);border-radius:7px;padding:7px;font-size:0.7rem;font-weight:600;color:#25d366;cursor:pointer;font-family:inherit;transition:all 0.18s;}
-.wa-mini:hover{background:#25d366;color:#fff;}
-
-/* ── COMBOS ── */
-.combo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--border);margin-top:1.5rem;}
-.combo-card{background:var(--surface);padding:1.6rem;transition:background 0.2s;cursor:pointer;position:relative;overflow:hidden;}
-.combo-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--amber),var(--gold));}
-.combo-card:hover{background:var(--card);}
-.combo-tag{display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;background:rgba(232,101,10,0.15);color:var(--amber);border-radius:4px;padding:3px 8px;margin-bottom:1rem;}
-.combo-name{font-family:var(--font-head);font-size:1.3rem;color:var(--text);margin-bottom:0.3rem;}
-.combo-tel{font-size:0.72rem;color:var(--muted);margin-bottom:0.7rem;}
-.combo-desc{font-size:0.78rem;color:var(--sub);line-height:1.62;margin-bottom:1.2rem;}
-.combo-price-row{display:flex;align-items:baseline;gap:0.7rem;margin-bottom:1.1rem;}
-.combo-price{font-family:var(--font-head);font-size:1.8rem;color:var(--gold2);}
-.combo-was{font-size:0.78rem;color:var(--muted);text-decoration:line-through;}
-.combo-save{font-size:0.65rem;font-weight:700;background:rgba(45,122,26,0.15);color:#6dcc4a;border-radius:4px;padding:2px 7px;}
-.combo-btns{display:flex;gap:8px;}
-.combo-add{flex:1;background:var(--amber);color:#fff;border:none;border-radius:8px;padding:10px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.18s;}
-.combo-add:hover{background:#c04808;}
-.combo-wa{flex:1;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);border-radius:8px;padding:10px;font-size:0.78rem;font-weight:600;color:#25d366;cursor:pointer;font-family:inherit;transition:all 0.18s;}
-.combo-wa:hover{background:#25d366;color:#fff;}
-
-/* Remaining styles preserved but animations removed... */
+@media (max-width: 600px) { .nav{top:90px;} .lang-nav{padding:8px;} .brand{font-size:1.4rem;} }
 </style>
 </head>
 <body>
 
-<header class="lang-bar">
-  <div class="lang-inner">
-    <div class="brand-logo">Vijaya<span>Venugopal</span></div>
-    </div>
-</header>
-
-<div class="prod-card">
-  <span class="prod-emoji">🥭</span>
-  <div class="prod-badge">Best Seller</div>
-  <div class="prod-name">Avakaya Pickle</div>
-  <div class="prod-tel-name">ఆవకాయ పచ్చడి</div>
-  <div class="prod-desc">Traditional sun-dried mango pickle with mustard and sesame oil.</div>
-  <div class="prod-foot">
-    <div class="prod-price">₹120 <span class="prod-unit">/ 250g</span></div>
-    <button class="add-btn">Add to Cart</button>
-  </div>
+<div class="lang-nav">
+  <button class="lang-btn active" onclick="setLang('en', this)">English</button>
+  <button class="lang-btn" onclick="setLang('te', this)">తెలుగు</button>
+  <button class="lang-btn" onclick="setLang('hi', this)">हिन्दी</button>
+  <button class="lang-btn" onclick="setLang('ta', this)">தமிழ்</button>
+  <button class="lang-btn" onclick="setLang('kn', this)">ಕನ್ನಡ</button>
 </div>
 
+<nav class="nav">
+  <a href="#" class="brand">VijayaVenugopal</a>
+  <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
+</nav>
+
+<header class="hero">
+  <div class="hero-badge" id="drda-tag">SUPPORTED BY DRDA GUNTAKAL</div>
+  <h1 id="h-title">Handmade Andhra Heritage</h1>
+  <p id="h-sub">Authentic, preservative-free pickles and spice powders crafted by women entrepreneurs.</p>
+</header>
+
+<section class="section" id="main-catalog">
+  </section>
+
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h2 id="c-title">Your Order</h2>
+    <button onclick="toggleCart()" style="border:none;background:none;font-size:2rem;cursor:pointer;">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div style="margin-bottom:1.5rem;font-size:1.4rem;font-weight:700;">Total: ₹<span id="cart-total">0</span></div>
+  <button class="wa-checkout" id="wa-btn" onclick="checkoutWA()">Order via WhatsApp 📱</button>
+</div>
+
+<footer class="footer">
+  <h3 id="f-contact">Contact Us</h3>
+  <div class="contact-grid">
+    <a href="https://wa.me/919339877718" class="contact-link" target="_blank">🟢 WhatsApp: 9339877718</a>
+    <a href="tel:+919339877718" class="contact-link">📞 Call: 9339877718</a>
+  </div>
+  <p style="margin-top:30px; color:var(--muted); font-size:0.9rem;">&copy; 2024 VijayaVenugopal Pickles. Empowered by Women Entrepreneurs.</p>
+</footer>
+
+<script>
+const TRANSLATIONS = {
+  en: {
+    hero: "Handmade Andhra Heritage",
+    sub: "Authentic, preservative-free pickles and spice powders crafted by women entrepreneurs.",
+    pk: "Traditional Andhra Pickles",
+    po: "Authentic Spice Powders (Podis)",
+    pa: "Crispy Sun-Dried Papad",
+    add: "Add +", cart: "Your Order", checkout: "Order via WhatsApp 📱", contact: "Contact Us",
+    items: [
+      { id:1, cat:'pk', emoji:'🥭', name:'Avakaya (Mango)', desc:'Classic sun-dried mango with mustard & sesame oil.', price:120 },
+      { id:2, cat:'pk', emoji:'🍅', name:'Tomato Pickle', desc:'Tangy, slow-cooked farm-fresh tomatoes.', price:100 },
+      { id:3, cat:'pk', emoji:'🧄', name:'Garlic Pickle', desc:'Boutique garlic cloves in spicy gravy.', price:110 },
+      { id:4, cat:'pk', emoji:'🌿', name:'Gongura Pickle', desc:'The pride of Andhra - tangy sorrel leaves.', price:100 },
+      { id:5, cat:'po', emoji:'🥣', name:'Kandi Podi', desc:'Roasted lentils powder with secret spices.', price:90 },
+      { id:6, cat:'po', emoji:'🥜', name:'Palli Podi', desc:'Crunchy roasted peanut powder.', price:85 },
+      { id:7, cat:'pa', emoji:'🍘', name:'Rice Papad (Vadiyalu)', desc:'Traditional sun-dried rice crisps.', price:70 },
+      { id:8, cat:'pa', emoji:'☀️', name:'Gummadi Vadiyalu', desc:'Traditional ash gourd dried crisps.', price:80 }
+    ]
+  },
+  te: {
+    hero: "చేతితో చేసిన ఆంధ్ర రుచులు",
+    sub: "గుంతకల్ మహిళా పారిశ్రామికవేత్తలచే తయారు చేయబడిన స్వచ్ఛమైన ఆవకాయలు మరియు పొడులు.",
+    pk: "సాంప్రదాయ ఆంధ్ర ఆవకాయలు",
+    po: "అచ్చమైన కారప్పొడులు",
+    pa: "కరకరలాడే వడియాలు",
+    add: "కొనుగోలు +", cart: "మీ ఆర్డర్", checkout: "వాట్సాప్ ద్వారా ఆర్డర్ చేయండి 📱", contact: "మమ్మల్ని సంప్రದించండి",
+    items: [
+      { id:1, cat:'pk', emoji:'🥭', name:'ఆవకాయ (మామిడి)', desc:'సాంప్రదాయ పద్ధతిలో చేసిన మామిడికాయ ఆవకాయ.', price:120 },
+      { id:2, cat:'pk', emoji:'🍅', name:'టొమాటో నిల్వ పచ్చడి', desc:'రుచికరమైన ఫామ్ ఫ్రెష్ టొమాటో పచ్చడి.', price:100 },
+      { id:3, cat:'pk', emoji:'🧄', name:'వెల్లుల్లి పచ్చడి', desc:'ఘాటైన మరియు రుచికరమైన వెల్లుల్లి పచ్చడి.', price:110 },
+      { id:4, cat:'pk', emoji:'🌿', name:'గోంగూర పచ్చడి', desc:'ఆంధ్ర ప్రత్యేకమైన రుచికరమైన గోంగూర పచ్చడి.', price:100 },
+      { id:5, cat:'po', emoji:'🥣', name:'కంది పొడి', desc:'వేయించిన పప్పుల మేలురకమైన పొడి.', price:90 },
+      { id:6, cat:'po', emoji:'🥜', name:'పల్లి పొడి', desc:'రుచికరమైన వేయించిన వేరుశనగ పొడి.', price:85 },
+      { id:7, cat:'pa', emoji:'🍘', name:'బియ్యం వడియాలు', desc:'ఎండలో ఎండబెట్టిన బియ్యం వడియాలు.', price:70 },
+      { id:8, cat:'pa', emoji:'☀️', name:'గుమ్మడి వడియాలు', desc:'సాంప్రదాయ పద్ధతిలో చేసిన గుమ్మడి వడియాలు.', price:80 }
+    ]
+  },
+  hi: {
+    hero: "हाथ से बने आंध्र के अचार",
+    sub: "गुंतकल की महिला उद्यमियों द्वारा निर्मित शुद्ध और पारंपरिक उत्पाद।",
+    pk: "पारंपरिक आंध्र अचार",
+    po: "शुद्ध मसाला पाउडर (पोडी)",
+    pa: "कुरकुरे पापड़",
+    add: "जोड़ें +", cart: "आपका ऑर्डर", checkout: "व्हाट्सएप ऑर्डर करें 📱", contact: "संपर्क करें",
+    items: [
+      { id:1, cat:'pk', emoji:'🥭', name:'आम का अचार', desc:'सरसों और तिल के तेल के साथ पारंपरिक आम का अचार।', price:120 },
+      { id:5, cat:'po', emoji:'🥣', name:'कंदी पोडी', desc:'भुनी हुई दाल का स्वादिष्ट मसाला पाउडर।', price:90 },
+      { id:7, cat:'pa', emoji:'🍘', name:'चावल के पापड़', desc:'धूप में सुखाए गए पारंपरिक चावल के पापड़।', price:70 }
+    ]
+  },
+  ta: {
+    hero: "ஆந்திராவின் பாரம்பரிய சுவை",
+    sub: "குண்டக்கல் பெண்களால் தயாரிக்கப்பட்ட கலப்படமற்ற ஊறுகாய் மற்றும் பொடி வகைகள்.",
+    pk: "பாரம்பரிய ஆந்திர ஊறுகாய்",
+    po: "சுவையான பொடி வகைகள்",
+    pa: "மொறுமொறு வடகம்",
+    add: "சேர்க்க +", cart: "உங்கள் கூடை", checkout: "வாட்ஸ்அப்பில் ஆர்டர் செய்யவும் 📱", contact: "தொடர்பு கொள்ள",
+    items: [
+      { id:1, cat:'pk', emoji:'🥭', name:'ஆவக்காய் (மாங்காய்)', desc:'பாரம்பரிய மாங்காய் ஊறுகாய்.', price:120 },
+      { id:5, cat:'po', emoji:'🥣', name:'பருப்பு பொடி', desc:'வறுத்த பருப்புகளால் செய்யப்பட்ட பொடி.', price:90 }
+    ]
+  },
+  kn: {
+    hero: "ಆಂಧ್ರದ ಮನೆಮದ್ದಿನ ರುಚಿ",
+    sub: "ಗುಂತಕಲ್ ಮಹಿಳೆಯರಿಂದ ತಯಾರಿಸಲ್ಪಟ್ಟ ಶುದ್ಧ ಉಪ್ಪಿನಕಾಯಿ ಮತ್ತು ಪುಡಿಗಳು.",
+    pk: "ಸಾಂಪ್ರದಾಯಿಕ ಆಂಧ್ರ ಉಪ್ಪಿನಕಾಯಿ",
+    po: "ಶುದ್ಧ ಮಸಾಲೆ ಪುಡಿಗಳು",
+    pa: "ರುಚಿಯಾದ ಹಪ್ಪಳ",
+    add: "ಸೇರಿಸಿ +", cart: "ನಿಮ್ಮ ಆರ್ಡರ್", checkout: "ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಆರ್ಡರ್ ಮಾಡಿ 📱", contact: "ಸಂಪರ್ಕಿಸಿ",
+    items: [
+      { id:1, cat:'pk', emoji:'🥭', name:'ಮಾವಿನ ಉಪ್ಪಿನಕಾಯಿ', desc:'ಸಾಂಪ್ರದಾಯಿಕ ಆವಕಾಯ ಉಪ್ಪಿನಕಾಯಿ.', price:120 },
+      { id:5, cat:'po', emoji:'🥣', name:'ಬೇಳೆ ಪುಡಿ', desc:'ಹುರಿದ ಬೇಳೆಗಳಿಂದ ತಯಾರಿಸಿದ ರುಚಿಕರ ಪುಡಿ.', price:90 }
+    ]
+  }
+};
+
+let currentLang = 'en';
+let cart = [];
+const PHONE = "919339877718"; 
+
+function setLang(lang, btn) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderUI();
+}
+
+function renderUI() {
+  const d = TRANSLATIONS[currentLang];
+  document.getElementById('h-title').innerText = d.hero;
+  document.getElementById('h-sub').innerText = d.sub;
+  document.getElementById('c-title').innerText = d.cart;
+  document.getElementById('wa-btn').innerText = d.checkout;
+  document.getElementById('f-contact').innerText = d.contact;
+
+  let html = "";
+  const categories = { pk: d.pk, po: d.po, pa: d.pa };
+  
+  for (const [key, label] of Object.entries(categories)) {
+    const items = d.items.filter(i => i.cat === key);
+    if(items.length === 0) continue;
+
+    html += `<div class="cat-label">${label}</div><div class="grid">`;
+    items.forEach(item => {
+      html += `
+        <div class="prod-card">
+          <span class="prod-emoji">${item.emoji}</span>
+          <h3 class="prod-name">${item.name}</h3>
+          <p class="prod-desc">${item.desc}</p>
+          <div class="prod-foot">
+            <div class="prod-price">₹${item.price}</div>
+            <button class="add-btn" onclick="addToCart('${item.name}', ${item.price})">${d.add}</button>
+          </div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  }
+  document.getElementById('main-catalog').innerHTML = html;
+}
+
+function addToCart(name, price) {
+  cart.push({name, price});
+  updateCartUI();
+  if(!document.getElementById('cartPanel').classList.contains('open')) toggleCart();
+}
+
+function updateCartUI() {
+  const list = document.getElementById('cartItems');
+  const totalEl = document.getElementById('cart-total');
+  const countEl = document.getElementById('cart-count');
+  
+  list.innerHTML = cart.length === 0 ? '<p style="color:var(--muted)">Jar is empty.</p>' : '';
+  let total = 0;
+  
+  cart.forEach((item, index) => {
+    total += item.price;
+    list.innerHTML += `
+      <div class="cart-item">
+        <span><strong>${item.name}</strong></span>
+        <span>₹${item.price} <button onclick="remove(${index})" style="background:none;border:none;color:red;margin-left:8px;cursor:pointer;font-weight:bold;">×</button></span>
+      </div>
+    `;
+  });
+  
+  totalEl.innerText = total;
+  countEl.innerText = cart.length;
+}
+
+function remove(index) {
+  cart.splice(index, 1);
+  updateCartUI();
+}
+
+function toggleCart() {
+  document.getElementById('cartPanel').classList.toggle('open');
+}
+
+function checkoutWA() {
+  if(cart.length === 0) return alert("Please add items to your cart first.");
+  
+  let msg = "✨ *New Order: VijayaVenugopal Pickles* ✨\n\n";
+  cart.forEach(item => msg += `• ${item.name} - ₹${item.price}\n`);
+  msg += `\n💰 *Total: ₹${document.getElementById('cart-total').innerText}*`;
+  msg += `\n\nLanguage selected: ${currentLang.toUpperCase()}`;
+  
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+renderUI();
+</script>
 </body>
 </html>
