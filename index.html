@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vijaya Venugopal Pickles</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito:wght@400;700;800&family=Tiro+Telugu&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --saffron:#e8650a; --turmeric:#d4a010; --burgundy:#7a1020; --cream:#fdf6e8;
+  --leaf:#3a6b18; --brown:#3e1a08; --text:#2a1008; --white:#ffffff;
+}
+body { background: var(--cream); font-family: 'Nunito', sans-serif; color: var(--text); margin: 0; scroll-behavior: smooth; }
+
+/* Navigation */
+nav { background: var(--brown); color: white; padding: 1rem 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--turmeric); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.brand-name { font-family:'Cormorant Garamond',serif; font-size: clamp(1.1rem, 4vw, 1.6rem); font-weight: 700; color: var(--turmeric); }
+
+/* Hero */
+.hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center; color: white; padding: 4rem 6%; text-align: center; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.5rem); margin: 10px 0; }
+
+/* Product Cards */
+.section { padding: 3rem 6%; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+.card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); text-align: center; position: relative; }
+.card:hover { transform: translateY(-8px); }
+.combo-card { border: 2px solid var(--turmeric); background: #fffcf0; }
+.badge { position: absolute; top: 15px; right: 15px; background: var(--burgundy); color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; z-index: 1; }
+
+.card-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 4rem; background: #fffbf2; }
+.card-body { padding: 1.5rem; }
+.telugu-name { color: var(--saffron); font-weight: 800; font-family: 'Tiro Telugu', serif; margin: 5px 0; font-size: 1.1rem; }
+
+/* Payment & Reviews */
+.info-box { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+.qr-img { width: 180px; height: 180px; margin: 15px auto; border: 2px solid #eee; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: #fafafa; font-size: 0.8rem; }
+
+/* Buttons */
+.btn-whatsapp { background: #25D366; color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 800; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; font-size: 1rem; }
+.btn-pay { background: #000; margin-bottom: 10px; }
+
+footer { background: var(--brown); color: white; padding: 3rem 6%; text-align: center; }
+.fssai { background: white; color: var(--brown); padding: 5px 15px; border-radius: 4px; font-weight: 800; display: inline-block; margin: 1rem 0; font-size: 0.9rem; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand-name">VIJAYA VENUGOPAL PICKLES</div>
+  <div style="font-weight: 800; font-size: 0.9rem;">📱 9339877718</div>
+</nav>
+
+<section class="hero">
+  <h1>Traditional Andhra Taste</h1>
+  <p>శ్రీ విజయ వేణుగోపాల్ పికిల్స్</p>
+  <div style="background:var(--turmeric); display:inline-block; padding:8px 25px; border-radius:50px; color:var(--brown); font-weight:800; margin-top:1rem;">
+    All Jars 220g — Fixed ₹150
+  </div>
+</section>
+
+<section class="section" id="combos">
+  <h2 style="text-align:center; font-family:'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem;">Savings Combos / సేవింగ్స్ కాంబోస్</h2>
+  <div class="grid">
+    <div class="card combo-card">
+      <div class="badge">BEST SELLER</div>
+      <div class="card-img">🎁</div>
+      <div class="card-body">
+        <h3>Triple Treat Pack</h3>
+        <p class="telugu-name">ఏవైనా 3 పచ్చళ్ళు</p>
+        <p>Pick any 3 Jars (Save ₹30)</p>
+        <p style="font-size: 1.6rem; font-weight: 900;">₹420</p>
+        <button class="btn-whatsapp" onclick="order('Triple Treat Combo')">Order on WhatsApp</button>
+      </div>
+    </div>
+    <div class="card combo-card">
+      <div class="badge">FREE SHIPPING</div>
+      <div class="card-img">📦</div>
+      <div class="card-body">
+        <h3>Family Mega Pack</h3>
+        <p class="telugu-name">ఫ్యామిలీ మెగా ప్యాక్</p>
+        <p>Any 6 Jars + Free Delivery</p>
+        <p style="font-size: 1.6rem; font-weight: 900;">₹800</p>
+        <button class="btn-whatsapp" onclick="order('Family Mega Pack')">Order on WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 style="text-align:center; font-family:'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem;">Our Menu / మెనూ</h2>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section" style="background: #fdf6e8;">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <div class="info-box" style="text-align: center; border: 2px dashed var(--turmeric);">
+      <h3>Secure Payment / పేమెంట్</h3>
+      <div class="qr-img">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=9339877718@upi&pn=Vijaya%20Venugopal%20Pickles" alt="QR Code" style="width:100%">
+      </div>
+      <p>UPI ID: <strong>9339877718@upi</strong></p>
+      <a href="upi://pay?pa=9339877718@upi&pn=Vijaya%20Venugopal%20Pickles" class="btn-whatsapp btn-pay">Direct Mobile Pay 📱</a>
+    </div>
+    
+    <div class="info-box">
+      <h3>Shipping Policy / షిప్పింగ్</h3>
+      <p>🚚 <strong>Delivery:</strong> 2-7 Days PAN India</p>
+      <p>📦 <strong>Charges:</strong> Flat ₹50 for up to 3 jars. Free above ₹1000.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2 style="font-family:'Cormorant Garamond',serif; color: var(--turmeric); margin: 0;">VIJAYA VENUGOPAL PICKLES</h2>
+  <div class="fssai">FSSAI Registration No: 20123213000093</div>
+  <p>📞 9339877718 | ✉️ dasarivijaya1972@gmail.com</p>
+  <p>📍 Guntakal, Anantapur Dist, AP</p>
+</footer>
+
+<script>
+const products = [
+  {en: "Avakaya (Mango)", te: "ఆవకాయ", img: "🥭"},
+  {en: "Munakkaya (Drumstick)", te: "మునక్కాయ పచ్చడి", img: "🎋"},
+  {en: "Vellulli (Garlic)", te: "వెల్లుల్లి పచ్చడి", img: "🧄"},
+  {en: "Gongura Pachadi", te: "గోంగూర పచ్చడి", img: "🌿"},
+  {en: "Nimmakaya (Lemon)", te: "నిమ్మకాయ పచ్చడి", img: "🍋"},
+  {en: "Karvepaku Podi", te: "కరివేపాకు పొడి", img: "🍃"},
+  {en: "Munaga Podi", te: "మునగా పొడి", img: "🌳"},
+  {en: "Karam Podi", te: "కారం పొడి", img: "🌶️"}
+];
+
+function render() {
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = products.map(p => `
+    <div class="card">
+      <div class="card-img"><span style="animation: float 3s ease-in-out infinite; display:inline-block">${p.img}</span></div>
+      <div class="card-body">
+        <h3 style="margin:0">${p.en}</h3>
+        <p class="telugu-name">${p.te}</p>
+        <p style="font-weight:700">220g | ₹150</p>
+        <button class="btn-whatsapp" onclick="order('${p.en}')">Order via WhatsApp</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function order(item) {
+  const msg = encodeURIComponent(`Hello! I'm interested in ordering ${item} from Vijaya Venugopal Pickles.`);
+  window.open(`https://wa.me/919339877718?text=${msg}`, '_blank');
+}
+
+render();
+</script>
+</body>
+</html>
