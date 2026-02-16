@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Vijaya Venugopal Pickles</title>
+<title>Vijaya Venugopal Pickles | Traditional Andhra Taste</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Nunito:wght@400;700;800&family=Tiro+Telugu&display=swap" rel="stylesheet"/>
 
 <style>
@@ -13,27 +13,34 @@
 }
 body { background: var(--cream); font-family: 'Nunito', sans-serif; color: var(--text); margin: 0; scroll-behavior: smooth; }
 
+/* Navigation */
 nav { background: var(--brown); color: white; padding: 1rem 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--turmeric); position: sticky; top: 0; z-index: 1000; }
 .brand-name { font-family:'Cormorant Garamond',serif; font-size: clamp(1.1rem, 4vw, 1.6rem); font-weight: 700; color: var(--turmeric); }
 
-.hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center; color: white; padding: 4rem 6%; text-align: center; }
-.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.5rem); margin: 10px 0; }
-
-.section { padding: 3rem 6%; }
+/* Sections */
+.hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=1000'); background-size: cover; background-position: center; color: white; padding: 5rem 6%; text-align: center; }
+.section { padding: 4rem 6%; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
-.card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); text-align: center; position: relative; }
+
+/* Cards */
+.card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid rgba(0,0,0,0.05); text-align: center; display: flex; flex-direction: column; position: relative; }
 .card:hover { transform: translateY(-8px); }
+.gift-card { border: 2px solid var(--burgundy); background: #fff5f6; }
+.badge { position: absolute; top: 15px; right: 15px; background: var(--burgundy); color: white; padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; z-index: 2; }
 
-.card-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; background: #fffbf2; }
-.card-body { padding: 1.5rem; }
+.card-img { height: 180px; overflow: hidden; background: #fffbf2; display: flex; align-items: center; justify-content: center; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Content Styles */
 .telugu-name { color: var(--saffron); font-weight: 800; font-family: 'Tiro Telugu', serif; margin: 5px 0; font-size: 1.1rem; }
+.about-box { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.1rem; text-align: center; }
 
-.btn-whatsapp { background: #25D366; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 800; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; font-size: 1rem; }
+/* Buttons */
+.btn-whatsapp { background: #25D366; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 800; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: auto; font-size: 1rem; }
+.btn-gold { background: linear-gradient(45deg, var(--turmeric), #f0c030); color: var(--brown); }
 
 footer { background: var(--brown); color: white; padding: 3rem 6%; text-align: center; }
 .fssai { background: white; color: var(--brown); padding: 5px 15px; border-radius: 4px; font-weight: 800; display: inline-block; margin: 1rem 0; font-size: 0.9rem; }
-
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 </style>
 </head>
 <body>
@@ -45,15 +52,66 @@ footer { background: var(--brown); color: white; padding: 3rem 6%; text-align: c
 
 <section class="hero">
   <h1>Authentic Andhra Tradition</h1>
-  <p>శ్రీ విజయ వేణుగోపాల్ పికిల్స్</p>
-  <div style="background:var(--turmeric); display:inline-block; padding:8px 25px; border-radius:50px; color:var(--brown); font-weight:800; margin-top:1rem;">
-    All Items 220g — Fixed ₹150
+  <p>శ్రీ విజయ వేణుగోపాల్ పికిల్స్ — Traditional, Clean, and Spicy</p>
+</section>
+
+<section class="section" id="about">
+  <h2 style="text-align:center; font-family:'Cormorant Garamond', serif; font-size: 2.5rem;">The Story of Our Taste / మా గురించి</h2>
+  <div class="about-box">
+    <p>Welcome to <strong>Vijaya Venugopal Pickles</strong>. Our journey started in the heart of Guntakal with a simple mission: to bring the authentic "Amma చేతి వంట" (Mother's handmade taste) to every dining table. Using sun-dried spices, premium oils, and age-old family recipes, we ensure every jar is a celebration of Andhra's culinary heritage.</p>
+    <p><em>No artificial colors. No chemicals. Just pure tradition.</em></p>
+  </div>
+</section>
+
+
+<section class="section" style="background: #fdf6e8;">
+  <h2 style="text-align:center; font-family:'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem;">Gifting Tradition / కానుకలు</h2>
+  <div class="grid">
+    <div class="card gift-card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;">
+      <div class="badge">FESTIVAL SPECIAL</div>
+      <div class="card-img" style="height: 250px;">
+        <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab84a9ec?auto=format&fit=crop&q=80&w=600" alt="Gift Box">
+      </div>
+      <div class="card-body">
+        <h3>Heritage Gift Box</h3>
+        <p class="telugu-name">హెరిటేజ్ గిఫ్ట్ బాక్స్</p>
+        <p>Pick any 4 Jars + Beautiful Traditional Packaging + Greeting Card</p>
+        <p style="font-size: 1.5rem; font-weight: 900; color: var(--burgundy);">₹650</p>
+        <button class="btn-whatsapp btn-gold" onclick="order('Heritage Gift Box')">Customize Gift Box</button>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <h2 style="text-align:center; font-family:'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2.5rem;">Our Menu / మన మెనూ</h2>
+  <h2 style="text-align:center; font-family:'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem;">Our Menu / మన మెనూ</h2>
   <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section" style="background: var(--brown); color: white; text-align: center; border-top: 5px solid var(--turmeric);">
+  <h2 style="font-family:'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--turmeric);">Why Choose Us?</h2>
+  <div class="grid" style="margin-top: 2rem;">
+    <div>
+      <h1 style="font-size: 3rem; margin: 0;">🏡</h1>
+      <h3>100% Homemade</h3>
+      <p style="opacity: 0.8;">Cleaned and prepared in small batches at home.</p>
+    </div>
+    <div>
+      <h1 style="font-size: 3rem; margin: 0;">🚚</h1>
+      <h3>Fast Shipping</h3>
+      <p style="opacity: 0.8;">Fresh stock delivered across India within 2-7 days.</p>
+    </div>
+    <div>
+      <h1 style="font-size: 3rem; margin: 0;">✅</h1>
+      <h3>FSSAI Certified</h3>
+      <p style="opacity: 0.8;">Quality and hygiene you can trust blindly.</p>
+    </div>
+  </div>
+  <div style="margin-top: 3rem; padding: 2rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px;">
+    <h3 style="color: var(--turmeric);">🚀 Bulk Order Offer</h3>
+    <p>Ordering for a marriage, function, or for NRI travel? Get special discounts on orders above 5kg!</p>
+    <a href="https://wa.me/919339877718?text=I want to inquire about Bulk Orders" class="btn-whatsapp" style="max-width: 300px; margin: 10px auto;">Inquire for Bulk Discount</a>
+  </div>
 </section>
 
 <footer>
@@ -65,35 +123,36 @@ footer { background: var(--brown); color: white; padding: 3rem 6%; text-align: c
 
 <script>
 const products = [
-  {en: "Raw Mango Avakaya", te: "పచ్చి మామిడి ఆవకాయ", img: "🍏"},
-  {en: "Gongura Pachadi", te: "గోంగూర పచ్చడి", img: "🌿"},
+  {en: "Raw Green Mango Avakaya", te: "పచ్చి మామిడి ఆవకాయ", img: "https://images.unsplash.com/photo-1591073113125-e46713c829ed?auto=format&fit=crop&q=80&w=400"},
+  {en: "Gongura Pachadi", te: "గోంగూర పచ్చడి", img: "https://5.imimg.com/data5/SELLER/Default/2023/9/345532559/XW/WK/VJ/197365664/fresh-gongura-leaves-500x500.jpg"},
   {en: "Tomato Pickle", te: "టమాటా పచ్చడి", img: "🍅"},
   {en: "Majjiga Mirapakayalu", te: "మజ్జిగ మిరపకాయలు", img: "🌶️"},
-  {en: "Papad", te: "అప్పడాలు", img: "🍘"},
-  {en: "Munakkaya (Drumstick)", te: "మునక్కాయ పచ్చడి", img: "🎋"},
+  {en: "Crispy Papad", te: "అప్పడాలు", img: "🍘"},
   {en: "Vellulli (Garlic)", te: "వెల్లుల్లి పచ్చడి", img: "🧄"},
-  {en: "Karvepaku Podi", te: "కరివేపాకు పొడి", img: "🍃"},
   {en: "Munaga Podi", te: "మునగా పొడి", img: "🌳"},
   {en: "Karam Podi", te: "కారం పొడి", img: "🔥"}
 ];
 
 function render() {
   const grid = document.getElementById('productGrid');
-  grid.innerHTML = products.map(p => `
+  grid.innerHTML = products.map(p => {
+    const isUrl = p.img.startsWith('http');
+    const imgContent = isUrl ? `<img src="${p.img}" alt="${p.en}">` : `<span style="font-size:4.5rem">${p.img}</span>`;
+    return `
     <div class="card">
-      <div class="card-img"><span style="animation: float 3s ease-in-out infinite; display:inline-block">${p.img}</span></div>
+      <div class="card-img">${imgContent}</div>
       <div class="card-body">
-        <h3 style="margin:0">${p.en}</h3>
+        <h3>${p.en}</h3>
         <p class="telugu-name">${p.te}</p>
         <p style="font-weight:700">220g | ₹150</p>
-        <button class="btn-whatsapp" onclick="order('${p.en}')">Order on WhatsApp</button>
+        <button class="btn-whatsapp" onclick="order('${p.en}')">Order via WhatsApp</button>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function order(item) {
-  const msg = encodeURIComponent(`Hello! I would like to order ${item} from Vijaya Venugopal Pickles.`);
+  const msg = encodeURIComponent(`Hello! I want to order ${item} from Vijaya Venugopal Pickles.`);
   window.open(`https://wa.me/919339877718?text=${msg}`, '_blank');
 }
 
