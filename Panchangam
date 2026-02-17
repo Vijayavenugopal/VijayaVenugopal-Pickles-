@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panchatantra Stories for Kids</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto; padding: 20px; background-color: #f4f9f4; }
+        h1 { color: #2c7a7b; text-align: center; }
+        .nav { text-align: center; margin-bottom: 30px; }
+        .nav a { margin: 0 10px; text-decoration: none; color: #2c7a7b; font-weight: bold; }
+        .story-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .moral { font-style: italic; color: #e53e3e; font-weight: bold; }
+        .lang-section { display: none; }
+        .lang-section:target { display: block; }
+    </style>
+</head>
+<body>
+
+    <h1>🐾 Panchatantra Tales 🐾</h1>
+    
+    <div class="nav">
+        <a href="#english">English</a> | 
+        <a href="#hindi">हिन्दी</a> | 
+        <a href="#telugu">తెలుగు</a> | 
+        <a href="#tamil">தமிழ்</a>
+    </div>
+
+    <div id="english" class="lang-section" style="display:block;">
+        <h2>English Stories</h2>
+        <div class="story-card">
+            <h3>1. The Monkey and the Crocodile</h3>
+            <p>Once, a monkey lived on a jamun tree by a river. He became friends with a crocodile and gave him sweet fruits...</p>
+            <p class="moral">Moral: A wise enemy is better than a foolish friend.</p>
+        </div>
+    </div>
+
+    <div id="hindi" class="lang-section">
+        <h2>हिंदी कहानियाँ</h2>
+        <div class="story-card">
+            <h3>1. बंदर और मगरमच्छ</h3>
+            <p>एक समय की बात है, एक बंदर नदी के किनारे जामुन के पेड़ पर रहता था...</p>
+            <p class="moral">शिक्षा: मुसीबत के समय धैर्य नहीं खोना चाहिए।</p>
+        </div>
+    </div>
+
+    </body>
+</html>
