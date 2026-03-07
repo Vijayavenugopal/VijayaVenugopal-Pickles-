@@ -1,1166 +1,474 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>VijayaVenugopal Pickles</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Telugu&family=Noto+Sans+Tamil&family=Noto+Sans+Malayalam&family=Noto+Sans+Kannada&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0"/>
+<title>VijayaVenugopal Pickles - Established 2001</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Telugu&family=Noto+Sans+Tamil&family=Noto+Sans+Malayalam&family=Noto+Sans+Kannada&family=Noto+Sans+Devanagari&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0a0a0a;--surface:#111;--surface2:#181818;--border:#222;
-  --accent:#e8650a;--accent2:#f0c030;--green:#25d366;
-  --text:#f5f0e8;--muted:#888;--subtle:#333;
-}
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6}
-::selection{background:var(--accent);color:#fff}
-
-/* FONTS per language */
-[data-lang="te"] .tr{font-family:'Noto Sans Telugu',sans-serif}
-[data-lang="ta"] .tr{font-family:'Noto Sans Tamil',sans-serif}
-[data-lang="ml"] .tr{font-family:'Noto Sans Malayalam',sans-serif}
-[data-lang="kn"] .tr{font-family:'Noto Sans Kannada',sans-serif}
-[data-lang="hi"] .tr{font-family:'Noto Sans Devanagari',sans-serif}
-[data-lang="en"] .tr{font-family:'DM Sans',sans-serif}
-
-/* ANIMATIONS */
-@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes in{from{opacity:0}to{opacity:1}}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 5%;background:rgba(10,10,10,0.9);backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border)}
-.logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);letter-spacing:-0.01em}
-.logo span{color:var(--accent)}
-.nav-r{display:flex;align-items:center;gap:10px}
-
-/* LANG SWITCHER */
-.lang-select{background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  padding:5px 10px;border-radius:6px;font-size:0.75rem;font-family:'DM Sans',sans-serif;cursor:pointer;outline:none}
-.lang-select option{background:var(--surface2)}
-
-.cart-pill{background:var(--accent);color:#fff;border:none;border-radius:20px;
-  padding:7px 16px;font-size:0.78rem;font-weight:600;cursor:pointer;
-  display:flex;align-items:center;gap:6px;transition:opacity 0.2s}
-.cart-pill:hover{opacity:0.85}
-.cpill-cnt{background:#fff;color:var(--accent);border-radius:50%;
-  width:17px;height:17px;font-size:0.65rem;font-weight:700;
-  display:flex;align-items:center;justify-content:center}
-
-/* FSSAI STRIP */
-.fstrip{background:#0a1a08;border-bottom:1px solid #1a3010;
-  padding:6px 5%;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  margin-top:60px}
-.fbadge{display:inline-flex;align-items:center;gap:6px;
-  background:rgba(74,180,30,0.12);border:1px solid rgba(74,180,30,0.25);
-  border-radius:4px;padding:3px 10px}
-.fbl{font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#4ab41e}
-.fval{font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em}
-
-/* HERO — modern split layout */
-.hero{min-height:calc(100vh - 80px);display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;padding:6rem 5% 4rem;gap:3rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 70% 50%,rgba(232,101,10,0.06) 0%,transparent 60%)}
-.hero-left{animation:up 0.8s 0.1s ease both}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;
-  border:1px solid var(--border);border-radius:4px;padding:5px 12px;
-  font-size:0.68rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:1.5rem}
-.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s infinite}
-h1{font-family:'DM Serif Display',serif;font-size:clamp(2.8rem,5vw,4.8rem);
-  line-height:1.05;letter-spacing:-0.02em;color:var(--text);margin-bottom:0.5rem}
-h1 em{color:var(--accent);font-style:italic}
-.hero-tel{font-size:1rem;color:var(--muted);margin:0.8rem 0 1.5rem;
-  border-left:2px solid var(--accent);padding-left:12px}
-.hero-sub{font-size:0.92rem;color:var(--muted);line-height:1.8;max-width:420px;margin-bottom:2.2rem}
-.hero-sub strong{color:var(--text)}
-.cta-row{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:12px 24px;
-  border-radius:6px;font-size:0.82rem;font-weight:600;cursor:pointer;
-  border:none;transition:all 0.2s;letter-spacing:0.02em}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:#d05008}
-.btn-wa{background:var(--green);color:#fff}
-.btn-wa:hover{background:#1db954}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted)}
-.btn-outline:hover{border-color:var(--muted);color:var(--text)}
-
-/* hero stats row */
-.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);animation:up 0.8s 0.4s ease both}
-.hs-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--text)}
-.hs-lbl{font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:2px}
-
-/* hero right — big product image */
-.hero-right{display:flex;align-items:center;justify-content:center;animation:up 0.8s 0.2s ease both}
-.hero-visual{position:relative;width:100%;max-width:480px}
-.hero-img-wrap{width:100%;aspect-ratio:1/1;border-radius:20px;
-  background:var(--surface);border:1px solid var(--border);overflow:hidden;
-  display:flex;align-items:center;justify-content:center;position:relative}
-.hero-img-wrap::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(232,101,10,0.08),transparent 50%)}
-.hero-big-emoji{font-size:10rem;filter:drop-shadow(0 20px 40px rgba(232,101,10,0.3));
-  animation:pulse 4s ease-in-out infinite}
-.hero-float-tags{position:absolute;display:flex;flex-direction:column;gap:8px;right:-16px;top:20%}
-.htag{background:var(--surface2);border:1px solid var(--border);border-radius:6px;
-  padding:7px 12px;font-size:0.7rem;font-weight:600;color:var(--text);white-space:nowrap;
-  animation:up 0.6s ease both}
-.htag span{color:var(--accent);margin-right:4px}
-
-/* TICKER */
-.ticker{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:10px 0;overflow:hidden}
-.t-track{display:flex;gap:2.5rem;white-space:nowrap;animation:ticker 25s linear infinite;width:max-content}
-.t-item{font-size:0.72rem;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:0.6rem}
-.t-dot{color:var(--accent);font-size:0.5rem}
-
-/* PRODUCTS */
-.section{padding:5rem 5%}
-.sec-label{font-size:0.65rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
-.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--text);line-height:1.1;margin-bottom:0.3rem}
-.sec-sub{font-size:0.85rem;color:var(--muted);margin-top:0.4rem}
-
-.cat-label{font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--muted);margin:2.5rem 0 1rem;padding-left:2px;
-  display:flex;align-items:center;gap:8px}
-.cat-label::after{content:'';flex:1;height:1px;background:var(--border)}
-
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;
-  border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1px}
-.pcard{background:var(--surface);padding:1.4rem;cursor:pointer;
-  transition:background 0.2s;position:relative;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
-.pcard:hover{background:var(--surface2)}
-/* image area */
-.pimg{width:100%;aspect-ratio:1/1;border-radius:8px;overflow:hidden;
-  margin-bottom:1rem;display:flex;align-items:center;justify-content:center;
-  background:var(--surface2);position:relative}
-.pimg-emoji{font-size:3.5rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));
-  transition:transform 0.3s}
-.pcard:hover .pimg-emoji{transform:scale(1.15) rotate(-3deg)}
-/* product SVG illustrations */
-.psvg{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-
-.pbadge{position:absolute;top:8px;left:8px;background:var(--accent);color:#fff;
-  font-size:0.55rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-  padding:3px 7px;border-radius:3px}
-.pbadge.g{background:var(--green)}
-.pname{font-weight:600;font-size:0.9rem;color:var(--text);margin-bottom:2px}
-.pname-tr{font-size:0.72rem;color:var(--muted);margin-bottom:0.6rem;line-height:1.4}
-.pheat{display:flex;gap:2px;margin-bottom:0.7rem}
-.pdot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background 0.2s}
-.pdot.on{background:var(--accent)}
-.pdesc{font-size:0.75rem;color:var(--muted);line-height:1.6;margin-bottom:0.9rem}
-.pfoot{display:flex;align-items:center;justify-content:space-between}
-.pprice{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--text)}
-.pprice sup{font-family:'DM Sans',sans-serif;font-size:0.65rem;vertical-align:super;color:var(--muted)}
-.punit{font-size:0.62rem;color:var(--muted);margin-top:1px}
-.padd{background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  border-radius:5px;padding:6px 13px;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.2s}
-.padd:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-.padd.ok{background:var(--green);border-color:var(--green);color:#fff}
-
-/* COMBOS */
-.combos-bg{background:var(--surface)}
-.combo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:2rem}
-.combo-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;
-  padding:1.8rem;cursor:pointer;transition:border-color 0.2s,transform 0.2s}
-.combo-card:hover{border-color:var(--accent);transform:translateY(-3px)}
-.cc-badge{display:inline-block;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;
-  text-transform:uppercase;padding:3px 8px;border-radius:3px;margin-bottom:1rem}
-.cc-icon{font-size:2.2rem;margin-bottom:0.8rem;display:block}
-.cc-name{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--text);margin-bottom:3px}
-.cc-desc{font-size:0.78rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
-.cc-price-row{display:flex;align-items:baseline;gap:10px;margin-bottom:1rem}
-.cc-old{font-size:0.78rem;color:var(--muted);text-decoration:line-through}
-.cc-new{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--text)}
-.cc-save{font-size:0.65rem;font-weight:700;color:var(--accent);background:rgba(232,101,10,0.12);
-  padding:2px 7px;border-radius:3px}
-.cc-add{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  border-radius:6px;padding:10px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.2s}
-.cc-add:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-.cc-wa{width:100%;background:transparent;border:1px solid #1a4020;color:#4ab41e;
-  border-radius:6px;padding:9px;font-size:0.74rem;font-weight:600;cursor:pointer;
-  margin-top:6px;transition:background 0.2s}
-.cc-wa:hover{background:rgba(37,211,102,0.1)}
-
-/* PAYMENT */
-.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
-.pay-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.8rem}
-.pay-title{font-weight:600;font-size:0.88rem;color:var(--text);margin-bottom:0.3rem}
-.pay-sub{font-size:0.73rem;color:var(--muted);margin-bottom:1.2rem}
-.qr-box{width:140px;height:140px;margin:0 auto 1rem;border:1px solid var(--border);
-  border-radius:8px;padding:8px;background:#fff;display:flex;align-items:center;justify-content:center}
-.upi-box{background:var(--surface2);border:1px solid var(--border);border-radius:6px;
-  padding:9px 12px;text-align:center;font-size:0.78rem;font-weight:600;color:var(--accent);margin-bottom:0.8rem}
-.pay-btn{width:100%;border:none;border-radius:6px;padding:12px;font-size:0.82rem;
-  font-weight:600;cursor:pointer;transition:opacity 0.2s;margin-bottom:6px}
-.pay-btn-upi{background:linear-gradient(135deg,#5b2d8e,#9b5de5);color:#fff;animation:pulse 3s infinite}
-.pay-btn-upi:hover{opacity:0.9;animation:none}
-.pay-methods{display:flex;flex-direction:column;gap:8px}
-.pm{display:flex;align-items:center;gap:12px;padding:11px 13px;
-  background:var(--bg);border:1px solid var(--border);border-radius:8px;
-  cursor:pointer;transition:border-color 0.2s}
-.pm:hover{border-color:var(--subtle)}
-.pm-i{font-size:1.3rem}
-.pm-n{font-size:0.82rem;font-weight:600;color:var(--text)}
-.pm-d{font-size:0.7rem;color:var(--muted)}
-
-/* SHIPPING */
-.ship-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:1.8rem;max-width:520px;margin:2rem auto 0}
-.ship-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-label{display:block;font-size:0.62rem;font-weight:600;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:5px}
-select,input{width:100%;background:var(--surface2);border:1px solid var(--border);
-  color:var(--text);padding:10px 12px;border-radius:6px;font-family:'DM Sans',sans-serif;
-  font-size:0.85rem;outline:none;transition:border-color 0.2s}
-select:focus,input:focus{border-color:var(--accent)}
-select option{background:var(--surface2)}
-.ship-result{margin-top:1rem;padding:1rem;background:var(--surface2);
-  border:1px solid var(--border);border-radius:8px;display:none}
-.ship-result.show{display:block;animation:in 0.3s ease}
-.sr{display:flex;justify-content:space-between;padding:5px 0;
-  border-bottom:1px solid var(--border);font-size:0.8rem}
-.sr:last-child{border:none;font-weight:600;color:var(--accent);font-size:0.88rem}
-.sr-l{color:var(--muted)}
-
-/* ORDER */
-.order-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:2rem;max-width:560px;margin:2rem auto 0}
-textarea{width:100%;background:var(--surface2);border:1px solid var(--border);
-  color:var(--text);padding:10px 12px;border-radius:6px;font-family:'DM Sans',sans-serif;
-  font-size:0.85rem;outline:none;resize:vertical;min-height:70px;transition:border-color 0.2s}
-textarea:focus{border-color:var(--accent)}
-.fg{margin-bottom:12px}
-.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-btns{display:flex;flex-direction:column;gap:8px;margin-top:4px}
-.fbtn{width:100%;border:none;border-radius:6px;padding:12px;font-size:0.85rem;
-  font-weight:600;cursor:pointer;transition:opacity 0.2s}
-.fbtn-order{background:var(--accent);color:#fff}
-.fbtn-order:hover{opacity:0.85}
-.fbtn-wa{background:var(--green);color:#fff}
-.fbtn-wa:hover{opacity:0.85}
-
-/* REVIEWS */
-.rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:2rem}
-.rv-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem}
-.rv-stars{color:var(--accent2);font-size:0.82rem;margin-bottom:0.6rem}
-.rv-text{font-size:0.8rem;color:var(--muted);line-height:1.68;font-style:italic;margin-bottom:1rem}
-.rv-who{display:flex;align-items:center;gap:8px}
-.rv-av{width:32px;height:32px;border-radius:50%;background:var(--accent);
-  display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:#fff;flex-shrink:0}
-.rv-name{font-size:0.8rem;font-weight:600;color:var(--text)}
-.rv-loc{font-size:0.68rem;color:var(--muted)}
-.rv-form{background:var(--surface);border:1px solid var(--border);border-radius:12px;
-  padding:1.8rem;max-width:520px;margin:1.5rem auto 0}
-.star-row{display:flex;gap:4px;margin-bottom:12px}
-.sbtn{font-size:1.3rem;background:none;border:none;cursor:pointer;opacity:0.25;transition:opacity 0.2s}
-.sbtn.on{opacity:1}
-
-/* CART DRAWER */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;
-  opacity:0;pointer-events:none;transition:opacity 0.3s}
+:root{--primary:#0d7f3f;--primary-dark:#0a6632;--secondary:#ff6b00;--bg:#f8f9fa;--white:#fff;--text:#1a1a1a;--text-light:#666;--border:#e0e0e0;--shadow:0 2px 8px rgba(0,0,0,0.08);--shadow-lg:0 4px 16px rgba(0,0,0,0.12)}
+html{scroll-behavior:smooth;overflow-x:hidden;min-height:100vh}
+body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;margin:0;padding:0;width:100%}
+::selection{background:var(--primary);color:#fff}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:#fff;border-bottom:1px solid var(--border);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;padding:0 5%}
+.logo{font-size:1.25rem;font-weight:800;color:var(--primary);letter-spacing:-0.02em}
+.nav-r{display:flex;gap:12px;align-items:center}
+.lang-select{background:#fff;border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:6px;font-size:0.875rem;cursor:pointer;font-weight:500;outline:0}
+.cart-btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:0.875rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s}
+.cart-btn:active{transform:scale(0.95)}
+.cart-count{background:#fff;color:var(--primary);border-radius:50%;width:20px;height:20px;font-size:0.75rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.fssai{background:#e8f5e9;border-bottom:1px solid #c8e6c9;padding:8px 5%;margin-top:64px;display:flex;align-items:center;gap:12px;font-size:0.8rem}
+.fssai-badge{background:#fff;border:1px solid #66bb6a;border-radius:4px;padding:4px 10px;color:#2e7d32;font-weight:700;font-size:0.75rem;letter-spacing:0.05em}
+.hero{background:#fff;padding:40px 5% 30px;margin-bottom:12px}
+.hero-content{max-width:1200px;margin:0 auto}
+.hero-top{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.hero-badge{background:#fff3e0;color:#e65100;font-size:0.75rem;font-weight:700;padding:4px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:0.05em}
+h1{font-size:1.75rem;font-weight:800;color:var(--text);line-height:1.2;margin-bottom:8px}
+.hero-desc{color:var(--text-light);font-size:0.95rem;margin-bottom:20px;max-width:600px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:12px 24px;border-radius:8px;font-size:0.9rem;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:active{transform:scale(0.97);background:var(--primary-dark)}
+.btn-wa{background:#25d366;color:#fff}
+.btn-wa:active{transform:scale(0.97);background:#1db954}
+.products{background:var(--bg);padding:20px 5% 40px;min-height:50vh;width:100%}
+.products-inner{max-width:1200px;margin:0 auto}
+.cat-header{display:flex;align-items:center;justify-content:space-between;margin:24px 0 16px}
+.cat-title{font-size:1.1rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:0.03em}
+.cat-count{color:var(--text-light);font-size:0.85rem;font-weight:500}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.pcard{background:#fff;border-radius:8px;overflow:hidden;cursor:pointer;transition:all 0.2s;position:relative;box-shadow:var(--shadow)}
+.pcard:active{transform:scale(0.98)}
+.pcard-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#fafafa;position:relative;border-bottom:1px solid var(--border)}
+.pcard-emoji{font-size:4rem;user-select:none}
+.pcard-badge{position:absolute;top:6px;left:6px;background:var(--secondary);color:#fff;font-size:0.65rem;font-weight:700;padding:3px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:0.03em}
+.pcard-badge.green{background:#4caf50}
+.pcard-info{padding:12px 10px 10px}
+.pcard-name{font-size:0.875rem;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pcard-desc{font-size:0.75rem;color:var(--text-light);margin-bottom:8px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:2.1em}
+.pcard-footer{display:flex;align-items:center;justify-content:space-between}
+.pcard-price{font-size:1.1rem;font-weight:700;color:var(--text)}
+.pcard-price sup{font-size:0.7rem;font-weight:600}
+.pcard-unit{font-size:0.7rem;color:var(--text-light);margin-top:2px}
+.pcard-add{background:var(--primary);color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:0.75rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:0.03em;transition:all 0.2s}
+.pcard-add:active{transform:scale(0.92)}
+.pcard-add.added{background:#4caf50}
+.wa-float{position:fixed;bottom:20px;right:20px;z-index:150;background:#25d366;color:#fff;border:none;border-radius:50%;width:56px;height:56px;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,211,102,0.4);transition:all 0.2s}
+.wa-float:active{transform:scale(0.9)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .overlay.on{opacity:1;pointer-events:all}
-.drawer{position:fixed;top:0;right:-420px;bottom:0;width:400px;max-width:94vw;
-  background:var(--surface);border-left:1px solid var(--border);z-index:201;
-  transition:right 0.35s cubic-bezier(0.4,0,0.2,1);display:flex;flex-direction:column}
+.drawer{position:fixed;top:0;right:-100%;bottom:0;width:100%;max-width:400px;background:#fff;z-index:201;transition:right 0.3s;display:flex;flex-direction:column;box-shadow:-4px 0 16px rgba(0,0,0,0.1)}
 .drawer.on{right:0}
-.dh{padding:1.2rem 1.4rem;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between}
-.dh-t{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text)}
-.dx{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer}
-.di{flex:1;overflow-y:auto;padding:1.2rem 1.4rem}
-.dempty{text-align:center;padding:3rem 0;color:var(--muted)}
-.dempty span{display:block;font-size:2.5rem;margin-bottom:0.6rem}
-.citem{display:flex;gap:10px;align-items:center;padding:0.8rem 0;border-bottom:1px solid var(--border)}
-.ci-e{font-size:1.5rem}
-.ci-inf{flex:1}
-.ci-n{font-size:0.82rem;font-weight:600;color:var(--text)}
-.ci-p{font-size:0.73rem;color:var(--accent);margin-top:1px}
-.qty{display:flex;align-items:center;gap:5px}
-.qb{background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  width:24px;height:24px;border-radius:4px;font-size:0.9rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;transition:background 0.2s}
-.qb:hover{background:var(--subtle)}
-.qn{font-size:0.82rem;font-weight:600;min-width:18px;text-align:center}
-.df{padding:1.2rem 1.4rem;border-top:1px solid var(--border)}
-.dt-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
-.dt-l{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
-.dt-v{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--text)}
-.dbtn{width:100%;border:none;border-radius:6px;padding:12px;font-size:0.82rem;font-weight:600;cursor:pointer}
-.dbtn-pay{background:var(--accent);color:#fff;margin-bottom:6px}
-.dbtn-wa{background:var(--green);color:#fff}
-
-/* FOOTER */
-footer{background:var(--surface);border-top:1px solid var(--border);padding:3rem 5% 2rem}
-.ft{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
-.fn{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px}
-.fs{font-size:0.72rem;color:var(--muted);line-height:1.7}
-.fs a{color:var(--muted);text-decoration:none}
-.fs a:hover{color:var(--accent)}
-.fssai-f{padding:10px 14px;background:rgba(74,180,30,0.08);
-  border:1px solid rgba(74,180,30,0.18);border-radius:6px;margin-top:10px}
-.fssai-f .ft{font-size:0.6rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#4ab41e;margin-bottom:2px}
-.fssai-f .fv{font-size:0.72rem;color:rgba(255,255,255,0.55)}
-.fssai-f .fid{font-size:0.78rem;font-weight:700;color:#7adf5a;letter-spacing:0.05em}
-.fb{border-top:1px solid var(--border);padding-top:1.5rem;text-align:center;font-size:0.68rem;color:var(--muted)}
-
-/* WA FLOAT */
-.wafloat{position:fixed;bottom:1.8rem;right:1.8rem;z-index:150;
-  background:var(--green);border:none;border-radius:50%;
-  width:52px;height:52px;font-size:1.4rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s}
-.wafloat:hover{transform:scale(1.1)}
-
-/* TOAST */
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(60px);
-  background:var(--surface2);border:1px solid var(--border);color:var(--text);
-  padding:10px 20px;border-radius:6px;font-size:0.78rem;font-weight:500;
-  z-index:300;transition:transform 0.3s;white-space:nowrap}
+.drawer-header{padding:16px 20px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.drawer-title{font-size:1.1rem;font-weight:700;color:var(--text)}
+.drawer-close{background:none;border:none;color:var(--text-light);font-size:1.5rem;cursor:pointer;padding:4px 8px}
+.drawer-body{flex:1;overflow-y:auto;padding:16px 20px}
+.drawer-empty{text-align:center;padding:60px 20px;color:var(--text-light)}
+.drawer-empty-icon{font-size:4rem;margin-bottom:12px}
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.cart-item-img{width:60px;height:60px;background:#fafafa;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:2rem;border:1px solid var(--border)}
+.cart-item-info{flex:1}
+.cart-item-name{font-size:0.9rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.cart-item-price{font-size:0.85rem;color:var(--text-light)}
+.cart-item-qty{display:flex;align-items:center;gap:10px;margin-top:8px}
+.qty-btn{width:28px;height:28px;border-radius:50%;background:#f5f5f5;border:1px solid var(--border);color:var(--text);font-size:1rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.qty-btn:active{transform:scale(0.9);background:#e0e0e0}
+.qty-num{font-size:0.9rem;font-weight:600;min-width:30px;text-align:center}
+.drawer-footer{padding:16px 20px;background:#fff;border-top:1px solid var(--border)}
+.drawer-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.drawer-total-label{font-size:0.9rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;font-weight:600}
+.drawer-total-value{font-size:1.5rem;font-weight:800;color:var(--text)}
+.payment-options{margin-bottom:12px}
+.payment-title{font-size:0.75rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.payment-item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:#fafafa;border:1px solid var(--border);border-radius:6px;margin-bottom:6px;cursor:pointer;transition:all 0.2s}
+.payment-item:active{background:#f0f0f0}
+.payment-icon{font-size:1.2rem}
+.payment-name{font-size:0.85rem;font-weight:600;color:var(--text)}
+.payment-desc{font-size:0.7rem;color:var(--text-light);margin-top:2px}
+.upi-box{background:#fff7e0;border:1px solid #ffd54f;border-radius:6px;padding:10px;margin-bottom:12px}
+.upi-id{text-align:center;font-weight:700;font-size:0.85rem;color:#f57c00;background:#fff;padding:8px;border-radius:4px;margin:6px 0;border:1px solid var(--border)}
+.drawer-btn{width:100%;background:var(--primary);color:#fff;border:none;border-radius:8px;padding:14px;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.drawer-btn:active{transform:scale(0.98);background:var(--primary-dark)}
+.drawer-btn.wa{background:#25d366;margin-top:8px}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:#323232;color:#fff;padding:12px 24px;border-radius:24px;font-size:0.85rem;font-weight:500;z-index:300;transition:transform 0.3s;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
 .toast.on{transform:translateX(-50%) translateY(0)}
+@media(max-width:768px){.product-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}h1{font-size:1.5rem}.hero{padding:30px 5% 20px}}
+@media(min-width:600px){.product-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}}
 
-/* DIVIDER */
-.div{height:1px;background:var(--border);margin:0 5%}
-
-@media(max-width:768px){
-  .hero{grid-template-columns:1fr;min-height:auto;padding-top:2rem}
-  .hero-right{display:none}
-  .pay-grid{grid-template-columns:1fr}
-  .fg-row,.ship-row,.ft{grid-template-columns:1fr}
-  h1{font-size:2.4rem}
-}
+/* Product Detail Modal */
+.product-modal{position:fixed;top:0;left:0;right:0;bottom:0;z-index:300;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.product-modal.on{display:flex}
+.modal-content{background:#fff;border-radius:16px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;position:relative;box-shadow:0 8px 32px rgba(0,0,0,0.2);margin:auto}
+.modal-header{padding:20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-title{font-size:1.3rem;font-weight:700;color:var(--text)}
+.modal-close{background:none;border:none;font-size:1.5rem;color:var(--text-light);cursor:pointer;padding:4px 8px}
+.modal-body{padding:20px}
+.modal-img{width:100%;aspect-ratio:1;background:#fafafa;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;border:1px solid var(--border)}
+.modal-img-emoji{font-size:6rem}
+.modal-section{margin-bottom:20px}
+.modal-section-title{font-size:0.85rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+.modal-section-content{font-size:0.9rem;color:var(--text);line-height:1.6}
+.modal-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-info-item{background:#f8f9fa;padding:12px;border-radius:8px}
+.modal-info-label{font-size:0.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.modal-info-value{font-size:1rem;font-weight:700;color:var(--text)}
+.modal-badge{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:4px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;margin-right:6px;margin-bottom:6px}
+.modal-list{list-style:none;padding:0}
+.modal-list li{padding:6px 0;border-bottom:1px solid var(--border);font-size:0.9rem}
+.modal-list li:last-child{border:none}
+.modal-list li::before{content:'✓';color:var(--primary);font-weight:700;margin-right:8px}
 </style>
 </head>
-<body data-lang="en">
-
-<!-- NAV -->
+<body>
 <nav>
-  <div class="logo">Vijaya<span>Venugopal</span> Pickles</div>
-  <div class="nav-r">
-    <select class="lang-select" onchange="setLang(this.value)">
-      <option value="en">🇮🇳 English</option>
-      <option value="te">తెలుగు</option>
-      <option value="ta">தமிழ்</option>
-      <option value="ml">മലയാളം</option>
-      <option value="kn">ಕನ್ನಡ</option>
-      <option value="hi">हिंदी</option>
-    </select>
-    <button class="cart-pill" onclick="toggleCart()">
-      🛒 <span class="tr" id="cartLbl">Cart</span>
-      <span class="cpill-cnt" id="cartCount">0</span>
-    </button>
-  </div>
+<div class="logo" id="t-logo">VijayaVenugopal</div>
+<div class="nav-r">
+<select class="lang-select" onchange="setLang(this.value)">
+<option value="en">English</option>
+<option value="te">తెలుగు</option>
+<option value="ta">தமிழ்</option>
+<option value="ml">മലയാളം</option>
+<option value="kn">ಕನ್ನಡ</option>
+<option value="hi">हिंदी</option>
+</select>
+<button class="cart-btn" onclick="toggleCart()">
+🛒 <span id="t-cart">Cart</span>
+<span class="cart-count" id="cartCount">0</span>
+</button>
+</div>
 </nav>
-
-<!-- FSSAI -->
-<div class="fstrip">
-  <div class="fbadge"><span class="fbl">✓ FSSAI Registered</span></div>
-  <span class="fval">VIJAYAVENUGOPAL PICKLES · License: <strong style="color:#7adf5a">20123213000093</strong></span>
+<div class="fssai">
+<div class="fssai-badge">✓ FSSAI</div>
+<span style="font-size:0.75rem;color:#558b2f;font-weight:600">
+License: <strong>20123213000093</strong> · VIJAYAVENUGOPAL PICKLES
+</span>
 </div>
-
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="eyebrow"><span class="eyebrow-dot"></span><span class="tr" id="hw-eyebrow">Guntakal, Andhra Pradesh</span></div>
-    <h1><span class="tr" id="hw-h1line1">Homemade.</span><br><em><span class="tr" id="hw-h1line2">Fiery. Bold.</span></em></h1>
-    <p class="hero-tel tr" id="hw-tel">విజయవేణుగోపాల్ పచ్చళ్ళు — ప్రేమతో చేసినవి</p>
-    <p class="hero-sub tr" id="hw-sub">Every jar packed with <strong>sun-dried spices</strong> & cold-pressed sesame oil. Authentic Andhra taste at your doorstep.</p>
-    <div class="cta-row">
-      <button class="btn btn-primary" onclick="scroll2('products')"><span class="tr" id="hw-btn1">Shop Now</span> →</button>
-      <button class="btn btn-wa" onclick="openWA(L.wa_hero)">📱 <span class="tr" id="hw-btn2">WhatsApp Order</span></button>
-      <button class="btn btn-outline" onclick="scroll2('order')"><span class="tr" id="hw-btn3">Bulk Order</span></button>
-    </div>
-    <div class="hero-stats">
-      <div><div class="hs-num">₹150</div><div class="hs-lbl tr" id="hs1">Per Pickle Jar</div></div>
-      <div><div class="hs-num">₹100</div><div class="hs-lbl tr" id="hs2">Papad & Snacks</div></div>
-      <div><div class="hs-num">100%</div><div class="hs-lbl tr" id="hs3">Natural</div></div>
-      <div><div class="hs-num">FSSAI</div><div class="hs-lbl tr" id="hs4">Certified</div></div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-visual">
-      <div class="hero-img-wrap">
-        <!-- Beautiful SVG mango illustration -->
-        <svg width="260" height="260" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="mg1" cx="38%" cy="32%" r="65%"><stop offset="0%" stop-color="#c8f060"/><stop offset="55%" stop-color="#78b820"/><stop offset="100%" stop-color="#3a6008"/></radialGradient>
-            <radialGradient id="mg2" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#f0d840"/><stop offset="50%" stop-color="#e8a010"/><stop offset="100%" stop-color="#805000"/></radialGradient>
-            <radialGradient id="glr" cx="30%" cy="25%" r="40%"><stop offset="0%" stop-color="rgba(255,255,255,0.35)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
-          </defs>
-          <!-- Big mango -->
-          <path d="M130,30 C165,28 195,55 200,90 C208,135 185,175 150,188 C130,195 110,195 90,188 C55,175 32,135 40,90 C45,55 75,28 130,30Z" fill="url(#mg1)"/>
-          <path d="M130,30 C165,28 195,55 200,90 C208,135 185,175 150,188 C130,195 110,195 90,188 C55,175 32,135 40,90 C45,55 75,28 130,30Z" fill="url(#glr)"/>
-          <!-- Stem -->
-          <path d="M130,28 C132,10 136,0 133,0" fill="none" stroke="#5a3008" stroke-width="5" stroke-linecap="round"/>
-          <!-- Leaf -->
-          <path d="M133,12 C148,-4 175,2 172,18 C160,14 145,16 133,12Z" fill="#3a7010"/>
-          <path d="M133,12 C155,6 170,10 172,18" fill="none" stroke="#2a5008" stroke-width="1"/>
-          <!-- Shine -->
-          <ellipse cx="100" cy="75" rx="18" ry="11" fill="rgba(255,255,255,0.2)" transform="rotate(-20,100,75)"/>
-          <!-- Small mango bottom left -->
-          <path d="M45,185 C58,183 68,193 67,205 C65,218 53,225 44,222 C35,218 28,207 33,196 C36,188 45,185 45,185Z" fill="url(#mg2)"/>
-          <path d="M45,183 C47,174 48,169 47,168" fill="none" stroke="#5a3008" stroke-width="3" stroke-linecap="round"/>
-          <!-- Chilli right -->
-          <path d="M200,160 C210,150 222,152 225,162 C228,174 220,190 210,195 C202,198 194,192 192,182 C190,172 194,165 200,160Z" fill="#c02020"/>
-          <path d="M200,160 C198,150 200,145 202,143" fill="none" stroke="#3a1808" stroke-width="3" stroke-linecap="round"/>
-          <ellipse cx="206" cy="168" rx="5" ry="3" fill="rgba(255,255,255,0.15)" transform="rotate(-30,206,168)"/>
-          <!-- Tamarind pods bottom -->
-          <path d="M85,220 C100,215 118,218 122,228 C126,238 116,247 100,248 C84,249 72,242 72,231 C72,224 78,221 85,220Z" fill="#9a5810"/>
-          <path d="M90,218 C92,208 91,202 90,200" fill="none" stroke="#5a3008" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="hero-float-tags">
-        <div class="htag" style="animation-delay:0.3s"><span>🌿</span>Gongura</div>
-        <div class="htag" style="animation-delay:0.5s"><span>🥭</span>Avakaya</div>
-        <div class="htag" style="animation-delay:0.7s"><span>🌰</span>Tamarind</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="t-track" id="tickerTrack"></div>
+<div class="hero-content">
+<div class="hero-top">
+<div class="hero-badge" id="t-loc">📍 Guntakal, AP</div>
+<div class="hero-badge">⭐ Est. 2001</div>
 </div>
-
-<!-- PRODUCTS -->
-<section class="section" id="products">
-  <div class="sec-label tr" id="pl-label">Our Products</div>
-  <h2 class="sec-title tr" id="pl-title">Homemade Range</h2>
-  <p class="sec-sub tr" id="pl-sub">Pickles · Podis · Papad & Snacks</p>
-  <div id="productsWrap"></div>
+<h1 id="t-h1">Fresh Homemade Pickles & Podis</h1>
+<p class="hero-desc" id="t-hsub">
+100% natural ingredients · Sun-dried spices · Cold-pressed oil · Traditional recipes
+</p>
+<div class="hero-actions">
+<button class="btn btn-primary" onclick="scroll2('products')">
+<span id="t-shop">Shop Now</span>
+</button>
+<button class="btn btn-wa" onclick="openWA()">
+📱 <span id="t-wa">WhatsApp Order</span>
+</button>
+</div>
+</div>
 </section>
-
-<div class="div"></div>
-
-<!-- COMBOS -->
-<section class="section combos-bg" id="combos">
-  <div class="sec-label tr" id="cb-label">Special Offers</div>
-  <h2 class="sec-title tr" id="cb-title">Combo Deals</h2>
-  <div class="combo-grid">
-    <div class="combo-card">
-      <div class="cc-badge" style="background:var(--accent);color:#fff">🔥 Popular</div>
-      <span class="cc-icon">🫙🫙🫙</span>
-      <div class="cc-name tr" id="c1n">Triple Treat Combo</div>
-      <div class="cc-desc tr" id="c1d">Any 3 pickle jars of your choice — mix & match!</div>
-      <div class="cc-price-row">
-        <div class="cc-old">₹450</div>
-        <div class="cc-new">₹420</div>
-        <div class="cc-save tr" id="c1s">Save ₹30</div>
-      </div>
-      <button class="cc-add" onclick="addCombo('triple')"><span class="tr" id="c1b">Add to Cart</span></button>
-      <button class="cc-wa" onclick="openWA(L.wa_triple)">📱 <span class="tr" id="c1w">Order on WhatsApp</span></button>
-    </div>
-    <div class="combo-card">
-      <div class="cc-badge" style="background:#2d6e10;color:#fff">🌿 Value</div>
-      <span class="cc-icon">🌶️🍃🌶</span>
-      <div class="cc-name tr" id="c2n">Podi Power Pack</div>
-      <div class="cc-desc tr" id="c2d">All 3 Podis — Podi Karam + Karvepaku + Mulaga Podi</div>
-      <div class="cc-price-row">
-        <div class="cc-old">₹450</div>
-        <div class="cc-new">₹400</div>
-        <div class="cc-save tr" id="c2s">Save ₹50</div>
-      </div>
-      <button class="cc-add" onclick="addCombo('podi')"><span class="tr" id="c2b">Add to Cart</span></button>
-      <button class="cc-wa" onclick="openWA(L.wa_podi)">📱 <span class="tr" id="c2w">Order on WhatsApp</span></button>
-    </div>
-    <div class="combo-card">
-      <div class="cc-badge" style="background:#7a1020;color:#fff">👨‍👩‍👧 Family</div>
-      <span class="cc-icon">🫙🫙🫙🫙🫙🫙</span>
-      <div class="cc-name tr" id="c3n">Family Mega Pack</div>
-      <div class="cc-desc tr" id="c3d">6 jars of your choice — perfect for gifting!</div>
-      <div class="cc-price-row">
-        <div class="cc-old">₹900</div>
-        <div class="cc-new">₹800</div>
-        <div class="cc-save tr" id="c3s">Save ₹100</div>
-      </div>
-      <button class="cc-add" onclick="addCombo('mega')"><span class="tr" id="c3b">Add to Cart</span></button>
-      <button class="cc-wa" onclick="openWA(L.wa_mega)">📱 <span class="tr" id="c3w">Order on WhatsApp</span></button>
-    </div>
-  </div>
+<section class="products" id="products">
+<div class="products-inner" id="productsWrap"></div>
 </section>
-
-<div class="div"></div>
-
-<!-- PAYMENT + SHIPPING side by side -->
-<section class="section" id="payment">
-  <div class="sec-label tr" id="py-label">Payment & Delivery</div>
-  <h2 class="sec-title tr" id="py-title">Pay & Ship</h2>
-  <div class="pay-grid">
-    <!-- UPI -->
-    <div class="pay-card">
-      <div class="pay-title tr" id="py-scan">Scan & Pay</div>
-      <div class="pay-sub tr" id="py-scan-s">Scan QR or tap to open any UPI app instantly</div>
-      <div class="qr-box">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-          <rect x="4" y="4" width="36" height="36" rx="3" fill="none" stroke="#111" stroke-width="3.5"/>
-          <rect x="12" y="12" width="20" height="20" rx="1.5" fill="#111"/>
-          <rect x="80" y="4" width="36" height="36" rx="3" fill="none" stroke="#111" stroke-width="3.5"/>
-          <rect x="88" y="12" width="20" height="20" rx="1.5" fill="#111"/>
-          <rect x="4" y="80" width="36" height="36" rx="3" fill="none" stroke="#111" stroke-width="3.5"/>
-          <rect x="12" y="88" width="20" height="20" rx="1.5" fill="#111"/>
-          <rect x="48" y="4" width="7" height="7" rx="1" fill="#111"/><rect x="58" y="4" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="48" y="14" width="7" height="7" rx="1" fill="#111"/><rect x="68" y="14" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="58" y="24" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="4" y="48" width="7" height="7" rx="1" fill="#111"/><rect x="14" y="48" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="24" y="58" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="4" y="68" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="48" y="48" width="7" height="7" rx="1" fill="#111"/><rect x="58" y="48" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="68" y="58" width="7" height="7" rx="1" fill="#111"/><rect x="48" y="68" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="80" y="48" width="7" height="7" rx="1" fill="#111"/><rect x="90" y="58" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="100" y="48" width="7" height="7" rx="1" fill="#111"/><rect x="110" y="58" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="80" y="68" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="48" y="80" width="7" height="7" rx="1" fill="#111"/><rect x="68" y="80" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="58" y="90" width="7" height="7" rx="1" fill="#111"/><rect x="48" y="100" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="58" y="110" width="7" height="7" rx="1" fill="#111"/><rect x="68" y="100" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="80" y="90" width="7" height="7" rx="1" fill="#111"/><rect x="100" y="80" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="110" y="90" width="7" height="7" rx="1" fill="#111"/><rect x="100" y="100" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="90" y="110" width="7" height="7" rx="1" fill="#111"/>
-          <rect x="48" y="48" width="24" height="24" rx="2" fill="white"/>
-          <text x="60" y="65" text-anchor="middle" font-family="serif" font-size="14" fill="#e8650a" font-weight="bold">V</text>
-        </svg>
-      </div>
-      <div class="upi-box">dasarivijaya1972@oksbi</div>
-      <button class="pay-btn pay-btn-upi" onclick="clickToPay()">⚡ <span class="tr" id="py-ctpbtn">Click to Pay — Opens GPay / PhonePe / Paytm</span></button>
-      <p style="font-size:0.68rem;color:var(--muted);text-align:center;margin-top:6px" class="tr" id="py-note">Send payment screenshot on WhatsApp to confirm</p>
-    </div>
-    <!-- Shipping calc -->
-    <div class="pay-card">
-      <div class="pay-title tr" id="sh-title">Shipping Calculator</div>
-      <div class="pay-sub tr" id="sh-sub">Free delivery above ₹500</div>
-      <div class="ship-row">
-        <div><label class="tr" id="sh-state">State</label>
-          <select id="stateSelect" onchange="calcShip()">
-            <option value="">Select...</option>
-            <option value="ap">Andhra Pradesh</option>
-            <option value="ts">Telangana</option>
-            <option value="ka">Karnataka</option>
-            <option value="tn">Tamil Nadu</option>
-            <option value="ml">Kerala</option>
-            <option value="mh">Maharashtra</option>
-            <option value="dl">Delhi NCR</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div><label class="tr" id="sh-jars">No. of Jars</label>
-          <input type="number" id="jarCount" min="1" placeholder="e.g. 3" oninput="calcShip()"/>
-        </div>
-      </div>
-      <button class="fbtn fbtn-order" style="border-radius:6px;padding:10px;font-size:0.8rem" onclick="calcShip()"><span class="tr" id="sh-calc">Calculate</span></button>
-      <div class="ship-result" id="shipResult">
-        <div class="sr"><span class="sr-l tr" id="sr1">Product Total</span><span id="srProd">—</span></div>
-        <div class="sr"><span class="sr-l tr" id="sr2">Shipping</span><span id="srShip">—</span></div>
-        <div class="sr"><span class="sr-l tr" id="sr3">Delivery</span><span id="srDays">—</span></div>
-        <div class="sr"><span class="sr-l tr" id="sr4">Grand Total</span><span id="srTotal">—</span></div>
-      </div>
-      <div style="margin-top:1rem">
-        <div class="pay-title" style="margin-bottom:0.5rem;font-size:0.82rem" class="tr" id="pm-title">Other Payment Methods</div>
-        <div class="pay-methods">
-          <div class="pm" onclick="clickToPay()"><div class="pm-i">🟢</div><div><div class="pm-n">Google Pay</div><div class="pm-d tr" id="pm1">Tap to open instantly</div></div></div>
-          <div class="pm" onclick="clickToPay()"><div class="pm-i">🟣</div><div><div class="pm-n">PhonePe</div><div class="pm-d tr" id="pm2">Tap to open instantly</div></div></div>
-          <div class="pm"><div class="pm-i">💵</div><div><div class="pm-n tr" id="pm3">Cash on Delivery</div><div class="pm-d tr" id="pm4">Local Guntakal orders</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- ORDER -->
-<section class="section" id="order">
-  <div class="sec-label tr" id="or-label">Place Order</div>
-  <h2 class="sec-title tr" id="or-title">Order Now</h2>
-  <div class="order-card">
-    <div class="fg-row fg"><div><label class="tr" id="ofl1">Your Name</label><input type="text" id="o-name" placeholder="Ravi Kumar"/></div><div><label class="tr" id="ofl2">Phone</label><input type="tel" id="o-phone" placeholder="+91 93398 77718"/></div></div>
-    <div class="fg"><label class="tr" id="ofl3">Delivery Address</label><textarea id="o-addr" placeholder="Full address with PIN code..."></textarea></div>
-    <div class="fg-row fg">
-      <div>
-        <label class="tr" id="ofl4">Product</label>
-        <select id="o-pickle">
-          <option value="">Select...</option>
-          <optgroup label="── Pickles ──">
-            <option>Avakaya — ₹150</option><option>Gongura Pachadi — ₹150</option>
-            <option>Tomato Pickle — ₹150</option><option>Nimmakaya — ₹150</option>
-            <option>Velluli Pachadi — ₹150</option><option>Mulakkada — ₹150</option>
-            <option>Chintapandu — ₹150</option><option>Mixed Veg — ₹150</option>
-          </optgroup>
-          <optgroup label="── Podis ──">
-            <option>Podi Karam — ₹150</option><option>Karvepaku Podi — ₹150</option><option>Mulaga Podi — ₹150</option>
-          </optgroup>
-          <optgroup label="── Papad & Snacks ──">
-            <option>Andhra Papad — ₹100</option><option>Majjiga Mirapakai — ₹100</option>
-          </optgroup>
-          <optgroup label="── Combos ──">
-            <option>Triple Treat (3 jars) — ₹420</option>
-            <option>Podi Power Pack — ₹400</option>
-            <option>Family Mega Pack (6 jars) — ₹800</option>
-          </optgroup>
-        </select>
-      </div>
-      <div><label class="tr" id="ofl5">Quantity</label><input type="number" id="o-qty" placeholder="1" min="1"/></div>
-    </div>
-    <div class="fg"><label class="tr" id="ofl6">Notes</label><textarea id="o-notes" placeholder="Extra spicy? Gift wrap? Special instructions..."></textarea></div>
-    <div class="form-btns">
-      <button class="fbtn fbtn-order" onclick="submitOrder()">📦 <span class="tr" id="or-btn1">Place Order</span></button>
-      <button class="fbtn fbtn-wa" onclick="whatsappOrder()">📱 <span class="tr" id="or-btn2">Order via WhatsApp</span></button>
-    </div>
-  </div>
-</section>
-
-<div class="div"></div>
-
-<!-- REVIEWS -->
-<section class="section" id="reviews">
-  <div class="sec-label tr" id="rv-label">Customer Reviews</div>
-  <h2 class="sec-title tr" id="rv-title">What They Say</h2>
-  <div class="rv-grid" id="reviewsGrid"></div>
-  <div class="rv-form">
-    <div style="font-weight:600;margin-bottom:4px" class="tr" id="rvf-t">Share Your Experience</div>
-    <div class="fg-row fg" style="margin-top:10px">
-      <div><label class="tr" id="rvf-l1">Name</label><input type="text" id="rv-name" placeholder="Your name"/></div>
-      <div><label class="tr" id="rvf-l2">Location</label><input type="text" id="rv-loc" placeholder="City, State"/></div>
-    </div>
-    <div class="fg"><label class="tr" id="rvf-l3">Rating</label>
-      <div class="star-row" id="starPick">
-        <button class="sbtn" onclick="setStar(1)">⭐</button><button class="sbtn" onclick="setStar(2)">⭐</button>
-        <button class="sbtn" onclick="setStar(3)">⭐</button><button class="sbtn" onclick="setStar(4)">⭐</button>
-        <button class="sbtn" onclick="setStar(5)">⭐</button>
-      </div>
-    </div>
-    <div class="fg"><label class="tr" id="rvf-l4">Your Review</label><textarea id="rv-text" placeholder="Tell us about your experience..."></textarea></div>
-    <button class="fbtn fbtn-order" onclick="submitReview()"><span class="tr" id="rvf-btn">Submit Review</span></button>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="ft">
-    <div>
-      <div class="fn">VijayaVenugopal Pickles</div>
-      <div class="fs">Authentic Andhra Homemade Pickles<br>Guntakal, Andhra Pradesh<br>
-        <a href="tel:+919339877718">+91 93398 77718</a><br>
-        <a href="mailto:dasarivijaya1972@gmail.com">dasarivijaya1972@gmail.com</a><br>
-        With the help of DRDA, Anantapur
-      </div>
-      <div class="fssai-f" style="margin-top:10px">
-        <div style="font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#4ab41e;margin-bottom:2px">✓ FSSAI Registered</div>
-        <div style="font-size:0.7rem;color:rgba(255,255,255,0.5)">VIJAYAVENUGOPAL PICKLES</div>
-        <div style="font-size:0.76rem;font-weight:700;color:#7adf5a">20123213000093</div>
-      </div>
-    </div>
-    <div>
-      <div class="fn tr" id="ft-prod">Products</div>
-      <div class="fs">Pickles · Podis · Papad<br>Majjiga Mirapakai<br>Combo Deals</div>
-    </div>
-    <div>
-      <div class="fn tr" id="ft-contact">Quick Links</div>
-      <div class="fs">
-        <a href="#products">Shop</a><br><a href="#combos">Combos</a><br>
-        <a href="#payment">Pay</a><br><a href="#order">Order</a><br>
-        <a href="#reviews">Reviews</a>
-      </div>
-    </div>
-  </div>
-  <div class="fb">© 2025 VijayaVenugopal Pickles · FSSAI: 20123213000093 · Made with 🌶 in Andhra Pradesh</div>
-</footer>
-
-<!-- CART DRAWER -->
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 <div class="drawer" id="drawer">
-  <div class="dh">
-    <div class="dh-t">🛒 <span class="tr" id="dc-t">Your Cart</span></div>
-    <button class="dx" onclick="toggleCart()">✕</button>
-  </div>
-  <div class="di" id="cartItems"><div class="dempty"><span>🫙</span><p class="tr" id="dc-empty">Your cart is empty</p></div></div>
-  <div class="df">
-    <div class="dt-row"><span class="dt-l tr" id="dc-tot">Total</span><span class="dt-v" id="cartTotal">₹0</span></div>
-    <button class="dbtn dbtn-pay" onclick="checkout()"><span class="tr" id="dc-pay">Pay Now</span></button>
-    <button class="dbtn dbtn-wa" onclick="whatsappCart()" style="margin-top:6px">📱 <span class="tr" id="dc-wa">Order via WhatsApp</span></button>
-  </div>
+<div class="drawer-header">
+<div class="drawer-title">🛒 <span id="t-yourcart">Your Cart</span></div>
+<button class="drawer-close" onclick="toggleCart()">✕</button>
 </div>
-
-<button class="wafloat" onclick="openWA(L.wa_hero)">📱</button>
+<div class="drawer-body" id="cartItems">
+<div class="drawer-empty">
+<div class="drawer-empty-icon">🛒</div>
+<p id="t-empty">Your cart is empty</p>
+</div>
+</div>
+<div class="drawer-footer">
+<div class="drawer-total">
+<span class="drawer-total-label" id="t-total">TOTAL</span>
+<span class="drawer-total-value" id="cartTotal">₹0</span>
+</div>
+<div class="payment-options">
+<div class="payment-title" id="t-paytitle">PAYMENT OPTIONS</div>
+<div class="payment-item" onclick="clickToPay()">
+<div class="payment-icon">🟢</div>
+<div>
+<div class="payment-name">Google Pay</div>
+<div class="payment-desc" id="t-pm1">Instant payment</div>
+</div>
+</div>
+<div class="payment-item" onclick="clickToPay()">
+<div class="payment-icon">🟣</div>
+<div>
+<div class="payment-name">PhonePe</div>
+<div class="payment-desc" id="t-pm2">Instant payment</div>
+</div>
+</div>
+<div class="payment-item" onclick="clickToPay()">
+<div class="payment-icon">🔵</div>
+<div>
+<div class="payment-name">Paytm</div>
+<div class="payment-desc" id="t-pm3">Instant payment</div>
+</div>
+</div>
+<div class="payment-item">
+<div class="payment-icon">🏦</div>
+<div>
+<div class="payment-name" id="t-pm4">Bank Transfer</div>
+<div class="payment-desc">NEFT/RTGS/IMPS</div>
+</div>
+</div>
+<div class="payment-item">
+<div class="payment-icon">💵</div>
+<div>
+<div class="payment-name" id="t-pm5">Cash on Delivery</div>
+<div class="payment-desc" id="t-pm6">Guntakal only</div>
+</div>
+</div>
+<div class="upi-box">
+<div style="font-size:0.7rem;font-weight:700;color:#f57c00;text-align:center;margin-bottom:4px" id="t-upi">
+UPI PAYMENT
+</div>
+<div class="upi-id">dasarivijaya1972@oksbi</div>
+<div style="font-size:0.7rem;color:#666;text-align:center" id="t-upinote">
+Send screenshot on WhatsApp
+</div>
+</div>
+</div>
+<button class="drawer-btn wa" onclick="whatsappCart()">
+📱 <span id="t-waorder">Order via WhatsApp</span>
+</button>
+</div>
+</div>
+<button class="wa-float" onclick="openWA()">📱</button>
 <div class="toast" id="toast"></div>
-
 <script>
-const WA='919339877718', UPI_ID='dasarivijaya1972@oksbi', UPI_NAME='VijayaVenugopal Pickles';
+const WA='919339877718',UPIID='dasarivijaya1972@oksbi';
+let cart={};
 
-/* ── MULTILINGUAL DATA ── */
-const LANGS={
-  en:{
-    wa_hero:"Hello! I want to order from VijayaVenugopal Pickles 🌶",
-    wa_triple:"Hello! I want Triple Treat Combo (3 jars @ ₹420) 🌶",
-    wa_podi:"Hello! I want Podi Power Pack (all 3 podis @ ₹400) 🌶",
-    wa_mega:"Hello! I want Family Mega Pack (6 jars @ ₹800) 🌶",
-    cartLbl:"Cart","hw-eyebrow":"Guntakal, Andhra Pradesh",
-    "hw-h1line1":"Homemade.","hw-h1line2":"Fiery. Bold.",
-    "hw-tel":"VijayaVenugopal Pickles — Made with love",
-    "hw-sub":"Every jar packed with <strong>sun-dried spices</strong> & cold-pressed sesame oil. Authentic Andhra taste at your doorstep.",
-    "hw-btn1":"Shop Now","hw-btn2":"WhatsApp Order","hw-btn3":"Bulk Order",
-    hs1:"Per Pickle Jar",hs2:"Papad & Snacks",hs3:"Natural",hs4:"Certified",
-    "pl-label":"Our Products","pl-title":"Homemade Range","pl-sub":"Pickles · Podis · Papad & Snacks",
-    "cb-label":"Special Offers","cb-title":"Combo Deals",
-    c1n:"Triple Treat Combo",c1d:"Any 3 pickle jars of your choice — mix & match!",c1s:"Save ₹30",c1b:"Add to Cart",c1w:"Order on WhatsApp",
-    c2n:"Podi Power Pack",c2d:"All 3 Podis — Podi Karam + Karvepaku + Mulaga Podi",c2s:"Save ₹50",c2b:"Add to Cart",c2w:"Order on WhatsApp",
-    c3n:"Family Mega Pack",c3d:"6 jars of your choice — perfect for gifting!",c3s:"Save ₹100",c3b:"Add to Cart",c3w:"Order on WhatsApp",
-    "py-label":"Payment & Delivery","py-title":"Pay & Ship",
-    "py-scan":"Scan & Pay","py-scan-s":"Scan QR or tap to open any UPI app instantly",
-    "py-ctpbtn":"Click to Pay — Opens GPay / PhonePe / Paytm",
-    "py-note":"Send payment screenshot on WhatsApp to confirm",
-    "sh-title":"Shipping Calculator","sh-sub":"Free delivery above ₹500",
-    "sh-state":"State","sh-jars":"No. of Jars","sh-calc":"Calculate",
-    sr1:"Product Total",sr2:"Shipping",sr3:"Delivery Time",sr4:"Grand Total",
-    pm1:"Tap to open instantly",pm2:"Tap to open instantly",pm3:"Cash on Delivery",pm4:"Local Guntakal orders",
-    "or-label":"Place Order","or-title":"Order Now",
-    ofl1:"Your Name",ofl2:"Phone",ofl3:"Delivery Address",ofl4:"Product",ofl5:"Quantity",ofl6:"Notes",
-    "or-btn1":"Place Order","or-btn2":"Order via WhatsApp",
-    "rv-label":"Customer Reviews","rv-title":"What They Say",
-    "rvf-t":"Share Your Experience","rvf-l1":"Name","rvf-l2":"Location","rvf-l3":"Rating","rvf-l4":"Your Review","rvf-btn":"Submit Review",
-    "dc-t":"Your Cart","dc-empty":"Your cart is empty","dc-tot":"Total","dc-pay":"Pay Now","dc-wa":"Order via WhatsApp",
-    "ft-prod":"Products","ft-contact":"Quick Links",
-    toast_added:"added to cart!",toast_review:"Review submitted! Thank you 🙏",toast_empty:"Please fill name & product",
-    catPickle:"Pickles",catPodi:"Spice Podis",catPapad:"Papad & Snacks",
-    pBtn:"Add","pBtnOk":"Added ✓",
-    pDescAvakaya:"Raw mango pickle with mustard, red chili & sesame oil.",
-    pDescGongura:"Tangy sorrel leaves with fiery red chilies — pride of Andhra.",
-    pDescTomato:"Slow-cooked tomato with tamarind & roasted spices.",
-    pDescNimmakaya:"Sun-dried lemon with mustard seeds and green chili.",
-    pDescVelluli:"Whole garlic in spiced sesame oil — fiery & aromatic.",
-    pDescMulakkada:"Sun-dried drumstick with mustard & fenugreek.",
-    pDescChintapandu:"Tamarind with jaggery & spices — sweet, sour, spicy.",
-    pDescMixed:"Seasonal vegetables in Andhra spice blend.",
-    pDescPodiKaram:"Fiery spice powder — perfect on rice with ghee.",
-    pDescKarvepaku:"Curry leaf powder — for rice, idli & dosa.",
-    pDescMulaga:"Classic Andhra molagapudi for idli & dosa.",
-    pDescPapad:"Crispy sun-dried Andhra papad — spiced with chili & cumin.",
-    pDescMajjiga:"Buttermilk chillies — fry in oil for crunchy delight."
-  },
-  te:{
-    wa_hero:"నమస్కారం! విజయవేణుగోపాల్ పచ్చళ్ళు ఆర్డర్ చేయాలనుకుంటున్నాను 🌶",
-    wa_triple:"నమస్కారం! ట్రిపుల్ ట్రీట్ కాంబో (3 జార్లు ₹420) కావాలి 🌶",
-    wa_podi:"నమస్కారం! పొడి పవర్ ప్యాక్ (3 పొడులు ₹400) కావాలి 🌶",
-    wa_mega:"నమస్కారం! ఫ్యామిలీ మెగా ప్యాక్ (6 జార్లు ₹800) కావాలి 🌶",
-    cartLbl:"బుట్ట","hw-eyebrow":"గుంతకల్, ఆంధ్ర ప్రదేశ్",
-    "hw-h1line1":"ఇంట్లో చేసిన.","hw-h1line2":"కమ్మని. కారంగా.",
-    "hw-tel":"విజయవేణుగోపాల్ పచ్చళ్ళు — ప్రేమతో చేసినవి",
-    "hw-sub":"ప్రతి జార్‌లో <strong>ఎండబెట్టిన మసాలాలు</strong> & నువ్వుల నూనె. అసలైన ఆంధ్రా రుచి మీ ఇంటికి.",
-    "hw-btn1":"ఇప్పుడే కొనండి","hw-btn2":"వాట్సాప్ ఆర్డర్","hw-btn3":"బల్క్ ఆర్డర్",
-    hs1:"ఒక్కో జార్ ధర",hs2:"పాపడ్ & స్నాక్స్",hs3:"సహజమైన",hs4:"సర్టిఫైడ్",
-    "pl-label":"మా ఉత్పత్తులు","pl-title":"ఇంట్లో చేసిన రేంజ్","pl-sub":"పచ్చళ్ళు · పొడులు · పాపడ్ & స్నాక్స్",
-    "cb-label":"ప్రత్యేక ఆఫర్లు","cb-title":"కాంబో డీల్స్",
-    c1n:"ట్రిపుల్ ట్రీట్ కాంబో",c1d:"మీకు నచ్చిన 3 పచ్చళ్ళు — ఏ రకమైనా!",c1s:"₹30 ఆదా",c1b:"బుట్టలో వేయండి",c1w:"వాట్సాప్‌లో ఆర్డర్",
-    c2n:"పొడి పవర్ ప్యాక్",c2d:"3 పొడులు కలిసి — పోడి కారం + కరివేపాకు + మిరపకాయ పొడి",c2s:"₹50 ఆదా",c2b:"బుట్టలో వేయండి",c2w:"వాట్సాప్‌లో ఆర్డర్",
-    c3n:"ఫ్యామిలీ మెగా ప్యాక్",c3d:"6 జార్లు — గిఫ్ట్‌కు అనువైనది!",c3s:"₹100 ఆదా",c3b:"బుట్టలో వేయండి",c3w:"వాట్సాప్‌లో ఆర్డర్",
-    "py-label":"చెల్లింపు & డెలివరీ","py-title":"చెల్లించండి & పంపండి",
-    "py-scan":"స్కాన్ చేసి చెల్లించండి","py-scan-s":"QR స్కాన్ చేయండి లేదా UPI యాప్ తెరవండి",
-    "py-ctpbtn":"క్లిక్ చేసి చెల్లించండి — GPay / PhonePe / Paytm తెరుచుకుంటుంది",
-    "py-note":"చెల్లింపు స్క్రీన్‌షాట్ వాట్సాప్‌కు పంపండి",
-    "sh-title":"షిప్పింగ్ లెక్కింపు","sh-sub":"₹500 పైన ఉచిత డెలివరీ",
-    "sh-state":"రాష్ట్రం","sh-jars":"జార్ల సంఖ్య","sh-calc":"లెక్కించు",
-    sr1:"మొత్తం ధర",sr2:"షిప్పింగ్",sr3:"డెలివరీ సమయం",sr4:"గ్రాండ్ టోటల్",
-    pm1:"వెంటనే తెరుచుకుంటుంది",pm2:"వెంటనే తెరుచుకుంటుంది",pm3:"డెలివరీలో చెల్లించండి",pm4:"గుంతకల్ స్థానిక ఆర్డర్లు",
-    "or-label":"ఆర్డర్ చేయండి","or-title":"ఇప్పుడే ఆర్డర్",
-    ofl1:"మీ పేరు",ofl2:"ఫోన్",ofl3:"డెలివరీ చిరునామా",ofl4:"ఉత్పత్తి",ofl5:"సంఖ్య",ofl6:"గమనికలు",
-    "or-btn1":"ఆర్డర్ చేయండి","or-btn2":"వాట్సాప్ ద్వారా ఆర్డర్",
-    "rv-label":"కస్టమర్ అభిప్రాయాలు","rv-title":"వారు ఏమి చెప్తున్నారు",
-    "rvf-t":"మీ అభిప్రాయం పంచుకోండి","rvf-l1":"పేరు","rvf-l2":"స్థలం","rvf-l3":"రేటింగ్","rvf-l4":"మీ అభిప్రాయం","rvf-btn":"అభిప్రాయం పంపండి",
-    "dc-t":"మీ బుట్ట","dc-empty":"బుట్ట ఖాళీగా ఉంది","dc-tot":"మొత్తం","dc-pay":"చెల్లించండి","dc-wa":"వాట్సాప్ ద్వారా ఆర్డర్",
-    "ft-prod":"ఉత్పత్తులు","ft-contact":"లింక్‌లు",
-    toast_added:"బుట్టలో వేసారు!",toast_review:"అభిప్రాయం పంపారు! ధన్యవాదాలు 🙏",toast_empty:"పేరు & ఉత్పత్తి నింపండి",
-    catPickle:"పచ్చళ్ళు",catPodi:"పొడులు",catPapad:"పాపడ్ & స్నాక్స్",
-    pBtn:"వేయి",pBtnOk:"వేసారు ✓",
-    pDescAvakaya:"ఆవకాయ పచ్చడి — ఆవాలు, ఎర్ర మిర్చి & నువ్వుల నూనెతో.",
-    pDescGongura:"గోంగూర ఆకులు & ఎర్ర మిర్చితో — ఆంధ్రుల గర్వం.",
-    pDescTomato:"టమాటో, చింతపండు & మసాలాలతో — అన్నానికి అద్భుతం.",
-    pDescNimmakaya:"ఎండబెట్టిన నిమ్మకాయ పచ్చడి — ఆవాలు & పచ్చి మిర్చితో.",
-    pDescVelluli:"వెల్లుల్లి పచ్చడి — నువ్వుల నూనెలో మసాలాలతో.",
-    pDescMulakkada:"ఎండిన మునక్కాడ పచ్చడి — ఆవాలు & మేతికీలతో.",
-    pDescChintapandu:"చింతపండు, బెల్లం & మసాలాతో — తీపి, పుల్ల, కారం.",
-    pDescMixed:"సాంప్రదాయ మసాలాలతో కూరగాయల పచ్చడి.",
-    pDescPodiKaram:"పోడి కారం — అన్నంలో నెయ్యి వేసి తింటే రుచి.",
-    pDescKarvepaku:"కరివేపాకు పొడి — అన్నానికి, ఇడ్లీకి అద్భుతం.",
-    pDescMulaga:"ఆంధ్రా ప్రసిద్ధ మిరపకాయ పొడి — ఇడ్లీ, దోసెకు.",
-    pDescPapad:"ఆంధ్రా పాపడ్ — మిర్చి & జీలకర్రతో ఎండబెట్టినవి.",
-    pDescMajjiga:"మజ్జిగ మిరపకాయ — వేయించి అన్నంతో అద్భుతం!"
-  },
-  ta:{
-    wa_hero:"வணக்கம்! VijayaVenugopal Pickles-இலிருந்து ஆர்டர் செய்ய விரும்புகிறேன் 🌶",
-    wa_triple:"வணக்கம்! Triple Treat Combo (3 ஜார் ₹420) வேண்டும் 🌶",
-    wa_podi:"வணக்கம்! Podi Power Pack (3 பொடி ₹400) வேண்டும் 🌶",
-    wa_mega:"வணக்கம்! Family Mega Pack (6 ஜார் ₹800) வேண்டும் 🌶",
-    cartLbl:"கார்ட்","hw-eyebrow":"குந்தகல், ஆந்திர பிரதேசம்",
-    "hw-h1line1":"வீட்டில் செய்தது.","hw-h1line2":"காரமான. தாய் கை.",
-    "hw-tel":"விஜயவேணுகோபால் ஊறுகாய் — அன்போடு செய்யப்பட்டது",
-    "hw-sub":"ஒவ்வொரு ஜாரிலும் <strong>வெயிலில் உலர்த்திய மசாலா</strong> & எள் எண்ணெய். உங்கள் வீட்டிற்கு ஆந்திர சுவை.",
-    "hw-btn1":"இப்போது வாங்கு","hw-btn2":"WhatsApp ஆர்டர்","hw-btn3":"மொத்த ஆர்டர்",
-    hs1:"ஒரு ஜார் விலை",hs2:"பப்பட் & சிற்றுண்டி",hs3:"இயற்கை",hs4:"சான்றளிக்கப்பட்டது",
-    "pl-label":"எங்கள் பொருட்கள்","pl-title":"வீட்டில் செய்த வரிசை","pl-sub":"ஊறுகாய் · பொடி · பப்பட் & சிற்றுண்டி",
-    "cb-label":"சிறப்பு சலுகைகள்","cb-title":"கொம்போ டீல்கள்",
-    c1n:"ட்ரிபிள் ட்ரீட் கொம்போ",c1d:"உங்கள் விருப்பப்படி 3 ஜார் — கலந்து பார்க்கலாம்!",c1s:"₹30 சேமிப்பு",c1b:"கார்ட்டில் சேர்",c1w:"WhatsApp-ல் ஆர்டர்",
-    c2n:"பொடி பவர் பேக்",c2d:"3 பொடிகள் — பொடி கரம் + கறிவேப்பிலை + மிளகாய் பொடி",c2s:"₹50 சேமிப்பு",c2b:"கார்ட்டில் சேர்",c2w:"WhatsApp-ல் ஆர்டர்",
-    c3n:"ஃபேமிலி மெகா பேக்",c3d:"6 ஜார் — பரிசு கொடுக்க ஏற்றது!",c3s:"₹100 சேமிப்பு",c3b:"கார்ட்டில் சேர்",c3w:"WhatsApp-ல் ஆர்டர்",
-    "py-label":"கட்டணம் & டெலிவரி","py-title":"செலுத்து & அனுப்பு",
-    "py-scan":"ஸ்கேன் & பே","py-scan-s":"QR ஸ்கேன் செய்யுங்கள் அல்லது UPI ஆப் திறக்கவும்",
-    "py-ctpbtn":"கிளிக் செய்து செலுத்துங்கள் — GPay / PhonePe / Paytm திறக்கும்",
-    "py-note":"கட்டணம் செய்த Screenshot-ஐ WhatsApp-ல் அனுப்புங்கள்",
-    "sh-title":"ஷிப்பிங் கணக்கீடு","sh-sub":"₹500-க்கு மேல் இலவச டெலிவரி",
-    "sh-state":"மாநிலம்","sh-jars":"ஜார் எண்ணிக்கை","sh-calc":"கணக்கிடு",
-    sr1:"மொத்த விலை",sr2:"ஷிப்பிங்",sr3:"டெலிவரி நேரம்",sr4:"மொத்தம்",
-    pm1:"உடனே திறக்கும்",pm2:"உடனே திறக்கும்",pm3:"டெலிவரியில் பணம்",pm4:"குந்தகல் உள்ளூர் ஆர்டர்",
-    "or-label":"ஆர்டர் செய்யுங்கள்","or-title":"இப்போதே ஆர்டர்",
-    ofl1:"உங்கள் பெயர்",ofl2:"தொலைபேசி",ofl3:"டெலிவரி முகவரி",ofl4:"பொருள்",ofl5:"அளவு",ofl6:"குறிப்புகள்",
-    "or-btn1":"ஆர்டர் செய்யுங்கள்","or-btn2":"WhatsApp மூலம் ஆர்டர்",
-    "rv-label":"வாடிக்கையாளர் கருத்துகள்","rv-title":"அவர்கள் என்ன சொல்கிறார்கள்",
-    "rvf-t":"உங்கள் அனுபவம் பகிருங்கள்","rvf-l1":"பெயர்","rvf-l2":"இடம்","rvf-l3":"மதிப்பீடு","rvf-l4":"உங்கள் கருத்து","rvf-btn":"கருத்து சமர்ப்பி",
-    "dc-t":"உங்கள் கார்ட்","dc-empty":"கார்ட் காலியாக உள்ளது","dc-tot":"மொத்தம்","dc-pay":"இப்போது செலுத்து","dc-wa":"WhatsApp மூலம் ஆர்டர்",
-    "ft-prod":"பொருட்கள்","ft-contact":"இணைப்புகள்",
-    toast_added:"கார்ட்டில் சேர்க்கப்பட்டது!",toast_review:"கருத்து சமர்ப்பிக்கப்பட்டது! நன்றி 🙏",toast_empty:"பெயர் & பொருள் நிரப்பவும்",
-    catPickle:"ஊறுகாய்கள்",catPodi:"மசாலா பொடிகள்",catPapad:"பப்பட் & சிற்றுண்டி",
-    pBtn:"சேர்","pBtnOk":"சேர்க்கப்பட்டது ✓",
-    pDescAvakaya:"மாங்காய் ஊறுகாய் — கடுகு, மிளகாய் & எள் எண்ணெயில்.",pDescGongura:"புளிப்பான கீரை & மிளகாயில் — ஆந்திரா பெருமை.",pDescTomato:"தக்காளி, புளி & மசாலாவில் — சாதத்திற்கு அருமை.",pDescNimmakaya:"எலுமிச்சை ஊறுகாய் — கடுகு & பச்சை மிளகாயில்.",pDescVelluli:"பூண்டு ஊறுகாய் — மசாலா எண்ணெயில்.",pDescMulakkada:"முருங்கை ஊறுகாய் — கடுகு & வெந்தயத்தில்.",pDescChintapandu:"புளி, வெல்லம் & மசாலா — இனிப்பு, புளிப்பு, காரம்.",pDescMixed:"ஆந்திர மசாலாவில் காய்கறி ஊறுகாய்.",pDescPodiKaram:"காரம் பொடி — சாதத்தில் நெய்யுடன் சாப்பிட அருமை.",pDescKarvepaku:"கறிவேப்பிலை பொடி — இட்லி, தோசை, சாதத்திற்கு.",pDescMulaga:"ஆந்திர மிளகாய் பொடி — இட்லி & தோசைக்கு.",pDescPapad:"ஆந்திர பப்பட் — மிளகாய் & சீரகத்தில் காய வைத்தது.",pDescMajjiga:"மோர் மிளகாய் — வேகவைத்தால் சுவையான நொறுக்குத் தீனி!"
-  },
-  ml:{
-    wa_hero:"നമസ്കാരം! VijayaVenugopal Pickles-ൽ നിന്ന് ഓർഡർ ചെയ്യാൻ ആഗ്രഹിക്കുന്നു 🌶",
-    wa_triple:"നമസ്കാരം! Triple Treat Combo (3 ജാർ ₹420) വേണം 🌶",
-    wa_podi:"നമസ്കാരം! Podi Power Pack (3 പൊടി ₹400) വേണം 🌶",
-    wa_mega:"നമസ്കാരം! Family Mega Pack (6 ജാർ ₹800) വേണം 🌶",
-    cartLbl:"കാർട്ട്","hw-eyebrow":"ഗുന്തകൽ, ആന്ധ്ര പ്രദേശ്",
-    "hw-h1line1":"വീട്ടിൽ ഉണ്ടാക്കിയത്.","hw-h1line2":"ചുടുകൂടിയത്. ചൂടൻ.",
-    "hw-tel":"വിജയവേണുഗോപാൽ അച്ചാർ — സ്നേഹത്തോടെ ഉണ്ടാക്കിയത്",
-    "hw-sub":"ഓരോ ജാറിലും <strong>വെയിലത്ത് ഉണക്കിയ മസാലകൾ</strong> & എള്ള് എണ്ണ. ആന്ധ്ര രുചി നിങ്ങളുടെ വീട്ടിൽ.",
-    "hw-btn1":"ഇപ്പോൾ വാങ്ങൂ","hw-btn2":"WhatsApp ഓർഡർ","hw-btn3":"ബൾക്ക് ഓർഡർ",
-    hs1:"ഒരു ജാറിൻ്റെ വില",hs2:"പപ്പടം & സ്നാക്സ്",hs3:"പ്രകൃതിദത്തം",hs4:"സർട്ടിഫൈഡ്",
-    "pl-label":"ഞങ്ങളുടെ ഉൽപ്പന്നങ്ങൾ","pl-title":"വീട്ടിൽ ഉണ്ടാക്കിയ ശ്രേണി","pl-sub":"അച്ചാറുകൾ · പൊടികൾ · പപ്പടം & സ്നാക്സ്",
-    "cb-label":"പ്രത്യേക ഓഫറുകൾ","cb-title":"കോംബോ ഡീലുകൾ",
-    c1n:"ട്രിപ്പിൾ ട്രീറ്റ് കോംബോ",c1d:"നിങ്ങൾ ഇഷ്ടപ്പെടുന്ന 3 ജാർ!",c1s:"₹30 ലാഭം",c1b:"കാർട്ടിൽ ചേർക്കൂ",c1w:"WhatsApp-ൽ ഓർഡർ",
-    c2n:"പൊടി പവർ പായ്ക്ക്",c2d:"3 പൊടികൾ — ഒരുമിച്ച്",c2s:"₹50 ലാഭം",c2b:"കാർട്ടിൽ ചേർക്കൂ",c2w:"WhatsApp-ൽ ഓർഡർ",
-    c3n:"ഫാമിലി മെഗ പായ്ക്ക്",c3d:"6 ജാർ — സമ്മാനത്തിന് അനുയോജ്യം!",c3s:"₹100 ലാഭം",c3b:"കാർട്ടിൽ ചേർക്കൂ",c3w:"WhatsApp-ൽ ഓർഡർ",
-    "py-label":"പേയ്മെൻ്റ് & ഡെലിവറി","py-title":"പേ ചെയ്ത് അയക്കൂ",
-    "py-scan":"സ്കാൻ & പേ","py-scan-s":"QR സ്കാൻ ചെയ്യൂ അല്ലെങ്കിൽ UPI ആപ്പ് തുറക്കൂ",
-    "py-ctpbtn":"ക്ലിക്ക് ചെയ്ത് പേ ചെയ്യൂ — GPay / PhonePe / Paytm തുറക്കും",
-    "py-note":"പേയ്മെൻ്റ് സ്ക്രീൻഷോട്ട് WhatsApp-ൽ അയക്കൂ",
-    "sh-title":"ഷിപ്പിങ് കണക്കുകൂട്ടൽ","sh-sub":"₹500-ന് മുകളിൽ സൗജന്യ ഡെലിവറി",
-    "sh-state":"സംസ്ഥാനം","sh-jars":"ജാർ എണ്ണം","sh-calc":"കണക്കുകൂട്ടൂ",
-    sr1:"ഉൽപ്പന്ന മൊത്തം",sr2:"ഷിപ്പിങ്",sr3:"ഡെലിവറി സമയം",sr4:"ഗ്രാൻഡ് ടോട്ടൽ",
-    pm1:"ഉടൻ തുറക്കും",pm2:"ഉടൻ തുറക്കും",pm3:"ഡെലിവറിയിൽ ക്യാഷ്",pm4:"ഗുന്തകൽ ലോക്കൽ ഓർഡറുകൾ",
-    "or-label":"ഓർഡർ ചെയ്യൂ","or-title":"ഇപ്പോൾ ഓർഡർ",
-    ofl1:"നിങ്ങളുടെ പേര്",ofl2:"ഫോൺ",ofl3:"ഡെലിവറി വിലാസം",ofl4:"ഉൽപ്പന്നം",ofl5:"എണ്ണം",ofl6:"കുറിപ്പുകൾ",
-    "or-btn1":"ഓർഡർ ചെയ്യൂ","or-btn2":"WhatsApp വഴി ഓർഡർ",
-    "rv-label":"ഉപഭോക്തൃ അഭിപ്രായങ്ങൾ","rv-title":"അവർ പറയുന്നത്",
-    "rvf-t":"നിങ്ങളുടെ അനുഭവം പങ്കിടൂ","rvf-l1":"പേര്","rvf-l2":"സ്ഥലം","rvf-l3":"റേറ്റിങ്","rvf-l4":"നിങ്ങളുടെ അഭിപ്രായം","rvf-btn":"അഭിപ്രായം സമർപ്പിക്കൂ",
-    "dc-t":"നിങ്ങളുടെ കാർട്ട്","dc-empty":"കാർട്ട് ശൂന്യമാണ്","dc-tot":"മൊത്തം","dc-pay":"ഇപ്പോൾ പേ ചെയ്യൂ","dc-wa":"WhatsApp വഴി ഓർഡർ",
-    "ft-prod":"ഉൽപ്പന്നങ്ങൾ","ft-contact":"ലിങ്കുകൾ",
-    toast_added:"കാർട്ടിൽ ചേർത്തു!",toast_review:"അഭിപ്രായം സമർപ്പിച്ചു! നന്ദി 🙏",toast_empty:"പേരും ഉൽപ്പന്നവും പൂരിപ്പിക്കൂ",
-    catPickle:"അച്ചാറുകൾ",catPodi:"മസാല പൊടികൾ",catPapad:"പപ്പടം & സ്നാക്സ്",
-    pBtn:"ചേർക്കൂ",pBtnOk:"ചേർത്തു ✓",
-    pDescAvakaya:"മാങ്ങ അച്ചാർ — കടുക്, മുളക് & എള്ള് എണ്ണ.",pDescGongura:"പുളിച്ച ഇലകൾ & ചുവന്ന മുളക് — ആന്ധ്ര അഭിമാനം.",pDescTomato:"തക്കാളി, പുളി & മസാലകൾ — ചോറിന് അനുയോജ്യം.",pDescNimmakaya:"ഉണക്കിയ നാരങ്ങ അച്ചാർ — കടുക് & പച്ചമുളക്.",pDescVelluli:"വെളുത്തുള്ളി അച്ചാർ — മസാല എണ്ണയിൽ.",pDescMulakkada:"ഉണക്കിയ മുരിങ്ങ — കടുക് & ഉലുവ.",pDescChintapandu:"പുളി, ശർക്കര & മസാല — മധുരം, പുളിപ്പ്, കാരം.",pDescMixed:"ഋതുക്കൾ കൂടി ആന്ധ്ര മസാലകൾ.",pDescPodiKaram:"കാര പൊടി — ചോറിൽ നെയ്യോടെ.",pDescKarvepaku:"കറിവേപ്പില പൊടി — ചോറ്, ഇഡ്ഡലി.",pDescMulaga:"ആന്ധ്ര മുളക് പൊടി — ഇഡ്ഡലി & ദോശ.",pDescPapad:"ആന്ധ്ര പപ്പടം — ഉണക്കിയ, മുളക് & ജീരകം.",pDescMajjiga:"മോര് മുളക് — വേവിച്ചാൽ ക്രഞ്ചി!"
-  },
-  kn:{
-    wa_hero:"ನಮಸ್ಕಾರ! VijayaVenugopal Pickles-ನಿಂದ ಆರ್ಡರ್ ಮಾಡಬೇಕು 🌶",
-    wa_triple:"ನಮಸ್ಕಾರ! Triple Treat Combo (3 ಜಾರ್ ₹420) ಬೇಕು 🌶",
-    wa_podi:"ನಮಸ್ಕಾರ! Podi Power Pack (3 ಪೊಡಿ ₹400) ಬೇಕು 🌶",
-    wa_mega:"ನಮಸ್ಕಾರ! Family Mega Pack (6 ಜಾರ್ ₹800) ಬೇಕು 🌶",
-    cartLbl:"ಕಾರ್ಟ್","hw-eyebrow":"ಗುಂಟಕಲ್, ಆಂಧ್ರ ಪ್ರದೇಶ",
-    "hw-h1line1":"ಮನೆ ಮಾಡಿದ.","hw-h1line2":"ಖಾರ. ರುಚಿ.",
-    "hw-tel":"ವಿಜಯವೇಣುಗೋಪಾಲ್ ಉಪ್ಪಿನಕಾಯಿ — ಪ್ರೀತಿಯಿಂದ ಮಾಡಿದ್ದು",
-    "hw-sub":"ಪ್ರತಿ ಜಾರ್‌ನಲ್ಲಿ <strong>ಬಿಸಿಲಲ್ಲಿ ಒಣಗಿಸಿದ ಮಸಾಲೆ</strong> & ಎಳ್ಳೆಣ್ಣೆ. ನಿಜವಾದ ಆಂಧ್ರ ರುಚಿ ನಿಮ್ಮ ಮನೆಗೆ.",
-    "hw-btn1":"ಈಗ ಖರೀದಿಸಿ","hw-btn2":"WhatsApp ಆರ್ಡರ್","hw-btn3":"ಬಲ್ಕ್ ಆರ್ಡರ್",
-    hs1:"ಒಂದು ಜಾರ್ ಬೆಲೆ",hs2:"ಪಾಪಡ್ & ಸ್ನ್ಯಾಕ್ಸ್",hs3:"ನೈಸರ್ಗಿಕ",hs4:"ಸರ್ಟಿಫೈಡ್",
-    "pl-label":"ನಮ್ಮ ಉತ್ಪನ್ನಗಳು","pl-title":"ಮನೆ ಮಾಡಿದ ಶ್ರೇಣಿ","pl-sub":"ಉಪ್ಪಿನಕಾಯಿ · ಪೊಡಿ · ಪಾಪಡ್ & ಸ್ನ್ಯಾಕ್ಸ್",
-    "cb-label":"ವಿಶೇಷ ಆಫರ್‌ಗಳು","cb-title":"ಕಾಂಬೋ ಡೀಲ್‌ಗಳು",
-    c1n:"ಟ್ರಿಪಲ್ ಟ್ರೀಟ್ ಕಾಂಬೋ",c1d:"ನಿಮ್ಮ ಆಯ್ಕೆಯ 3 ಜಾರ್!",c1s:"₹30 ಉಳಿತಾಯ",c1b:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",c1w:"WhatsApp-ನಲ್ಲಿ ಆರ್ಡರ್",
-    c2n:"ಪೊಡಿ ಪವರ್ ಪ್ಯಾಕ್",c2d:"3 ಪೊಡಿಗಳು ಒಟ್ಟಿಗೆ",c2s:"₹50 ಉಳಿತಾಯ",c2b:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",c2w:"WhatsApp-ನಲ್ಲಿ ಆರ್ಡರ್",
-    c3n:"ಫ್ಯಾಮಿಲಿ ಮೆಗಾ ಪ್ಯಾಕ್",c3d:"6 ಜಾರ್ — ಉಡುಗೊರೆಗೆ ಸೂಕ್ತ!",c3s:"₹100 ಉಳಿತಾಯ",c3b:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಿ",c3w:"WhatsApp-ನಲ್ಲಿ ಆರ್ಡರ್",
-    "py-label":"ಪಾವತಿ & ಡೆಲಿವರಿ","py-title":"ಪಾವತಿ & ಕಳುಹಿಸಿ",
-    "py-scan":"ಸ್ಕ್ಯಾನ್ & ಪೇ","py-scan-s":"QR ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ UPI ಆ್ಯಪ್ ತೆರೆಯಿರಿ",
-    "py-ctpbtn":"ಕ್ಲಿಕ್ ಮಾಡಿ ಪಾವತಿಸಿ — GPay / PhonePe / Paytm ತೆರೆಯುತ್ತದೆ",
-    "py-note":"ಪಾವತಿ Screenshot WhatsApp-ಗೆ ಕಳುಹಿಸಿ",
-    "sh-title":"ಶಿಪ್ಪಿಂಗ್ ಲೆಕ್ಕಾಚಾರ","sh-sub":"₹500 ಮೇಲೆ ಉಚಿತ ಡೆಲಿವರಿ",
-    "sh-state":"ರಾಜ್ಯ","sh-jars":"ಜಾರ್ ಸಂಖ್ಯೆ","sh-calc":"ಲೆಕ್ಕ ಹಾಕಿ",
-    sr1:"ಒಟ್ಟು ಮೊತ್ತ",sr2:"ಶಿಪ್ಪಿಂಗ್",sr3:"ಡೆಲಿವರಿ ಸಮಯ",sr4:"ಒಟ್ಟು ಮೊತ್ತ",
-    pm1:"ತಕ್ಷಣ ತೆರೆಯುತ್ತದೆ",pm2:"ತಕ್ಷಣ ತೆರೆಯುತ್ತದೆ",pm3:"ಡೆಲಿವರಿಯಲ್ಲಿ ನಗದು",pm4:"ಗುಂಟಕಲ್ ಸ್ಥಳೀಯ ಆರ್ಡರ್",
-    "or-label":"ಆರ್ಡರ್ ಮಾಡಿ","or-title":"ಈಗ ಆರ್ಡರ್",
-    ofl1:"ನಿಮ್ಮ ಹೆಸರು",ofl2:"ಫೋನ್",ofl3:"ಡೆಲಿವರಿ ವಿಳಾಸ",ofl4:"ಉತ್ಪನ್ನ",ofl5:"ಪ್ರಮಾಣ",ofl6:"ಟಿಪ್ಪಣಿ",
-    "or-btn1":"ಆರ್ಡರ್ ಮಾಡಿ","or-btn2":"WhatsApp ಮೂಲಕ ಆರ್ಡರ್",
-    "rv-label":"ಗ್ರಾಹಕ ಅಭಿಪ್ರಾಯಗಳು","rv-title":"ಅವರು ಏನು ಹೇಳುತ್ತಾರೆ",
-    "rvf-t":"ನಿಮ್ಮ ಅನುಭವ ಹಂಚಿಕೊಳ್ಳಿ","rvf-l1":"ಹೆಸರು","rvf-l2":"ಸ್ಥಳ","rvf-l3":"ರೇಟಿಂಗ್","rvf-l4":"ನಿಮ್ಮ ಅಭಿಪ್ರಾಯ","rvf-btn":"ಅಭಿಪ್ರಾಯ ಸಲ್ಲಿಸಿ",
-    "dc-t":"ನಿಮ್ಮ ಕಾರ್ಟ್","dc-empty":"ಕಾರ್ಟ್ ಖಾಲಿಯಾಗಿದೆ","dc-tot":"ಒಟ್ಟು","dc-pay":"ಈಗ ಪಾವತಿಸಿ","dc-wa":"WhatsApp ಮೂಲಕ ಆರ್ಡರ್",
-    "ft-prod":"ಉತ್ಪನ್ನಗಳು","ft-contact":"ಲಿಂಕ್‌ಗಳು",
-    toast_added:"ಕಾರ್ಟ್‌ಗೆ ಸೇರಿಸಲಾಯಿತು!",toast_review:"ಅಭಿಪ್ರಾಯ ಸಲ್ಲಿಸಲಾಯಿತು! ಧನ್ಯವಾದ 🙏",toast_empty:"ಹೆಸರು & ಉತ್ಪನ್ನ ತುಂಬಿಸಿ",
-    catPickle:"ಉಪ್ಪಿನಕಾಯಿ",catPodi:"ಮಸಾಲೆ ಪೊಡಿ",catPapad:"ಪಾಪಡ್ & ಸ್ನ್ಯಾಕ್ಸ್",
-    pBtn:"ಸೇರಿಸಿ",pBtnOk:"ಸೇರಿಸಲಾಯಿತು ✓",
-    pDescAvakaya:"ಮಾವಿನಕಾಯಿ ಉಪ್ಪಿನಕಾಯಿ — ಸಾಸಿವೆ, ಮೆಣಸಿನಕಾಯಿ & ಎಳ್ಳೆಣ್ಣೆ.",pDescGongura:"ಹಳ್ಳಿ ಸೊಪ್ಪು & ಕೆಂಪು ಮೆಣಸು — ಆಂಧ್ರ ಹೆಮ್ಮೆ.",pDescTomato:"ಟೊಮೆಟೊ, ಹುಣಸೆ & ಮಸಾಲೆ — ಅನ್ನಕ್ಕೆ ಸೂಕ್ತ.",pDescNimmakaya:"ಒಣ ನಿಂಬೆ ಉಪ್ಪಿನಕಾಯಿ — ಸಾಸಿವೆ & ಹಸಿ ಮೆಣಸು.",pDescVelluli:"ಬೆಳ್ಳುಳ್ಳಿ ಉಪ್ಪಿನಕಾಯಿ — ಮಸಾಲೆ ಎಣ್ಣೆಯಲ್ಲಿ.",pDescMulakkada:"ನುಗ್ಗೆಕಾಯಿ ಉಪ್ಪಿನಕಾಯಿ — ಸಾಸಿವೆ & ಮೆಂತ್ಯ.",pDescChintapandu:"ಹುಣಸೆ, ಬೆಲ್ಲ & ಮಸಾಲೆ — ಸಿಹಿ, ಹುಳಿ, ಖಾರ.",pDescMixed:"ತರಕಾರಿ ಉಪ್ಪಿನಕಾಯಿ — ಆಂಧ್ರ ಮಸಾಲೆ.",pDescPodiKaram:"ಕಾರ ಪೊಡಿ — ಅನ್ನದಲ್ಲಿ ತುಪ್ಪದೊಂದಿಗೆ.",pDescKarvepaku:"ಕರಿಬೇವಿನ ಪೊಡಿ — ಅನ್ನ, ಇಡ್ಲಿ, ದೋಸೆಗೆ.",pDescMulaga:"ಆಂಧ್ರ ಮೆಣಸಿನಕಾಯಿ ಪೊಡಿ — ಇಡ್ಲಿ & ದೋಸೆಗೆ.",pDescPapad:"ಆಂಧ್ರ ಪಾಪಡ್ — ಒಣಗಿಸಿದ, ಮೆಣಸು & ಜೀರಿಗೆ.",pDescMajjiga:"ಮಜ್ಜಿಗೆ ಮೆಣಸಿನಕಾಯಿ — ಕರಿದರೆ ಕುರಕುರೆ!"
-  },
-  hi:{
-    wa_hero:"नमस्ते! VijayaVenugopal Pickles से ऑर्डर करना चाहता/चाहती हूं 🌶",
-    wa_triple:"नमस्ते! Triple Treat Combo (3 जार ₹420) चाहिए 🌶",
-    wa_podi:"नमस्ते! Podi Power Pack (3 पाउडर ₹400) चाहिए 🌶",
-    wa_mega:"नमस्ते! Family Mega Pack (6 जार ₹800) चाहिए 🌶",
-    cartLbl:"कार्ट","hw-eyebrow":"गुंटकल, आंध्र प्रदेश",
-    "hw-h1line1":"घर का बना.","hw-h1line2":"तीखा. स्वादिष्ट.",
-    "hw-tel":"विजयवेणुगोपाल अचार — प्यार से बनाया गया",
-    "hw-sub":"हर जार में <strong>धूप में सूखे मसाले</strong> & तिल का तेल। असली आंध्रा स्वाद आपके घर तक।",
-    "hw-btn1":"अभी खरीदें","hw-btn2":"WhatsApp ऑर्डर","hw-btn3":"बल्क ऑर्डर",
-    hs1:"प्रति जार",hs2:"पापड़ & स्नैक्स",hs3:"प्राकृतिक",hs4:"प्रमाणित",
-    "pl-label":"हमारे उत्पाद","pl-title":"घर का बना रेंज","pl-sub":"अचार · पाउडर · पापड़ & स्नैक्स",
-    "cb-label":"विशेष ऑफर","cb-title":"कॉम्बो डील",
-    c1n:"ट्रिपल ट्रीट कॉम्बो",c1d:"आपकी पसंद के 3 जार — कोई भी मिलाएं!",c1s:"₹30 बचत",c1b:"कार्ट में डालें",c1w:"WhatsApp पर ऑर्डर",
-    c2n:"पोडी पावर पैक",c2d:"तीनों पाउडर — पोडी करम + करीपत्ता + मिर्च पाउडर",c2s:"₹50 बचत",c2b:"कार्ट में डालें",c2w:"WhatsApp पर ऑर्डर",
-    c3n:"फैमिली मेगा पैक",c3d:"6 जार — उपहार के लिए बिल्कुल सही!",c3s:"₹100 बचत",c3b:"कार्ट में डालें",c3w:"WhatsApp पर ऑर्डर",
-    "py-label":"भुगतान & डिलीवरी","py-title":"भुगतान करें & भेजें",
-    "py-scan":"स्कैन & पे","py-scan-s":"QR स्कैन करें या कोई भी UPI ऐप खोलें",
-    "py-ctpbtn":"क्लिक करके भुगतान करें — GPay / PhonePe / Paytm खुलेगा",
-    "py-note":"भुगतान का Screenshot WhatsApp पर भेजें",
-    "sh-title":"शिपिंग कैलकुलेटर","sh-sub":"₹500 से ऊपर मुफ्त डिलीवरी",
-    "sh-state":"राज्य","sh-jars":"जार की संख्या","sh-calc":"गणना करें",
-    sr1:"कुल उत्पाद",sr2:"शिपिंग",sr3:"डिलीवरी समय",sr4:"कुल",
-    pm1:"तुरंत खुलेगा",pm2:"तुरंत खुलेगा",pm3:"कैश ऑन डिलीवरी",pm4:"गुंटकल स्थानीय ऑर्डर",
-    "or-label":"ऑर्डर करें","or-title":"अभी ऑर्डर करें",
-    ofl1:"आपका नाम",ofl2:"फोन",ofl3:"डिलीवरी पता",ofl4:"उत्पाद",ofl5:"मात्रा",ofl6:"नोट्स",
-    "or-btn1":"ऑर्डर करें","or-btn2":"WhatsApp पर ऑर्डर",
-    "rv-label":"ग्राहक समीक्षाएं","rv-title":"वे क्या कहते हैं",
-    "rvf-t":"अपना अनुभव साझा करें","rvf-l1":"नाम","rvf-l2":"स्थान","rvf-l3":"रेटिंग","rvf-l4":"आपकी समीक्षा","rvf-btn":"समीक्षा सबमिट करें",
-    "dc-t":"आपका कार्ट","dc-empty":"कार्ट खाली है","dc-tot":"कुल","dc-pay":"अभी भुगतान करें","dc-wa":"WhatsApp पर ऑर्डर",
-    "ft-prod":"उत्पाद","ft-contact":"लिंक",
-    toast_added:"कार्ट में जोड़ा!",toast_review:"समीक्षा सबमिट हुई! धन्यवाद 🙏",toast_empty:"नाम और उत्पाद भरें",
-    catPickle:"अचार",catPodi:"मसाला पाउडर",catPapad:"पापड़ & स्नैक्स",
-    pBtn:"जोड़ें",pBtnOk:"जोड़ा ✓",
-    pDescAvakaya:"कच्चे आम का अचार — सरसों, लाल मिर्च & तिल का तेल।",pDescGongura:"खट्टी पत्तियां & लाल मिर्च — आंध्रा का गर्व।",pDescTomato:"टमाटर, इमली & मसाले — चावल के साथ बढ़िया।",pDescNimmakaya:"नींबू का अचार — सरसों & हरी मिर्च।",pDescVelluli:"लहसुन का अचार — मसाला तेल में।",pDescMulakkada:"सहजन का अचार — सरसों & मेथी।",pDescChintapandu:"इमली, गुड़ & मसाले — मीठा, खट्टा, तीखा।",pDescMixed:"मौसमी सब्जियों का अचार।",pDescPodiKaram:"तीखा पाउडर — चावल पर घी के साथ।",pDescKarvepaku:"करी पत्ता पाउडर — चावल, इडली।",pDescMulaga:"आंध्रा मिर्च पाउडर — इडली & डोसा।",pDescPapad:"आंध्रा पापड़ — सूखी, मिर्च & जीरा।",pDescMajjiga:"छाछ मिर्च — तलने पर कुरकुरी!"
-  }
+const T={
+en:{logo:'VijayaVenugopal',cart:'Cart',loc:'📍 Guntakal, AP',h1:'Fresh Homemade Pickles & Podis',hsub:'100% natural ingredients · Sun-dried spices · Cold-pressed oil · Traditional recipes',shop:'Shop Now',wa:'WhatsApp Order',yourcart:'Your Cart',empty:'Your cart is empty',total:'TOTAL',paytitle:'PAYMENT OPTIONS',pm1:'Instant payment',pm2:'Instant payment',pm3:'Instant payment',pm4:'Bank Transfer',pm5:'Cash on Delivery',pm6:'Guntakal only',upi:'UPI PAYMENT',upinote:'Send screenshot on WhatsApp',waorder:'Order via WhatsApp',catPickle:'PICKLES',catPodi:'PODIS',catPapad:'PAPAD & SNACKS',catOrganic:'ORGANIC POWDERS',add:'ADD',added:'✓ ADDED',items:'items',wa_msg:'Hello! I want to order from VijayaVenugopal Pickles 🌶'},
+te:{logo:'విజయవేణుగోపాల్',cart:'బుట్ట',loc:'📍 గుంటకల్, AP',h1:'తాజా ఇంట్లో చేసిన పచ్చళ్ళు & పొడులు',hsub:'100% సహజ పదార్థాలు · ఎండబెట్టిన మసాలాలు · నువ్వుల నూనె · సాంప్రదాయ వంటకాలు',shop:'ఇప్పుడు కొనండి',wa:'వాట్సాప్ ఆర్డర్',yourcart:'మీ బుట్ట',empty:'మీ బుట్ట ఖాళీగా ఉంది',total:'మొత్తం',paytitle:'చెల్లింపు ఎంపికలు',pm1:'తక్షణ చెల్లింపు',pm2:'తక్షణ చెల్లింపు',pm3:'తక్షణ చెల్లింపు',pm4:'బ్యాంక్ బదిలీ',pm5:'డెలివరీలో నగదు',pm6:'గుంటకల్ మాత్రమే',upi:'UPI చెల్లింపు',upinote:'వాట్సాప్‌కు స్క్రీన్‌షాట్ పంపండి',waorder:'వాట్సాప్ ద్వారా ఆర్డర్',catPickle:'పచ్చళ్ళు',catPodi:'పొడులు',catPapad:'పాపడ్ & స్నాక్స్',catOrganic:'సేంద్రీయ పొడులు',add:'వేయండి',added:'✓ వేసారు',items:'వస్తువులు',wa_msg:'నమస్కారం! విజయవేణుగోపాల్ పచ్చళ్ళు ఆర్డర్ చేయాలి 🌶'},
+ta:{logo:'விஜயவேணுகோபால்',cart:'கார்ட்',loc:'📍 குந்தகல், AP',h1:'புதிய வீட்டு ஊறுகாய் & பொடிகள்',hsub:'100% இயற்கை பொருட்கள் · வெயிலில் உலர்த்தப்பட்ட · எள் எண்ணெய் · பாரம்பரிய செய்முறைகள்',shop:'இப்போது வாங்கு',wa:'WhatsApp ஆர்டர்',yourcart:'உங்கள் கார்ட்',empty:'உங்கள் கார்ட் காலியாக உள்ளது',total:'மொத்தம்',paytitle:'பணம் செலுத்தும் முறைகள்',pm1:'உடனடி பணம்',pm2:'உடனடி பணம்',pm3:'உடனடி பணம்',pm4:'வங்கி பரிமாற்றம்',pm5:'டெலிவரியில் பணம்',pm6:'குந்தகல் மட்டும்',upi:'UPI பணம்',upinote:'WhatsApp Screenshot',waorder:'WhatsApp ஆர்டர்',catPickle:'ஊறுகாய்கள்',catPodi:'பொடிகள்',catPapad:'பப்பட்',catOrganic:'இயற்கை தூள்கள்',add:'சேர்',added:'✓ சேர்த்தது',items:'பொருட்கள்',wa_msg:'வணக்கம்! விஜயவேணுகோபால் Pickles 🌶'},
+ml:{logo:'വിജയവേണുഗോപാൽ',cart:'കാർട്ട്',loc:'📍 ഗുന്തകൽ, AP',h1:'പുതിയ വീട്ടിൽ ഉണ്ടാക്കിയ അച്ചാർ & പൊടികൾ',hsub:'100% പ്രകൃതിദത്ത ചേരുവകൾ · വെയിലത്ത് ഉണക്കിയ മസാല · എള്ള് എണ്ണ · പരമ്പരാഗത പാചകക്കുറിപ്പുകൾ',shop:'ഇപ്പോൾ വാങ്ങൂ',wa:'WhatsApp ഓർഡർ',yourcart:'നിങ്ങളുടെ കാർട്ട്',empty:'നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്',total:'മൊത്തം',paytitle:'പേയ്മെൻ്റ് ഓപ്ഷനുകൾ',pm1:'ഉടനടി പേയ്മെൻ്റ്',pm2:'ഉടനടി പേയ്മെൻ്റ്',pm3:'ഉടനടി പേയ്മെൻ്റ്',pm4:'ബാങ്ക് കൈമാറ്റം',pm5:'ഡെലിവറിയിൽ പണം',pm6:'ഗുന്തകൽ മാത്രം',upi:'UPI പേയ്മെൻ്റ്',upinote:'WhatsApp Screenshot',waorder:'WhatsApp ഓർഡർ',catPickle:'അച്ചാറുകൾ',catPodi:'പൊടികൾ',catPapad:'പപ്പടം',catOrganic:'ഓർഗാനിക് പൊടികൾ',add:'ചേർക്കൂ',added:'✓ ചേർത്തു',items:'ഇനങ്ങൾ',wa_msg:'നമസ്കാരം! വിജയവേണുഗോപാൽ Pickles 🌶'},
+kn:{logo:'ವಿಜಯವೇಣುಗೋಪಾಲ್',cart:'ಕಾರ್ಟ್',loc:'📍 ಗುಂಟಕಲ್, AP',h1:'ತಾಜಾ ಮನೆ ಮಾಡಿದ ಉಪ್ಪಿನಕಾಯಿ & ಪೊಡಿ',hsub:'100% ನೈಸರ್ಗಿಕ ಪದಾರ್ಥಗಳು · ಬಿಸಿಲಲ್ಲಿ ಒಣಗಿಸಿದ ಮಸಾಲೆ · ಎಳ್ಳೆಣ್ಣೆ · ಸಾಂಪ್ರದಾಯಿಕ ಪಾಕವಿಧಾನಗಳು',shop:'ಈಗ ಖರೀದಿಸಿ',wa:'WhatsApp ಆರ್ಡರ್',yourcart:'ನಿಮ್ಮ ಕಾರ್ಟ್',empty:'ನಿಮ್ಮ ಕಾರ್ಟ್ ಖಾಲಿಯಾಗಿದೆ',total:'ಒಟ್ಟು',paytitle:'ಪಾವತಿ ಆಯ್ಕೆಗಳು',pm1:'ತತ್ಕ್ಷಣ ಪಾವತಿ',pm2:'ತತ್ಕ್ಷಣ ಪಾವತಿ',pm3:'ತತ್ಕ್ಷಣ ಪಾವತಿ',pm4:'ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ',pm5:'ಡೆಲಿವರಿಯಲ್ಲಿ ನಗದು',pm6:'ಗುಂಟಕಲ್ ಮಾತ್ರ',upi:'UPI ಪಾವತಿ',upinote:'WhatsApp Screenshot',waorder:'WhatsApp ಆರ್ಡರ್',catPickle:'ಉಪ್ಪಿನಕಾಯಿ',catPodi:'ಪೊಡಿ',catPapad:'ಪಾಪಡ್',catOrganic:'ಸಾವಯವ ಪುಡಿಗಳು',add:'ಸೇರಿಸಿ',added:'✓ ಸೇರಿಸಲಾಯಿತು',items:'ವಸ್ತುಗಳು',wa_msg:'ನಮಸ್ಕಾರ! ವಿಜಯವೇಣುಗೋಪಾಲ್ Pickles 🌶'},
+hi:{logo:'विजयवेणुगोपाल',cart:'कार्ट',loc:'📍 गुंटकल, AP',h1:'ताजा घर का बना अचार & पाउडर',hsub:'100% प्राकृतिक सामग्री · धूप में सूखे मसाले · तिल का तेल · पारंपरिक व्यंजन',shop:'अभी खरीदें',wa:'WhatsApp ऑर्डर',yourcart:'आपका कार्ट',empty:'आपका कार्ट खाली है',total:'कुल',paytitle:'भुगतान विकल्प',pm1:'तत्काल भुगतान',pm2:'तत्काल भुगतान',pm3:'तत्काल भुगतान',pm4:'बैंक ट्रांसफर',pm5:'डिलीवरी पर नकद',pm6:'गुंटकल केवल',upi:'UPI भुगतान',upinote:'WhatsApp Screenshot',waorder:'WhatsApp ऑर्डर',catPickle:'अचार',catPodi:'पाउडर',catPapad:'पापड़',catOrganic:'जैविक पाउडर',add:'जोड़ें',added:'✓ जोड़ा',items:'आइटम',wa_msg:'नमस्ते! विजयवेणुगोपाल Pickles 🌶'}
 };
 
-let lang='en', L=LANGS.en, cart={}, starRating=0;
-
-const products=[
-  {id:1,cat:'pickle',name:'Avakaya',desc:'pDescAvakaya',emoji:'🥭',spice:5,price:150,badge:'Bestseller'},
-  {id:2,cat:'pickle',name:'Gongura Pachadi',desc:'pDescGongura',emoji:'🟤',spice:4,price:150,badge:'Fan Fav'},
-  {id:3,cat:'pickle',name:'Tomato Pickle',desc:'pDescTomato',emoji:'🍅',spice:3,price:150,badge:'New'},
-  {id:4,cat:'pickle',name:'Nimmakaya',desc:'pDescNimmakaya',emoji:'🍋',spice:3,price:150,badge:null},
-  {id:5,cat:'pickle',name:'Velluli Pachadi',desc:'pDescVelluli',emoji:'🧄',spice:4,price:150,badge:null},
-  {id:6,cat:'pickle',name:'Mulakkada Pachadi',desc:'pDescMulakkada',emoji:'🥢',spice:4,price:150,badge:null},
-  {id:7,cat:'pickle',name:'Chintapandu Pachadi',desc:'pDescChintapandu',emoji:'🌰',spice:2,price:150,badge:null},
-  {id:8,cat:'pickle',name:'Mixed Vegetable',desc:'pDescMixed',emoji:'🥗',spice:3,price:150,badge:null},
-  {id:9,cat:'podi',name:'Podi Karam',desc:'pDescPodiKaram',emoji:'🌶️',spice:5,price:150,badge:'New'},
-  {id:10,cat:'podi',name:'Karvepaku Podi',desc:'pDescKarvepaku',emoji:'🍃',spice:3,price:150,badge:null},
-  {id:11,cat:'podi',name:'Mulaga Podi',desc:'pDescMulaga',emoji:'🌶',spice:5,price:150,badge:'Classic'},
-  {id:12,cat:'papad',name:'Andhra Papad',desc:'pDescPapad',emoji:'🥞',spice:2,price:100,badge:'Crispy'},
-  {id:13,cat:'papad',name:'Majjiga Mirapakai',desc:'pDescMajjiga',emoji:'🟤',spice:4,price:100,badge:'Iconic'},
+const P=[
+{id:1,cat:'pickle',n:{en:'Avakaya',te:'ఆవకాయ',ta:'ஆவகாயா',ml:'ആവകായ',kn:'ಆವಕಾಯ',hi:'आवकाय'},d:{en:'Raw mango pickle',te:'ఆవకాయ పచ్చడి',ta:'மாங்காய் ஊறுகாய்',ml:'മാങ്ങ അച്ചാർ',kn:'ಮಾವಿನಕಾಯಿ ಉಪ್ಪಿನಕಾಯಿ',hi:'कच्चे आम का अचार'},e:'🥭',p:150,b:'BESTSELLER'},
+{id:2,cat:'pickle',n:{en:'Gongura',te:'గోంగూర',ta:'கொங்குரா',ml:'ഗോങ്ഗുര',kn:'ಗೊಂಗುರ',hi:'गोंगुरा'},d:{en:'Sorrel leaves pickle',te:'గోంగూర పచ్చడి',ta:'கொங்குரா ஊறுகாய்',ml:'ഗോങ്ഗുര അച്ചാർ',kn:'ಗೊಂಗುರ ಉಪ್ಪಿನಕಾಯಿ',hi:'गोंगुरा अचार'},e:'🟤',p:150,b:'POPULAR'},
+{id:3,cat:'pickle',n:{en:'Gongura Red Chilli',te:'గోంగూర ఎర్ర మిరపకాయ',ta:'கொங்குரா சிவப்பு மிளகாய்',ml:'ഗോങ്ഗുര ചുവന്ന മുളക്',kn:'ಗೊಂಗುರ ಕೆಂಪು ಮೆಣಸಿನಕಾಯಿ',hi:'गोंगुरा लाल मिर्च'},d:{en:'Spicy gongura',te:'గోంగూర ఎర్ర మిరపకాయ',ta:'காரமான கொங்குரா',ml:'കാരമുള്ള ഗോങ്ഗുര',kn:'ಖಾರ ಗೊಂಗುರ',hi:'तीखा गोंगुरा'},e:'🌶',p:150,b:'SPICY'},
+{id:4,cat:'pickle',n:{en:'Red Chilli',te:'ఎర్ర మిరపకాయ',ta:'சிவப்பு மிளகாய்',ml:'ചുവന്ന മുളക്',kn:'ಕೆಂಪು ಮೆಣಸಿನಕಾಯಿ',hi:'लाल मिर्च'},d:{en:'Fiery red chilli',te:'ఎర్ర మిరపకాయ పచ్చడి',ta:'சிவப்பு மிளகாய்',ml:'ചുവന്ന മുളക്',kn:'ಕೆಂಪು ಮೆಣಸಿನಕಾಯಿ',hi:'लाल मिर्च'},e:'🔴',p:150,b:'HOT'},
+{id:5,cat:'pickle',n:{en:'Green Chilli',te:'పచ్చ మిరపకాయ',ta:'பச்சை மிளகாய்',ml:'പച്ച മുളക്',kn:'ಹಸಿರು ಮೆಣಸಿನಕಾಯಿ',hi:'हरी मिर्च'},d:{en:'Fresh green chilli',te:'పచ్చ మిరపకాయ పచ్చడి',ta:'பச்சை மிளகாய்',ml:'പച്ച മുളക്',kn:'ಹಸಿರು ಮೆಣಸಿನಕಾಯಿ',hi:'हरी मिर्च'},e:'🟢',p:150},
+{id:6,cat:'pickle',n:{en:'Tomato',te:'టమాటా',ta:'தக்காளி',ml:'തക്കാളി',kn:'ಟೊಮೆಟೊ',hi:'टमाटर'},d:{en:'Tomato pickle',te:'టమాటా పచ్చడి',ta:'தக்காளி ஊறுகாய்',ml:'തക്കാളി അച്ചാർ',kn:'ಟೊಮೆಟೊ ಉಪ್ಪಿನಕಾಯಿ',hi:'टमाटर अचार'},e:'🍅',p:150},
+{id:7,cat:'pickle',n:{en:'Lemon',te:'నిమ్మకాయ',ta:'எலுமிச்சை',ml:'നാരങ്ങ',kn:'ನಿಂಬೆ',hi:'नींबू'},d:{en:'Lemon pickle',te:'నిమ్మకాయ పచ్చడి',ta:'எலுமிச்சை ஊறுகாய்',ml:'നാരങ്ങ അച്ചാർ',kn:'ನಿಂಬೆ ಉಪ್ಪಿನಕಾಯಿ',hi:'नींबू अचार'},e:'🍋',p:150},
+{id:8,cat:'pickle',n:{en:'Garlic',te:'వెల్లుల్లి',ta:'பூண்டு',ml:'വെളുത്തുള്ളി',kn:'ಬೆಳ್ಳುಳ್ಳಿ',hi:'लहसुन'},d:{en:'Garlic pickle',te:'వెల్లుల్లి పచ్చడి',ta:'பூண்டு ஊறுகாய்',ml:'വെളുത്തുള്ളി അച്ചാർ',kn:'ಬೆಳ್ಳುಳ್ಳಿ ಉಪ್ಪಿನಕಾಯಿ',hi:'लहसुन अचार'},e:'🧄',p:150},
+{id:9,cat:'pickle',n:{en:'Ginger',te:'అల్లం',ta:'இஞ்சி',ml:'ഇഞ്ചി',kn:'ಶುಂಠಿ',hi:'अदरक'},d:{en:'Ginger pickle',te:'అల్లం పచ్చడి',ta:'இஞ்சி ஊறுகாய்',ml:'ഇഞ്ചി അച്ചാർ',kn:'ಶುಂಠಿ ಉಪ್ಪಿನಕಾಯಿ',hi:'अदरक अचार'},e:'🫚',p:150},
+{id:10,cat:'pickle',n:{en:'Drumstick',te:'మునక్కాయ',ta:'முருங்கை',ml:'മുരിങ്ങ',kn:'ನುಗ್ಗೆಕಾಯಿ',hi:'सहजन'},d:{en:'Drumstick pickle',te:'మునక్కాయ పచ్చడి',ta:'முருங்கை ஊறுகாய்',ml:'മുരിങ്ങ അച്ചാർ',kn:'ನುಗ್ಗೆಕಾಯಿ ಉಪ್ಪಿನಕಾಯಿ',hi:'सहजन अचार'},e:'🫛',p:150},
+{id:11,cat:'pickle',n:{en:'Tamarind',te:'చింతపండు',ta:'புளி',ml:'പുളി',kn:'ಹುಣಸೆ',hi:'इमली'},d:{en:'Tamarind pickle',te:'చింతపండు పచ్చడి',ta:'புளி ஊறுகாய்',ml:'പുളി അച്ചാർ',kn:'ಹುಣಸೆ ಉಪ್ಪಿನಕಾಯಿ',hi:'इमली अचार'},e:'🌰',p:150},
+{id:12,cat:'pickle',n:{en:'Mixed Veg',te:'మిక్స్ వెజ్',ta:'கலந்த காய்',ml:'മിക്സഡ് വെജ്',kn:'ಮಿಕ್ಸ್ ವೆಜ್',hi:'मिक्स्ड वेज'},d:{en:'Mixed vegetables',te:'మిక్స్ కూరగాయలు',ta:'கலந்த காய்கறி',ml:'മിക്സഡ് വെജ്',kn:'ಮಿಕ್ಸ್ ವೆಜ್',hi:'मिक्स्ड वेज'},e:'🥗',p:150},
+{id:13,cat:'pickle',n:{en:'Amla',te:'ఉసిరికాయ',ta:'நெல்லிக்காய்',ml:'നെല്ലിക്ക',kn:'ನೆಲ್ಲಿಕಾಯಿ',hi:'आंवला'},d:{en:'Indian gooseberry',te:'ఉసిరికాయ పచ్చడి',ta:'நெல்லிக்காய்',ml:'നെല്ലിക്ക അച്ചാർ',kn:'ನೆಲ್ಲಿಕಾಯಿ',hi:'आंवला अचार'},e:'🍈',p:150,b:'HEALTHY'},
+{id:14,cat:'pickle',n:{en:'Coriander',te:'కొత్తిమీర',ta:'கொத்தமல்லி',ml:'മല്ലിയില',kn:'ಕೊತ್ತಂಬರಿ',hi:'धनिया'},d:{en:'Coriander pickle',te:'కొత్తిమీర పచ్చడి',ta:'கொத்தமல்லி',ml:'മല്ലിയില അച്ചാർ',kn:'ಕೊತ್ತಂಬರಿ',hi:'धनिया अचार'},e:'🌱',p:150},
+{id:20,cat:'podi',n:{en:'Velluli Karam',te:'వెల్లుల్లి కారం',ta:'பூண்டு காரம்',ml:'വെളുത്തുള്ളി കാരം',kn:'ಬೆಳ್ಳುಳ್ಳಿ ಕಾರಂ',hi:'लहसुन कारम'},d:{en:'Garlic spice',te:'వెల్లుల్లి కారం',ta:'பூண்டு காரம்',ml:'വെളുത്തുള്ളി കാരം',kn:'ಬೆಳ್ಳುಳ್ಳಿ ಕಾರಂ',hi:'लहसुन कारम'},e:'🧄',p:150},
+{id:21,cat:'podi',n:{en:'Kandi Podi',te:'కందిపప్పు పొడి',ta:'கந்தி பொடி',ml:'കന്ദി പൊടി',kn:'ಕಂದಿ ಪೊಡಿ',hi:'कांडी पाउडर'},d:{en:'Dal powder',te:'కందిపప్పు పొడి',ta:'கடலை பருப்பு',ml:'കടല പൊടി',kn:'ಕಂದಿ ಬೇಳೆ',hi:'दाल पाउडर'},e:'🫘',p:150},
+{id:22,cat:'podi',n:{en:'Nuvvula Podi',te:'నువ్వుల పొడి',ta:'எள் பொடி',ml:'എള്ള് പൊടി',kn:'ಎಳ್ಳು ಪೊಡಿ',hi:'तिल पाउडर'},d:{en:'Sesame powder',te:'నువ్వుల పొడి',ta:'எள் பொடி',ml:'എള്ള് പൊടി',kn:'ಎಳ್ಳು ಪೊಡಿ',hi:'तिल पाउडर'},e:'⚪',p:150,b:'CLASSIC'},
+{id:23,cat:'podi',n:{en:'Palli Podi',te:'పల్లి పొడి',ta:'கடலை பொடி',ml:'നിലക്കടല പൊടി',kn:'ಕಡಲೆಕಾಯಿ ಪೊಡಿ',hi:'मूंगफली पाउडर'},d:{en:'Peanut powder',te:'పల్లి పొడి',ta:'கடலை பொடி',ml:'നിലക്കടല പൊടി',kn:'ಕಡಲೆಕಾಯಿ ಪೊಡಿ',hi:'मूंगफली'},e:'🥜',p:150,b:'POPULAR'},
+{id:24,cat:'podi',n:{en:'Mulaga Aaku',te:'మునగ ఆకు పొడి',ta:'முருங்கை இலை',ml:'മുരിങ്ങ ഇല',kn:'ನುಗ್ಗೆ ಎಲೆ',hi:'सहजन पत्ती'},d:{en:'Drumstick leaves',te:'మునగ ఆకు పొడి',ta:'முருங்கை இலை',ml:'മുരിങ്ങ ഇല',kn:'ನುಗ್ಗೆ ಎಲೆ',hi:'सहजन पत्ती'},e:'🌱',p:150,b:'NUTRITIOUS'},
+{id:25,cat:'podi',n:{en:'Flax Seed',te:'అవిసె గింజలు',ta:'ஆளி விதை',ml:'ചണ വിത്ത്',kn:'ಅಗಸೆ ಬೀಜ',hi:'अलसी'},d:{en:'Flax seed podi',te:'అవిసె గింజలు',ta:'ஆளி விதை பொடி',ml:'ചണ വിത്ത്',kn:'ಅಗಸೆ ಬೀಜ',hi:'अलसी पाउडर'},e:'🌾',p:150,b:'HEALTHY'},
+{id:26,cat:'podi',n:{en:'Curry Leaf',te:'కరివేపాకు పొడి',ta:'கறிவேப்பிலை',ml:'കറിവേപ്പില',kn:'ಕರಿಬೇವಿನ',hi:'करी पत्ता'},d:{en:'Curry leaf powder',te:'కరివేపాకు పొడి',ta:'கறிவேப்பிலை',ml:'കറിവേപ്പില',kn:'ಕರಿಬೇವಿನ ಪೊಡಿ',hi:'करी पत्ता'},e:'🍃',p:150},
+{id:29,cat:'podi',n:{en:'Kobbari Podi',te:'కొబ్బరి పొడి',ta:'தேங்காய் பொடி',ml:'കൊപ്ര പൊടി',kn:'ತೆಂಗಿನಕಾಯಿ',hi:'नारियल'},d:{en:'Coconut powder',te:'కొబ్బరి పొడి',ta:'தேங்காய் பொடி',ml:'കൊപ്ര പൊടി',kn:'ತೆಂಗಿನಕಾಯಿ',hi:'नारियल पाउडर'},e:'🥥',p:150},
+{id:30,cat:'papad',n:{en:'Minapa Vadiyalu',te:'మినప వడియాలు',ta:'உளுந்து வற்றல்',ml:'ഉഴുന്ന് വടകൾ',kn:'ಉದ್ದಿನ ವಡಿಯಾಲು',hi:'उड़द बड़ियां'},d:{en:'Urad dal fritters',te:'మినప వడియాలు',ta:'உளுந்து வற்றல்',ml:'ഉഴുന്ന് വടകൾ',kn:'ಉದ್ದಿನ ವಡಿಯಾಲು',hi:'उड़द बड़ियां'},e:'⚪',p:100,b:'POPULAR'},
+{id:31,cat:'papad',n:{en:'Saggubiyyam Vadiyalu',te:'సగ్గుబియ్యం వడియాలు',ta:'சாகு வற்றல்',ml:'സാബുദാന വടകൾ',kn:'ಸಾಬುದಾನ ವಡಿಯಾಲು',hi:'साबूदाना'},d:{en:'Sabudana fritters',te:'సగ్గుబియ్యం వడియాలు',ta:'சாகு வற்றல்',ml:'സാബുദാന വടകൾ',kn:'ಸಾಬುದಾನ ವಡಿಯಾಲು',hi:'साबूदाना'},e:'🔵',p:100},
+{id:32,cat:'papad',n:{en:'Appadalu',te:'అప్పడాలు',ta:'அப்பளம்',ml:'അപ്പളം',kn:'ಹಪ್ಪಳ',hi:'पापड़'},d:{en:'Rice papad',te:'బియ్యం అప్పడాలు',ta:'அரிசி அப்பளம்',ml:'അരി അപ്പളം',kn:'ಅಕ್ಕಿ ಹಪ್ಪಳ',hi:'चावल पापड़'},e:'🥞',p:100,b:'CRISPY'},
+{id:33,cat:'papad',n:{en:'Majjiga Chilli',te:'మజ్జిగ మిరపకాయ',ta:'மோர் மிளகாய்',ml:'മോര് മുളക്',kn:'ಮಜ್ಜಿಗೆ ಮೆಣಸಿನಕಾಯಿ',hi:'छाछ मिर्च'},d:{en:'Buttermilk chilli',te:'మజ్జిగ మిరపకాయ',ta:'மோர் மிளகாய்',ml:'മോര് മുളക്',kn:'ಮಜ್ಜಿಗೆ ಮೆಣಸಿನಕಾಯಿ',hi:'छाछ मिर्च'},e:'🟤',p:100,b:'ICONIC'},
+{id:34,cat:'papad',n:{en:'Gumadikaya Vadiyalu',te:'గుమ్మడికాయ వడియాలు',ta:'புடலங்காய் வற்றல்',ml:'മത്തങ്ങ വടകൾ',kn:'ಗುಮ್ಮಡಿಕಾಯಿ',hi:'कद्दू बड़ियां'},d:{en:'Ash gourd fritters',te:'గుమ్మడికాయ వడియాలు',ta:'புடலங்காய் வற்றல்',ml:'മത്തങ്ങ വടകൾ',kn:'ಗುಮ್ಮಡಿಕಾಯಿ',hi:'कद्दू बड़ियां'},e:'🎃',p:100,b:'SPECIAL'},
+{id:35,cat:'papad',n:{en:'Vadiyalu',te:'వడియాలు',ta:'வற்றல்',ml:'വടകൾ',kn:'ವಡಿಯಾಲು',hi:'बड़ियां'},d:{en:'Lentil fritters',te:'పప్పు వడియాలు',ta:'பருப்பு வற்றல்',ml:'പരിപ്പ് വടകൾ',kn:'ಬೇಳೆ ವಡಿಯಾಲು',hi:'दाल बड़ियां'},e:'⚪',p:100},
+{id:50,cat:'organic',n:{en:'Turmeric Powder',te:'పసుపు పొడి',ta:'மஞ்சள் தூள்',ml:'മഞ്ഞൾ പൊടി',kn:'ಅರಿಶಿನ ಪುಡಿ',hi:'हल्दी पाउडर'},d:{en:'Pure organic',te:'స్వచ్ఛమైన పసుపు',ta:'தூய மஞ்சள்',ml:'ശുദ്ധമായ മഞ്ഞൾ',kn:'ಶುದ್ಧ ಅರಿಶಿನ',hi:'शुद्ध हल्दी'},e:'🟡',p:120,b:'ORGANIC'},
+{id:51,cat:'organic',n:{en:'Chilli Powder',te:'మిరపకాయ పొడి',ta:'மிளகாய் தூள்',ml:'മുളക് പൊടി',kn:'ಮೆಣಸಿನಕಾಯಿ',hi:'मिर्च पाउडर'},d:{en:'Pure red chilli',te:'స్వచ్ఛమైన మిరపకాయ',ta:'தூய மிளகாய்',ml:'ശുദ്ധമായ മുളക്',kn:'ಶುದ್ಧ ಮೆಣಸಿನಕಾಯಿ',hi:'शुद्ध मिर्च'},e:'🔴',p:130,b:'ORGANIC'},
+{id:52,cat:'organic',n:{en:'Coriander Powder',te:'ధనియాల పొడి',ta:'கொத்தமல்லி தூள்',ml:'മല്ലി പൊടി',kn:'ಕೊತ್ತಂಬರಿ',hi:'धनिया पाउडर'},d:{en:'Pure coriander',te:'స్వచ్ఛమైన ధనియాలు',ta:'தூய கொத்தமல்லி',ml:'ശുദ്ധമായ മല്ലി',kn:'ಶುದ್ಧ ಕೊತ್ತಂಬರಿ',hi:'शुद्ध धनिया'},e:'🟤',p:110,b:'ORGANIC'},
 ];
 
-const reviews=[
-  {name:"Priya R.",loc:"Hyderabad",text:"Avakaya tastes exactly like my grandmother's! Pure nostalgia in every bite.",stars:5,i:"P"},
-  {name:"Suresh K.",loc:"Bangalore",text:"Gongura pachadi is unreal — spicy, tangy and genuinely homemade!",stars:5,i:"S"},
-  {name:"Lakshmi D.",loc:"Chennai",text:"Gifted to US-visiting relatives. They were absolutely thrilled!",stars:5,i:"L"},
-  {name:"Venkat P.",loc:"Vijayawada",text:"Being from Vijayawada, I'm very picky about avakaya. This passed my test!",stars:5,i:"V"},
-  {name:"Aravind M.",loc:"Pune",text:"The Mulaga Podi is extraordinary. I order every single month.",stars:5,i:"A"},
-  {name:"Sunita B.",loc:"Delhi",text:"Ordered 10 jars as housewarming gifts. Everyone loved them!",stars:4,i:"S"},
-];
+let lang='en',L=T.en;
 
-const combos={
-  triple:{id:101,name:'Triple Treat Combo',emoji:'🫙🫙🫙',price:420},
-  podi:{id:102,name:'Podi Power Pack',emoji:'🌶️🍃🌶',price:400},
-  mega:{id:103,name:'Family Mega Pack',emoji:'🫙×6',price:800}
-};
-
-/* ── LANG ── */
 function setLang(l){
-  lang=l; L=LANGS[l];
-  document.body.setAttribute('data-lang',l);
-  // update all .tr elements by id
-  const ids=['cartLbl','hw-eyebrow','hw-h1line1','hw-h1line2','hw-tel','hw-sub',
-    'hw-btn1','hw-btn2','hw-btn3','hs1','hs2','hs3','hs4',
-    'pl-label','pl-title','pl-sub','cb-label','cb-title',
-    'c1n','c1d','c1s','c1b','c1w','c2n','c2d','c2s','c2b','c2w','c3n','c3d','c3s','c3b','c3w',
-    'py-label','py-title','py-scan','py-scan-s','py-ctpbtn','py-note',
-    'sh-title','sh-sub','sh-state','sh-jars','sh-calc',
-    'sr1','sr2','sr3','sr4','pm1','pm2','pm3','pm4',
-    'or-label','or-title','ofl1','ofl2','ofl3','ofl4','ofl5','ofl6','or-btn1','or-btn2',
-    'rv-label','rv-title','rvf-t','rvf-l1','rvf-l2','rvf-l3','rvf-l4','rvf-btn',
-    'dc-t','dc-empty','dc-tot','dc-pay','dc-wa','ft-prod','ft-contact'];
-  ids.forEach(id=>{const el=document.getElementById(id);if(el&&L[id])el.innerHTML=L[id]});
-  renderProducts();
-  updateCartUI();
+lang=l;L=T[l];
+Object.keys(L).forEach(k=>{const el=document.getElementById('t-'+k);if(el)el.innerHTML=L[k]});
+renderProducts();updateCartUI();
 }
 
-/* ── PRODUCTS ── */
-function getProductName(p){return p.name}
-function getSVG(p){
-  // brown chilli SVG for Gongura and Majjiga Mirapakai
-  if(p.emoji==='🟤'){
-    return `<svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-      <defs><radialGradient id="bg${p.id}" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#d4823a"/><stop offset="55%" stop-color="#9a4e18"/><stop offset="100%" stop-color="#5a2808"/></radialGradient></defs>
-      <path d="M45,10 C58,8 70,18 72,30 C75,48 65,68 52,76 C44,81 36,81 28,76 C15,68 5,48 8,30 C10,18 22,8 45,10Z" fill="url(#bg${p.id})"/>
-      <path d="M45,10 C48,-2 50,-8 48,-10" fill="none" stroke="#4a2010" stroke-width="4" stroke-linecap="round"/>
-      <path d="M48,-4 Q58,-16 68,-8 Q58,-4 48,-4Z" fill="#3a6010"/>
-      <ellipse cx="33" cy="32" rx="7" ry="4" fill="rgba(255,255,255,0.15)" transform="rotate(-25,33,32)"/>
-      <path d="M28,55 Q36,62 45,64 Q36,66 28,60Z" fill="rgba(0,0,0,0.12)"/>
-    </svg>`;
-  }
-  return `<span class="pimg-emoji">${p.emoji}</span>`;
+
+// Product Details Database - Ingredients, Nutrients, Health Benefits
+const productDetails = {
+  1: {ingredients: ['Raw Mango', 'Red Chilli Powder', 'Mustard Seeds', 'Fenugreek', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Vitamin A', 'Iron', 'Calcium', 'Fiber'], benefits: ['Boosts immunity', 'Aids digestion', 'Rich in antioxidants', 'Improves metabolism', 'Good for skin']},
+  2: {ingredients: ['Sorrel Leaves', 'Red Chilli', 'Garlic', 'Mustard Seeds', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Iron', 'Calcium', 'Folic Acid', 'Antioxidants'], benefits: ['Reduces cholesterol', 'Improves digestion', 'Prevents anemia', 'Heart healthy', 'Anti-inflammatory']},
+  3: {ingredients: ['Sorrel Leaves', 'Red Chilli', 'Garlic', 'Mustard', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Capsaicin', 'Iron', 'Calcium'], benefits: ['Boosts metabolism', 'Pain relief', 'Heart healthy', 'Anti-inflammatory', 'Weight loss']},
+  4: {ingredients: ['Red Chilli', 'Mustard Seeds', 'Garlic', 'Fenugreek', 'Salt', 'Sesame Oil'], nutrients: ['Capsaicin', 'Vitamin C', 'Vitamin A', 'Potassium'], benefits: ['Boosts metabolism', 'Improves circulation', 'Pain relief', 'Weight management', 'Anti-inflammatory']},
+  5: {ingredients: ['Green Chilli', 'Mustard Seeds', 'Curry Leaves', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Vitamin K', 'Capsaicin', 'Beta Carotene'], benefits: ['Immunity booster', 'Aids digestion', 'Regulates blood sugar', 'Antioxidants', 'Improves metabolism']},
+  6: {ingredients: ['Tomato', 'Red Chilli Powder', 'Mustard Seeds', 'Garlic', 'Salt', 'Sesame Oil'], nutrients: ['Lycopene', 'Vitamin C', 'Vitamin K', 'Potassium', 'Folate'], benefits: ['Heart healthy', 'Cancer prevention', 'Skin health', 'Eye health', 'Strong bones']},
+  7: {ingredients: ['Lemon', 'Red Chilli Powder', 'Mustard Seeds', 'Turmeric', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Citric Acid', 'Calcium', 'Potassium'], benefits: ['Immunity booster', 'Aids digestion', 'Detoxifies body', 'Improves skin', 'Weight management']},
+  8: {ingredients: ['Garlic', 'Red Chilli Powder', 'Mustard Seeds', 'Fenugreek', 'Salt', 'Sesame Oil'], nutrients: ['Allicin', 'Vitamin C', 'Vitamin B6', 'Manganese', 'Selenium'], benefits: ['Lowers blood pressure', 'Boosts immunity', 'Antibacterial', 'Heart healthy', 'Anti-inflammatory']},
+  9: {ingredients: ['Ginger', 'Red Chilli Powder', 'Mustard Seeds', 'Curry Leaves', 'Salt', 'Sesame Oil'], nutrients: ['Gingerol', 'Vitamin C', 'Magnesium', 'Potassium'], benefits: ['Aids digestion', 'Reduces nausea', 'Anti-inflammatory', 'Pain relief', 'Lowers blood sugar']},
+  10: {ingredients: ['Drumstick', 'Red Chilli Powder', 'Mustard Seeds', 'Tamarind', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Calcium', 'Iron', 'Protein', 'Vitamin A'], benefits: ['Strengthens bones', 'Boosts immunity', 'Improves digestion', 'Purifies blood', 'Good for eyes']},
+  11: {ingredients: ['Tamarind', 'Red Chilli Powder', 'Jaggery', 'Mustard Seeds', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Tartaric Acid', 'Potassium', 'Magnesium', 'Iron'], benefits: ['Aids digestion', 'Heart healthy', 'Anti-inflammatory', 'Weight management', 'Improves skin']},
+  12: {ingredients: ['Carrot', 'Beans', 'Cauliflower', 'Red Chilli', 'Mustard', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin A', 'Vitamin C', 'Fiber', 'Calcium', 'Iron'], benefits: ['Nutrient rich', 'Aids digestion', 'Boosts immunity', 'Good for eyes', 'Heart healthy']},
+  13: {ingredients: ['Amla', 'Red Chilli Powder', 'Mustard Seeds', 'Fenugreek', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin C', 'Calcium', 'Iron', 'Phosphorus', 'Antioxidants'], benefits: ['Immunity booster', 'Hair growth', 'Eye health', 'Anti-aging', 'Improves metabolism']},
+  14: {ingredients: ['Coriander Leaves', 'Green Chilli', 'Garlic', 'Mustard', 'Salt', 'Sesame Oil'], nutrients: ['Vitamin K', 'Vitamin C', 'Vitamin A', 'Folate', 'Potassium'], benefits: ['Aids digestion', 'Lowers blood sugar', 'Heart healthy', 'Anti-inflammatory', 'Skin health']},
+  20: {ingredients: ['Garlic', 'Red Chilli', 'Cumin', 'Black Pepper', 'Salt'], nutrients: ['Allicin', 'Vitamin C', 'Manganese', 'Vitamin B6'], benefits: ['Boosts immunity', 'Antibacterial', 'Heart healthy', 'Anti-inflammatory']},
+  21: {ingredients: ['Toor Dal', 'Red Chilli', 'Cumin', 'Curry Leaves', 'Salt'], nutrients: ['Protein', 'Fiber', 'Iron', 'Folate', 'Magnesium'], benefits: ['High protein', 'Aids digestion', 'Energy booster', 'Heart healthy']},
+  22: {ingredients: ['Sesame Seeds', 'Red Chilli', 'Cumin', 'Garlic', 'Salt'], nutrients: ['Calcium', 'Iron', 'Magnesium', 'Zinc', 'Healthy Fats'], benefits: ['Bone health', 'Heart healthy', 'Anti-inflammatory', 'Antioxidants']},
+  23: {ingredients: ['Peanuts', 'Red Chilli', 'Garlic', 'Curry Leaves', 'Salt'], nutrients: ['Protein', 'Healthy Fats', 'Vitamin E', 'Magnesium'], benefits: ['Energy booster', 'Heart healthy', 'Weight management', 'Brain health']},
+  24: {ingredients: ['Drumstick Leaves', 'Red Chilli', 'Garlic', 'Cumin', 'Salt'], nutrients: ['Vitamin A', 'Vitamin C', 'Calcium', 'Iron', 'Protein'], benefits: ['Nutrient powerhouse', 'Boosts immunity', 'Anti-inflammatory', 'Improves digestion']},
+  25: {ingredients: ['Flax Seeds', 'Red Chilli', 'Cumin', 'Black Pepper', 'Salt'], nutrients: ['Omega-3', 'Fiber', 'Protein', 'Lignans', 'Magnesium'], benefits: ['Heart healthy', 'Digestive health', 'Anti-inflammatory', 'Hormone balance']},
+  26: {ingredients: ['Curry Leaves', 'Red Chilli', 'Cumin', 'Black Pepper', 'Salt'], nutrients: ['Vitamin A', 'Iron', 'Calcium', 'Fiber', 'Antioxidants'], benefits: ['Hair health', 'Eye health', 'Aids digestion', 'Blood sugar control']},
+  29: {ingredients: ['Coconut', 'Red Chilli', 'Cumin', 'Garlic', 'Salt'], nutrients: ['Healthy Fats', 'Fiber', 'Iron', 'Manganese'], benefits: ['Energy booster', 'Heart healthy', 'Brain health', 'Digestive health']},
+  50: {ingredients: ['100% Pure Organic Turmeric'], nutrients: ['Curcumin', 'Iron', 'Manganese', 'Vitamin B6', 'Potassium'], benefits: ['Anti-inflammatory', 'Antioxidant', 'Boosts immunity', 'Improves skin', 'Brain health']},
+  51: {ingredients: ['100% Pure Organic Red Chilli'], nutrients: ['Capsaicin', 'Vitamin C', 'Vitamin A', 'Potassium'], benefits: ['Boosts metabolism', 'Pain relief', 'Heart healthy', 'Anti-inflammatory']},
+  52: {ingredients: ['100% Pure Organic Coriander Seeds'], nutrients: ['Fiber', 'Iron', 'Magnesium', 'Manganese', 'Vitamin C'], benefits: ['Aids digestion', 'Lowers cholesterol', 'Blood sugar control', 'Anti-inflammatory']},
+};
+
+function getProductDates() {
+  const today = new Date();
+  const mfgDate = today.toLocaleDateString('en-IN', {day: '2-digit', month: 'short', year: 'numeric'});
+  const expiry = new Date(today);
+  expiry.setMonth(expiry.getMonth() + 6);
+  const expDate = expiry.toLocaleDateString('en-IN', {day: '2-digit', month: 'short', year: 'numeric'});
+  return {mfg: mfgDate, exp: expDate};
 }
+
+function openProductDetail(id) {
+  const p = P.find(x => x.id === id);
+  if (!p) return;
+  
+  const details = productDetails[id] || {
+    ingredients: ['Natural ingredients', 'Spices', 'Salt', 'Oil'],
+    nutrients: ['Vitamins', 'Minerals', 'Antioxidants'],
+    benefits: ['Healthy', 'Natural', 'Tasty']
+  };
+  
+  const dates = getProductDates();
+  
+  const html = `
+    <div class="modal-img">
+      ${p.e === '🟤' ? `<svg width="120" height="120" viewBox="0 0 70 70"><defs><radialGradient id="mg${id}"><stop offset="0%" stop-color="#d4823a"/><stop offset="60%" stop-color="#8b4513"/><stop offset="100%" stop-color="#5a2808"/></radialGradient></defs><ellipse cx="35" cy="35" rx="28" ry="32" fill="url(#mg${id})"/><ellipse cx="28" cy="26" rx="7" ry="4" fill="rgba(255,255,255,0.2)" transform="rotate(-20,28,26)"/></svg>` : `<div class="modal-img-emoji">${p.e}</div>`}
+    </div>
+    
+    <div class="modal-section">
+      ${p.b ? `<span class="modal-badge">${p.b}</span>` : ''}
+      <span class="modal-badge" style="background:#fff3e0;color:#e65100">⭐ Est. 2001</span>
+    </div>
+    
+    <div class="modal-info-grid">
+      <div class="modal-info-item">
+        <div class="modal-info-label">Price</div>
+        <div class="modal-info-value">₹${p.p}</div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">Category</div>
+        <div class="modal-info-value">${p.cat.toUpperCase()}</div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">Mfg Date</div>
+        <div class="modal-info-value">${dates.mfg}</div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">Expiry (6 months)</div>
+        <div class="modal-info-value">${dates.exp}</div>
+      </div>
+    </div>
+    
+    <div class="modal-section">
+      <div class="modal-section-title">🌿 INGREDIENTS</div>
+      <div class="modal-section-content">
+        ${details.ingredients.join(', ')}
+      </div>
+    </div>
+    
+    <div class="modal-section">
+      <div class="modal-section-title">💪 KEY NUTRIENTS</div>
+      <div class="modal-section-content">
+        ${details.nutrients.map(n => `<span class="modal-badge" style="background:#e3f2fd;color:#1565c0">${n}</span>`).join('')}
+      </div>
+    </div>
+    
+    <div class="modal-section">
+      <div class="modal-section-title">❤️ HEALTH BENEFITS</div>
+      <ul class="modal-list">
+        ${details.benefits.map(b => `<li>${b}</li>`).join('')}
+      </ul>
+    </div>
+    
+    <div class="modal-section">
+      <div class="modal-section-content" style="font-size:0.8rem;color:var(--text-light);text-align:center;padding:12px;background:#f8f9fa;border-radius:8px">
+        <strong>VijayaVenugopal Pickles</strong><br>
+        📍 Guntakal, Andhra Pradesh<br>
+        ⭐ Established 2001 | FSSAI: 20123213000093<br>
+        🕐 Shelf Life: 6 Months from Mfg Date
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('modalTitle').textContent = p.n[lang];
+  document.getElementById('modalBody').innerHTML = html;
+  document.getElementById('productModal').classList.add('on');
+}
+
+function closeModal() {
+  document.getElementById('productModal').classList.remove('on');
+}
+
 
 function renderProducts(){
-  const cats=['pickle','podi','papad'];
-  const catNames={pickle:L.catPickle,podi:L.catPodi,papad:L.catPapad};
-  let html='';
-  cats.forEach(cat=>{
-    const group=products.filter(p=>p.cat===cat);
-    html+=`<div style="font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin:2rem 0 0.8rem;display:flex;align-items:center;gap:8px">${catNames[cat]}<span style="flex:1;height:1px;background:var(--border);display:block"></span></div>`;
-    html+=`<div class="pgrid">`;
-    group.forEach((p,i)=>{
-      const isBrown=p.emoji==='🟤';
-      html+=`<div class="pcard" style="animation-delay:${i*0.05}s">
-        <div class="pimg">${getSVG(p)}${p.badge?`<div class="pbadge ${p.badge==='New'||p.badge==='Iconic'||p.badge==='Classic'?'g':''}">${p.badge}</div>`:''}</div>
-        <div class="pname">${getProductName(p)}</div>
-        ${p.spice>0?`<div class="pheat">${[1,2,3,4,5].map(n=>`<div class="pdot ${n<=p.spice?'on':''}"></div>`).join('')}</div>`:''}
-        <div class="pdesc">${L[p.desc]||''}</div>
-        <div class="pfoot">
-          <div><div class="pprice"><sup>₹</sup>${p.price}</div><div class="punit">${p.cat==='papad'?'per pack':'per jar'}</div></div>
-          <button class="padd" id="padd-${p.id}" onclick="addToCart(${p.id})">${L.pBtn||'Add'}</button>
-        </div>
-      </div>`;
-    });
-    html+='</div>';
-  });
-  document.getElementById('productsWrap').innerHTML=html;
+const cats=['pickle','podi','papad','organic'];
+let h='';
+cats.forEach(c=>{
+const items=P.filter(p=>p.cat===c);
+if(!items.length)return;
+h+=`<div class="cat-header"><div class="cat-title">${L['cat'+c.charAt(0).toUpperCase()+c.slice(1)]}</div><div class="cat-count">${items.length} ${L.items}</div></div><div class="product-grid">`;
+items.forEach(p=>{
+const badgeClass=p.b&&(p.b==='HEALTHY'||p.b==='NUTRITIOUS'||p.b==='ORGANIC')?'green':'';
+h+=`<div class="pcard" onclick="openProductDetail(${p.id})" style="cursor:pointer"><div class="pcard-img">${p.e==='🟤'?`<svg width="70" height="70" viewBox="0 0 70 70"><defs><radialGradient id="g${p.id}"><stop offset="0%" stop-color="#d4823a"/><stop offset="60%" stop-color="#8b4513"/><stop offset="100%" stop-color="#5a2808"/></radialGradient></defs><ellipse cx="35" cy="35" rx="28" ry="32" fill="url(#g${p.id})"/><ellipse cx="28" cy="26" rx="7" ry="4" fill="rgba(255,255,255,0.2)" transform="rotate(-20,28,26)"/></svg>`:`<div class="pcard-emoji">${p.e}</div>`}${p.b?`<div class="pcard-badge ${badgeClass}">${p.b}</div>`:''}</div><div class="pcard-info"><div class="pcard-name">${p.n[lang]||p.n.en}</div><div class="pcard-desc">${p.d[lang]||p.d.en}</div><div class="pcard-footer"><div><div class="pcard-price"><sup>₹</sup>${p.p}</div><div class="pcard-unit">${c==='papad'?'per pack':(c==='organic'?'100g':'jar')}</div></div><button class="pcard-add" id="add-${p.id}" onclick="event.stopPropagation();addToCart(${p.id})">${L.add}</button></div></div></div>`;
+});
+h+='</div>';
+});
+document.getElementById('productsWrap').innerHTML=h;
 }
 
-function renderReviews(){
-  document.getElementById('reviewsGrid').innerHTML=reviews.map(r=>`
-    <div class="rv-card">
-      <div class="rv-stars">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
-      <div class="rv-text">${r.text}</div>
-      <div class="rv-who"><div class="rv-av">${r.i}</div><div><div class="rv-name">${r.name}</div><div class="rv-loc">📍 ${r.loc}</div></div></div>
-    </div>`).join('');
-}
-
-function renderTicker(){
-  const items=['Pickles ₹150 · Papad ₹100','FSSAI: 20123213000093','Free delivery above ₹500','No preservatives · 100% Natural','Triple Treat 3 jars @ ₹420 · Save ₹30','Family Mega Pack 6 jars @ ₹800','WhatsApp: +91 93398 77718','Handmade in Guntakal, Andhra Pradesh'];
-  const d=[...items,...items];
-  document.getElementById('tickerTrack').innerHTML=d.map(t=>`<div class="t-item"><span class="t-dot">◆</span>${t}</div>`).join('');
-}
-
-/* ── CART ── */
 function addToCart(id){
-  const p=products.find(x=>x.id===id);if(!p)return;
-  if(!cart[id])cart[id]={...p,qty:0};
-  cart[id].qty++;updateCartUI();
-  const b=document.getElementById(`padd-${id}`);
-  if(b){b.textContent=L.pBtnOk||'Added ✓';b.classList.add('ok');setTimeout(()=>{b.textContent=L.pBtn||'Add';b.classList.remove('ok')},1500)}
-  toast(`${p.name} ${L.toast_added||'added!'}`);
+const p=P.find(x=>x.id===id);
+if(!p)return;
+if(!cart[id])cart[id]={...p,q:0};
+cart[id].q++;
+updateCartUI();
+const b=document.getElementById('add-'+id);
+if(b){b.textContent=L.added;b.classList.add('added');setTimeout(()=>{b.textContent=L.add;b.classList.remove('added')},1200)}
+toast(`${p.n[lang]} ${L.added}`);
 }
-function addCombo(k){
-  const c=combos[k];
-  if(!cart[c.id])cart[c.id]={...c,qty:0};
-  cart[c.id].qty++;updateCartUI();
-  toast(`${c.name} added!`);
-}
-function updateQty(id,d){
-  if(!cart[id])return;cart[id].qty+=d;
-  if(cart[id].qty<=0)delete cart[id];updateCartUI();
-}
+
 function updateCartUI(){
-  const cnt=Object.values(cart).reduce((a,i)=>a+i.qty,0);
-  const tot=Object.values(cart).reduce((a,i)=>a+i.qty*i.price,0);
-  document.getElementById('cartCount').textContent=cnt;
-  document.getElementById('cartTotal').textContent=`₹${tot.toLocaleString('en-IN')}`;
-  document.getElementById('cartLbl').textContent=L.cartLbl||'Cart';
-  const el=document.getElementById('cartItems');
-  if(!cnt){el.innerHTML=`<div class="dempty"><span>🫙</span><p>${L['dc-empty']||'Cart is empty'}</p></div>`;return}
-  el.innerHTML=Object.values(cart).map(item=>`
-    <div class="citem">
-      <div class="ci-e">${item.emoji==='🟤'?'🟤':item.emoji}</div>
-      <div class="ci-inf"><div class="ci-n">${item.name}</div><div class="ci-p">₹${item.price} × ${item.qty} = ₹${(item.price*item.qty).toLocaleString('en-IN')}</div></div>
-      <div class="qty"><button class="qb" onclick="updateQty(${item.id},-1)">−</button><span class="qn">${item.qty}</span><button class="qb" onclick="updateQty(${item.id},1)">+</button></div>
-    </div>`).join('');
-}
-function toggleCart(){
-  document.getElementById('overlay').classList.toggle('on');
-  document.getElementById('drawer').classList.toggle('on');
-}
-function checkout(){
-  const tot=Object.values(cart).reduce((a,i)=>a+i.qty*i.price,0);
-  if(!tot){toast(L['dc-empty']||'Cart is empty');return}
-  window.location.href=`upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${tot}&cu=INR`;
-  toggleCart();
-}
-function whatsappCart(){
-  const items=Object.values(cart).map(i=>`• ${i.name} × ${i.qty} = ₹${i.qty*i.price}`).join('\n');
-  const tot=Object.values(cart).reduce((a,i)=>a+i.qty*i.price,0);
-  openWA(`${L.wa_hero}\n\n${items}\n\nTotal: ₹${tot}`);
+const cnt=Object.values(cart).reduce((a,i)=>a+i.q,0);
+const tot=Object.values(cart).reduce((a,i)=>a+i.q*i.p,0);
+document.getElementById('cartCount').textContent=cnt;
+document.getElementById('cartTotal').textContent='₹'+tot.toLocaleString('en-IN');
+const el=document.getElementById('cartItems');
+if(!cnt){el.innerHTML=`<div class="drawer-empty"><div class="drawer-empty-icon">🛒</div><p>${L.empty}</p></div>`;return}
+el.innerHTML=Object.values(cart).map(i=>`<div class="cart-item"><div class="cart-item-img">${i.e==='🟤'?`<svg width="50" height="50"><defs><radialGradient id="cg${i.id}"><stop offset="0%" stop-color="#d4823a"/><stop offset="60%" stop-color="#8b4513"/></radialGradient></defs><ellipse cx="25" cy="25" rx="20" ry="23" fill="url(#cg${i.id})"/></svg>`:i.e}</div><div class="cart-item-info"><div class="cart-item-name">${i.n[lang]}</div><div class="cart-item-price">₹${i.p} × ${i.q} = ₹${(i.p*i.q).toLocaleString('en-IN')}</div><div class="cart-item-qty"><button class="qty-btn" onclick="updateQty(${i.id},-1)">−</button><span class="qty-num">${i.q}</span><button class="qty-btn" onclick="updateQty(${i.id},1)">+</button></div></div></div>`).join('');
 }
 
-/* ── UPI / WA ── */
-function clickToPay(){window.location.href=`upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=150&cu=INR`;setTimeout(()=>toast('Opening UPI app...'),300)}
-function openWA(m){window.open(`https://wa.me/${WA}?text=${encodeURIComponent(m)}`,'_blank')}
-
-/* ── SHIPPING ── */
-function calcShip(){
-  const s=document.getElementById('stateSelect').value;
-  const j=parseInt(document.getElementById('jarCount').value)||0;
-  if(!s||j<1)return;
-  const prod=j*150;
-  let ship=0,days='';
-  if(prod>=500)ship=0;
-  else if(s==='ap')ship=j<=3?40:60;
-  else if(s==='ts'||s==='ka')ship=j<=3?60:80;
-  else if(s==='ml'||s==='tn')ship=j<=3?80:100;
-  else ship=j<=3?100:130;
-  if(s==='ap')days='1–2 days';else if(s==='ts'||s==='ka')days='2–3 days';
-  else if(s==='tn'||s==='ml')days='3–5 days';else days='4–6 days';
-  document.getElementById('srProd').textContent=`₹${prod.toLocaleString('en-IN')}`;
-  document.getElementById('srShip').textContent=ship===0?'FREE 🎉':`₹${ship}`;
-  document.getElementById('srDays').textContent=days;
-  document.getElementById('srTotal').textContent=`₹${(prod+ship).toLocaleString('en-IN')}`;
-  document.getElementById('shipResult').classList.add('show');
-}
-
-/* ── ORDER ── */
-function submitOrder(){const n=document.getElementById('o-name').value,p=document.getElementById('o-pickle').value;if(!n||!p){toast(L.toast_empty||'Fill name & product');return}whatsappOrder();}
-function whatsappOrder(){
-  const n=document.getElementById('o-name').value||'—';
-  const ph=document.getElementById('o-phone').value||'—';
-  const a=document.getElementById('o-addr').value||'—';
-  const p=document.getElementById('o-pickle').value||'—';
-  const q=document.getElementById('o-qty').value||'1';
-  const nt=document.getElementById('o-notes').value||'';
-  openWA(`🌶 VijayaVenugopal Pickles Order\nName: ${n}\nPhone: ${ph}\nProduct: ${p}\nQty: ${q}\nAddress: ${a}${nt?'\nNotes: '+nt:''}\nTotal: ₹${parseInt(q)*150}\n\nPlease confirm! 🙏`);
-}
-
-/* ── REVIEWS ── */
-function setStar(n){starRating=n;document.querySelectorAll('#starPick .sbtn').forEach((b,i)=>b.classList.toggle('on',i<n))}
-function submitReview(){
-  const n=document.getElementById('rv-name').value,t=document.getElementById('rv-text').value;
-  if(!n||!t||!starRating){toast(L.toast_empty||'Fill all fields');return}
-  const card=`<div class="rv-card" style="animation:in 0.4s ease;border-color:var(--accent)">
-    <div class="rv-stars">${'★'.repeat(starRating)}${'☆'.repeat(5-starRating)}</div>
-    <div class="rv-text">${t}</div>
-    <div class="rv-who"><div class="rv-av">${n[0].toUpperCase()}</div><div><div class="rv-name">${n}</div><div class="rv-loc">📍 ${document.getElementById('rv-loc').value||'India'}</div></div></div>
-  </div>`;
-  document.getElementById('reviewsGrid').insertAdjacentHTML('afterbegin',card);
-  ['rv-name','rv-loc','rv-text'].forEach(id=>document.getElementById(id).value='');
-  starRating=0;document.querySelectorAll('#starPick .sbtn').forEach(b=>b.classList.remove('on'));
-  toast(L.toast_review||'Review submitted! Thank you 🙏');
-}
-
-/* ── UTILS ── */
+function updateQty(id,d){if(!cart[id])return;cart[id].q+=d;if(cart[id].q<=0)delete cart[id];updateCartUI()}
+function toggleCart(){document.getElementById('overlay').classList.toggle('on');document.getElementById('drawer').classList.toggle('on')}
+function clickToPay(){window.location.href=`upi://pay?pa=${UPIID}&pn=VijayaVenugopal&cu=INR`}
+function openWA(){const msg=encodeURIComponent(L.wa_msg);window.open(`https://wa.me/${WA}?text=${msg}`,'_blank')}
+function whatsappCart(){const items=Object.values(cart).map(i=>`• ${i.n[lang]} × ${i.q} = ₹${i.q*i.p}`).join('\n');const tot=Object.values(cart).reduce((a,i)=>a+i.q*i.p,0);const msg=encodeURIComponent(`${L.wa_msg}\n\n${items}\n\n${L.total}: ₹${tot}\n\nEstablished 2001 | 6 months expiry`);window.open(`https://wa.me/${WA}?text=${msg}`,'_blank')}
 function scroll2(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
-let toastTimer;
-function toast(m){
-  const el=document.getElementById('toast');el.textContent=m;el.classList.add('on');
-  clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('on'),2800);
-}
-
-/* ── INIT ── */
-renderProducts();renderReviews();renderTicker();
+let toastTimer;function toast(m){const el=document.getElementById('toast');el.textContent=m;el.classList.add('on');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('on'),2500)}
+renderProducts();
 </script>
+
+<div class="product-modal" id="productModal" onclick="if(event.target===this)closeModal()">
+<div class="modal-content">
+<div class="modal-header">
+<div class="modal-title" id="modalTitle">Product Details</div>
+<button class="modal-close" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
 </body>
 </html>
